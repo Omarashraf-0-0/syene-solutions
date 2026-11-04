@@ -1,0 +1,41 @@
+[
+  {
+    "id": "NBX-MVX5ZJW4-3676",
+    "name": "Sarah Connor",
+    "email": "sarah@cyberdyne.io",
+    "company": "Cyberdyne Systems",
+    "projectType": "Web & Mobile Application Slot",
+    "platform": "Cross-Platform (Web + Mobile)",
+    "description": "Architecting an enterprise cybersecurity monitoring dashboard with automated threat triage.",
+    "budget": "$15,000 - $35,000",
+    "timeline": "6 - 10 Weeks",
+    "provider": "resend",
+    "submittedAt": "2026-11-01T01:41:43.156Z"
+  },
+  {
+    "id": "NBX-MVX5QRPO-2731",
+    "name": "أحمد الشريف",
+    "email": "ahmed@example.com",
+    "company": "مؤسسة الأفق",
+    "projectType": "حلول الذكاء الاصطناعي وأتمتة مسارات العمل",
+    "platform": "منصة ويب وتطبيق هاتف معاً",
+    "description": "نحتاج إلى نظام ذكاء اصطناعي لأتمتة خدمة العملاء وإدارة طلبات المؤسسة.",
+    "budget": "$5,000 – $12,000 (أو ما يعادلها بالجنيه)",
+    "timeline": "شهر إلى شهرين",
+    "provider": "studio-inbox",
+    "submittedAt": "2026-11-01T01:34:53.390Z"
+  },
+  {
+    "id": "NBX-MVX5QHE8-9181",
+    "name": "Alex Vance",
+    "email": "ashrafo5541000@gmail.com",
+    "company": "Nubix Test Client",
+    "projectType": "Custom-Built Software / Web Application (Model C)",
+    "platform": "Web & Mobile Cross-Platform",
+    "description": "We need an advanced AI and web application platform engineered with real-time analytics.",
+    "budget": "$5,000 – $12,000 (EGP Equivalent)",
+    "timeline": "1 – 2 Months",
+    "provider": "studio-inbox",
+    "submittedAt": "2026-11-01T01:34:40.016Z"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "Nubix Studio",
+  "description": "A minimalist portfolio showcasing high-end software development and AI-powered digital product solutions for global businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
