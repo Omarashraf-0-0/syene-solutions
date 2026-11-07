@@ -136,7 +136,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
       aria-label={`${projectTitle} UI Mockups and Screenshots Carousel`}
       className={`rounded-2xl border transition-all duration-300 relative overflow-hidden select-none shadow-2xl ${
         isDark
-          ? 'bg-[#1E020C]/90 border-[#69001F]/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)]'
+          ? 'bg-[#0E2336]/90 border-[#143C5A]/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)]'
           : 'bg-white/95 border-slate-200/90 shadow-[0_20px_50px_rgba(16,24,32,0.08)]'
       }`}
       onMouseEnter={() => setIsHovered(true)}
@@ -146,7 +146,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
       <div
         className={`px-4 sm:px-6 py-3 border-b flex items-center justify-between gap-4 text-xs font-mono transition-colors ${
           isDark
-            ? 'bg-[#02060E]/90 border-[#69001F]/30 text-[#F5EAF0]/75'
+            ? 'bg-[#0A1622]/90 border-[#143C5A]/30 text-[#FAF6EE]/75'
             : 'bg-slate-50 border-slate-200 text-slate-700'
         }`}
       >
@@ -161,7 +161,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
           <div
             className={`hidden sm:inline-flex items-center gap-1.5 ms-3 px-2.5 py-0.5 rounded-md text-[11px] border ${
               isDark
-                ? 'bg-[#1E020C] border-[#69001F]/40 text-[#F5EAF0]/70'
+                ? 'bg-[#0E2336] border-[#143C5A]/40 text-[#FAF6EE]/70'
                 : 'bg-white border-slate-200 text-slate-600'
             }`}
             dir="ltr"
@@ -181,8 +181,8 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
             <span
               className={`px-2 py-0.5 rounded text-[11px] font-semibold border ${
                 isDark
-                  ? 'bg-[#C50337]/15 text-[#C50337] border-[#C50337]/40'
-                  : 'bg-[#F5EAF0] text-[#69001F] border-[#69001F]/20'
+                  ? 'bg-[#D9A441]/15 text-[#D9A441] border-[#D9A441]/40'
+                  : 'bg-[#FAF6EE] text-[#143C5A] border-[#143C5A]/20'
               }`}
             >
               {currentTag}
@@ -191,7 +191,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
 
           <div className="flex items-center gap-1 font-mono">
             <span
-              className={`font-bold tabular-nums ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}
+              className={`font-bold tabular-nums ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}
             >
               {String(currentIndex + 1).padStart(2, '0')}
             </span>
@@ -211,11 +211,11 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
               className={`p-1.5 rounded-lg border transition-colors ${
                 isPlaying
                   ? isDark
-                    ? 'bg-[#C50337] text-[#F5EAF0] border-[#C50337]'
-                    : 'bg-[#02060E] text-[#F5EAF0] border-[#02060E]'
+                    ? 'bg-[#D9A441] text-[#FAF6EE] border-[#D9A441]'
+                    : 'bg-[#0A1622] text-[#FAF6EE] border-[#0A1622]'
                   : isDark
-                  ? 'bg-transparent text-[#F5EAF0]/70 hover:text-[#F5EAF0] border-transparent hover:border-[#69001F]/50'
-                  : 'bg-transparent text-slate-600 hover:text-[#02060E] border-transparent hover:border-slate-300'
+                  ? 'bg-transparent text-[#FAF6EE]/70 hover:text-[#FAF6EE] border-transparent hover:border-[#143C5A]/50'
+                  : 'bg-transparent text-slate-600 hover:text-[#0A1622] border-transparent hover:border-slate-300'
               }`}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -229,8 +229,8 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
                 title={language === 'ar' ? 'تكبير بملء الشاشة' : 'Expand preview in lightbox'}
                 className={`p-1.5 rounded-lg border transition-colors ${
                   isDark
-                    ? 'bg-transparent text-[#F5EAF0]/70 hover:text-[#F5EAF0] border-transparent hover:border-[#69001F]/50'
-                    : 'bg-transparent text-slate-600 hover:text-[#02060E] border-transparent hover:border-slate-300'
+                    ? 'bg-transparent text-[#FAF6EE]/70 hover:text-[#FAF6EE] border-transparent hover:border-[#143C5A]/50'
+                    : 'bg-transparent text-slate-600 hover:text-[#0A1622] border-transparent hover:border-slate-300'
                 }`}
               >
                 <Maximize2 className="w-3.5 h-3.5" />
@@ -274,7 +274,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
             {/* Click to Enlarge Overlay Indicator */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
               <span className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white/90 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/15">
-                <Maximize2 className="w-3.5 h-3.5 text-[#C50337]" />
+                <Maximize2 className="w-3.5 h-3.5 text-[#D9A441]" />
                 <span>{language === 'ar' ? 'انقر للتكبير بملء الشاشة' : 'Click to zoom in fullscreen'}</span>
               </span>
             </div>
@@ -292,8 +292,8 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
             aria-label={language === 'ar' ? 'الشريحة السابقة' : 'Previous screenshot'}
             className={`absolute start-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md border shadow-lg transition-all duration-200 hover:scale-105 ${
               isDark
-                ? 'bg-[#02060E]/80 text-[#F5EAF0] border-[#69001F]/50 hover:border-[#C50337] hover:text-[#C50337]'
-                : 'bg-white/85 text-[#02060E] border-slate-200 hover:border-[#69001F] hover:text-[#69001F]'
+                ? 'bg-[#0A1622]/80 text-[#FAF6EE] border-[#143C5A]/50 hover:border-[#D9A441] hover:text-[#D9A441]'
+                : 'bg-white/85 text-[#0A1622] border-slate-200 hover:border-[#143C5A] hover:text-[#143C5A]'
             }`}
           >
             {isRTL ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
@@ -311,8 +311,8 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
             aria-label={language === 'ar' ? 'الشريحة التالية' : 'Next screenshot'}
             className={`absolute end-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md border shadow-lg transition-all duration-200 hover:scale-105 ${
               isDark
-                ? 'bg-[#02060E]/80 text-[#F5EAF0] border-[#69001F]/50 hover:border-[#C50337] hover:text-[#C50337]'
-                : 'bg-white/85 text-[#02060E] border-slate-200 hover:border-[#69001F] hover:text-[#69001F]'
+                ? 'bg-[#0A1622]/80 text-[#FAF6EE] border-[#143C5A]/50 hover:border-[#D9A441] hover:text-[#D9A441]'
+                : 'bg-white/85 text-[#0A1622] border-slate-200 hover:border-[#143C5A] hover:text-[#143C5A]'
             }`}
           >
             {isRTL ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
@@ -329,7 +329,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
             animate={{ scaleX: 1 }}
             transition={{ duration: 4.5, ease: 'linear' }}
             style={{ originX: isRTL ? 1 : 0 }}
-            className={`h-full ${isDark ? 'bg-[#C50337]' : 'bg-[#69001F]'}`}
+            className={`h-full ${isDark ? 'bg-[#D9A441]' : 'bg-[#143C5A]'}`}
           />
         </div>
       )}
@@ -338,14 +338,14 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
       <div
         className={`p-4 sm:p-5 border-t transition-colors ${
           isDark
-            ? 'bg-[#02060E]/70 border-[#69001F]/30 text-[#F5EAF0]'
-            : 'bg-slate-50/90 border-slate-200 text-[#02060E]'
+            ? 'bg-[#0A1622]/70 border-[#143C5A]/30 text-[#FAF6EE]'
+            : 'bg-slate-50/90 border-slate-200 text-[#0A1622]'
         }`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+              <span className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                 {language === 'ar' ? `لقطة شاشة ${currentIndex + 1}` : `Screenshot ${currentIndex + 1}`}
               </span>
               {currentTitle && (
@@ -355,7 +355,7 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
                 </>
               )}
             </div>
-            <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-slate-600'}`}>
+            <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-[#FAF6EE]/75' : 'text-slate-600'}`}>
               {currentCaption}
             </p>
           </div>
@@ -379,10 +379,10 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
                   className={`relative rounded-xl overflow-hidden border aspect-[16/10] transition-all duration-200 group text-start ${
                     isActive
                       ? isDark
-                        ? 'border-[#C50337] ring-2 ring-[#C50337]/30 scale-[1.02]'
-                        : 'border-[#69001F] ring-2 ring-[#69001F]/20 scale-[1.02]'
+                        ? 'border-[#D9A441] ring-2 ring-[#D9A441]/30 scale-[1.02]'
+                        : 'border-[#143C5A] ring-2 ring-[#143C5A]/20 scale-[1.02]'
                       : isDark
-                      ? 'border-[#69001F]/40 hover:border-[#C50337]/60 opacity-60 hover:opacity-100'
+                      ? 'border-[#143C5A]/40 hover:border-[#D9A441]/60 opacity-60 hover:opacity-100'
                       : 'border-slate-200 hover:border-slate-400 opacity-60 hover:opacity-100'
                   }`}
                 >
@@ -401,8 +401,8 @@ export const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({
                       className={`text-[10px] font-mono px-1 rounded backdrop-blur-md ${
                         isActive
                           ? isDark
-                            ? 'bg-[#C50337] text-[#F5EAF0] font-bold'
-                            : 'bg-[#69001F] text-[#F5EAF0] font-bold'
+                            ? 'bg-[#D9A441] text-[#FAF6EE] font-bold'
+                            : 'bg-[#143C5A] text-[#FAF6EE] font-bold'
                           : 'bg-black/60 text-white/80'
                       }`}
                     >

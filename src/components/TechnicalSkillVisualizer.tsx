@@ -76,20 +76,20 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
       id="technical-radar"
       className={`py-20 lg:py-28 border-b relative transition-colors duration-300 ${
         isDark
-          ? 'bg-[#02060E]/90 border-[#69001F]/30'
-          : 'bg-[#F5EAF0]/80 border-[#69001F]/15'
+          ? 'bg-[#0A1622]/90 border-[#143C5A]/30'
+          : 'bg-[#FAF6EE]/80 border-[#143C5A]/15'
       }`}
     >
       {/* Background ambient lighting */}
       <div
         className={`absolute top-1/3 left-10 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none ${
-          isDark ? 'bg-[#C50337]/5' : 'bg-[#69001F]/5'
+          isDark ? 'bg-[#D9A441]/5' : 'bg-[#143C5A]/5'
         }`}
         aria-hidden="true"
       />
       <div
         className={`absolute bottom-10 right-10 w-[450px] h-[450px] rounded-full blur-[130px] pointer-events-none ${
-          isDark ? 'bg-[#1E020C]/40' : 'bg-[#EEDBE6]/60'
+          isDark ? 'bg-[#0E2336]/40' : 'bg-[#F1ECE0]/60'
         }`}
         aria-hidden="true"
       />
@@ -100,19 +100,19 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
           <div className="space-y-3 max-w-2xl">
             <div
               className={`flex items-center gap-2 text-xs font-mono font-semibold ${
-                isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
               }`}
             >
               <span>03. Engineering &amp; AI Radar</span>
               <span aria-hidden="true">·</span>
-              <span className={isDark ? 'text-[#F5EAF0]/60' : 'text-slate-500'}>
+              <span className={isDark ? 'text-[#FAF6EE]/60' : 'text-slate-500'}>
                 Technical Proficiency Matrix
               </span>
             </div>
 
             <h2
               className={`font-display text-3xl sm:text-4xl font-bold tracking-tight text-balance ${
-                isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
               }`}
             >
               High-precision technical skills &amp; AI capabilities
@@ -120,7 +120,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
 
             <p
               className={`text-base leading-relaxed ${
-                isDark ? 'text-[#F5EAF0]/75' : 'text-slate-600'
+                isDark ? 'text-[#FAF6EE]/75' : 'text-slate-600'
               }`}
             >
               Real production benchmarks across autonomous agents, distributed
@@ -133,7 +133,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
           <div
             className={`flex items-center p-1.5 rounded-xl border self-start lg:self-auto shrink-0 ${
               isDark
-                ? 'bg-[#1E020C] border-[#69001F]/40'
+                ? 'bg-[#0E2336] border-[#143C5A]/40'
                 : 'bg-white border-slate-200 shadow-sm'
             }`}
           >
@@ -143,11 +143,11 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               className={`flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-all ${
                 viewMode === 'split'
                   ? isDark
-                    ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-md'
-                    : 'bg-[#02060E] text-[#F5EAF0] font-bold shadow-sm'
+                    ? 'bg-[#D9A441] text-[#FAF6EE] font-bold shadow-md'
+                    : 'bg-[#0A1622] text-[#FAF6EE] font-bold shadow-sm'
                   : isDark
-                  ? 'text-[#F5EAF0]/70 hover:text-[#F5EAF0]'
-                  : 'text-slate-600 hover:text-[#02060E]'
+                  ? 'text-[#FAF6EE]/70 hover:text-[#FAF6EE]'
+                  : 'text-slate-600 hover:text-[#0A1622]'
               }`}
             >
               <Columns2 className="w-3.5 h-3.5" />
@@ -161,11 +161,11 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               className={`flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-all ${
                 viewMode === 'radar'
                   ? isDark
-                    ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-md'
-                    : 'bg-[#02060E] text-[#F5EAF0] font-bold shadow-sm'
+                    ? 'bg-[#D9A441] text-[#FAF6EE] font-bold shadow-md'
+                    : 'bg-[#0A1622] text-[#FAF6EE] font-bold shadow-sm'
                   : isDark
-                  ? 'text-[#F5EAF0]/70 hover:text-[#F5EAF0]'
-                  : 'text-slate-600 hover:text-[#02060E]'
+                  ? 'text-[#FAF6EE]/70 hover:text-[#FAF6EE]'
+                  : 'text-slate-600 hover:text-[#0A1622]'
               }`}
             >
               <Radar className="w-3.5 h-3.5" />
@@ -178,11 +178,11 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               className={`flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-all ${
                 viewMode === 'bars'
                   ? isDark
-                    ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-md'
-                    : 'bg-[#02060E] text-[#F5EAF0] font-bold shadow-sm'
+                    ? 'bg-[#D9A441] text-[#FAF6EE] font-bold shadow-md'
+                    : 'bg-[#0A1622] text-[#FAF6EE] font-bold shadow-sm'
                   : isDark
-                  ? 'text-[#F5EAF0]/70 hover:text-[#F5EAF0]'
-                  : 'text-slate-600 hover:text-[#02060E]'
+                  ? 'text-[#FAF6EE]/70 hover:text-[#FAF6EE]'
+                  : 'text-slate-600 hover:text-[#0A1622]'
               }`}
             >
               <BarChart3 className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
         <div className="space-y-4">
           <div
             className={`flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b ${
-              isDark ? 'border-[#69001F]/30' : 'border-[#69001F]/15'
+              isDark ? 'border-[#143C5A]/30' : 'border-[#143C5A]/15'
             }`}
           >
             {SKILL_CATEGORIES.map((cat) => {
@@ -216,21 +216,21 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                   className={`flex items-center gap-2.5 px-4 py-2.5 text-xs font-mono transition-all whitespace-nowrap shrink-0 border-b-2 -mb-[1px] ${
                     isSelected
                       ? isDark
-                        ? 'border-[#C50337] text-[#C50337] font-bold'
-                        : 'border-[#69001F] text-[#69001F] font-bold'
+                        ? 'border-[#D9A441] text-[#D9A441] font-bold'
+                        : 'border-[#143C5A] text-[#143C5A] font-bold'
                       : isDark
-                      ? 'border-transparent text-[#F5EAF0]/60 hover:text-[#F5EAF0]'
-                      : 'border-transparent text-slate-500 hover:text-[#02060E]'
+                      ? 'border-transparent text-[#FAF6EE]/60 hover:text-[#FAF6EE]'
+                      : 'border-transparent text-slate-500 hover:text-[#0A1622]'
                   }`}
                 >
                   <span
                     className={`text-[10px] ${
                       isSelected
                         ? isDark
-                          ? 'text-[#C50337]'
-                          : 'text-[#69001F]'
+                          ? 'text-[#D9A441]'
+                          : 'text-[#143C5A]'
                         : isDark
-                        ? 'text-[#F5EAF0]/40'
+                        ? 'text-[#FAF6EE]/40'
                         : 'text-slate-400'
                     }`}
                   >
@@ -246,14 +246,14 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
           <div
             className={`p-4 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono border ${
               isDark
-                ? 'bg-[#1E020C]/70 border-[#69001F]/30 text-[#F5EAF0]/80'
+                ? 'bg-[#0E2336]/70 border-[#143C5A]/30 text-[#FAF6EE]/80'
                 : 'bg-white border-slate-200 text-slate-700 shadow-sm'
             }`}
           >
             <div className="flex items-center gap-3">
               <span
                 className={`w-2 h-2 rounded-full ${
-                  isDark ? 'bg-[#C50337]' : 'bg-[#69001F]'
+                  isDark ? 'bg-[#D9A441]' : 'bg-[#143C5A]'
                 }`}
               />
               <span className="leading-relaxed">
@@ -265,7 +265,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               <span>
                 INDEX:{' '}
                 <strong
-                  className={isDark ? 'text-[#C50337]' : 'text-[#69001F]'}
+                  className={isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}
                 >
                   {stats.avgProf}%
                 </strong>
@@ -274,7 +274,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               <span>
                 DEPLOYS:{' '}
                 <strong
-                  className={isDark ? 'text-[#C50337]' : 'text-[#69001F]'}
+                  className={isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}
                 >
                   {stats.totalDeployments}
                 </strong>
@@ -283,7 +283,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               <span>
                 TRACKS:{' '}
                 <strong
-                  className={isDark ? 'text-[#C50337]' : 'text-[#69001F]'}
+                  className={isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}
                 >
                   {stats.count}
                 </strong>
@@ -300,14 +300,14 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               <div className="w-full text-left mb-2">
                 <span
                   className={`text-[10px] font-mono uppercase tracking-wider ${
-                    isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                    isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                   }`}
                 >
                   Architectural Vector Analysis
                 </span>
                 <h3
                   className={`font-display text-lg font-bold ${
-                    isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                    isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
                   }`}
                 >
                   Domain Competency Radar
@@ -325,22 +325,22 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
               <div
                 className={`w-full mt-6 p-5 rounded-xl border text-left transition-all ${
                   isDark
-                    ? 'bg-[#02060E]/80 border-[#69001F]/40'
-                    : 'bg-slate-50 border-[#69001F]/20'
+                    ? 'bg-[#0A1622]/80 border-[#143C5A]/40'
+                    : 'bg-slate-50 border-[#143C5A]/20'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div>
                     <div
                       className={`text-[10px] font-mono uppercase font-semibold ${
-                        isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                        isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                       }`}
                     >
                       Selected Capability // {displayedSkill.architectureTier}
                     </div>
                     <h4
                       className={`font-display text-base font-bold ${
-                        isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                        isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
                       }`}
                     >
                       {displayedSkill.name}
@@ -348,7 +348,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                   </div>
                   <div
                     className={`font-mono text-xl font-bold ${
-                      isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                      isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                     }`}
                   >
                     {displayedSkill.proficiency}%
@@ -357,7 +357,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
 
                 <p
                   className={`text-xs leading-relaxed mb-3 ${
-                    isDark ? 'text-[#F5EAF0]/75' : 'text-slate-600'
+                    isDark ? 'text-[#FAF6EE]/75' : 'text-slate-600'
                   }`}
                 >
                   {displayedSkill.summary}
@@ -368,14 +368,14 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                     <div key={m.label}>
                       <div
                         className={`text-[9px] uppercase truncate ${
-                          isDark ? 'text-[#F5EAF0]/40' : 'text-slate-400'
+                          isDark ? 'text-[#FAF6EE]/40' : 'text-slate-400'
                         }`}
                       >
                         {m.label}
                       </div>
                       <div
                         className={`font-semibold ${
-                          isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                          isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                         }`}
                       >
                         {m.value}
@@ -392,14 +392,14 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                 <div>
                   <span
                     className={`text-[10px] font-mono uppercase tracking-wider ${
-                      isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                      isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                     }`}
                   >
                     Production Benchmarks
                   </span>
                   <h3
                     className={`font-display text-lg font-bold ${
-                      isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                      isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
                     }`}
                   >
                     Engineered Technology Telemetry
@@ -407,7 +407,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                 </div>
                 <span
                   className={`text-xs font-mono ${
-                    isDark ? 'text-[#F5EAF0]/50' : 'text-slate-500'
+                    isDark ? 'text-[#FAF6EE]/50' : 'text-slate-500'
                   }`}
                 >
                   Showing {filteredSkills.length} competencies
@@ -435,21 +435,21 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
             <div className="text-center space-y-2 max-w-md">
               <span
                 className={`text-xs font-mono uppercase font-semibold ${
-                  isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                  isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                 }`}
               >
                 Comprehensive 360° Studio Coverage
               </span>
               <h3
                 className={`font-display text-2xl font-bold ${
-                  isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                  isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
                 }`}
               >
                 Engineering &amp; AI Radar Map
               </h3>
               <p
                 className={`text-xs ${
-                  isDark ? 'text-[#F5EAF0]/70' : 'text-slate-600'
+                  isDark ? 'text-[#FAF6EE]/70' : 'text-slate-600'
                 }`}
               >
                 Hover any vertex to view verified uptime SLA, benchmark latency, and production stack implementations.
@@ -467,22 +467,22 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
             <div
               className={`w-full max-w-xl p-6 rounded-2xl border transition-all ${
                 isDark
-                  ? 'bg-[#1E020C] border-[#C50337]/30'
-                  : 'bg-white border-[#69001F]/30 shadow-md'
+                  ? 'bg-[#0E2336] border-[#D9A441]/30'
+                  : 'bg-white border-[#143C5A]/30 shadow-md'
               }`}
             >
               <div className="flex items-start justify-between gap-4 mb-2">
                 <div>
                   <div
                     className={`text-xs font-mono uppercase font-semibold ${
-                      isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                      isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                     }`}
                   >
                     {displayedSkill.architectureTier} · {displayedSkill.experience} Production Experience
                   </div>
                   <h4
                     className={`font-display text-lg font-bold ${
-                      isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                      isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
                     }`}
                   >
                     {displayedSkill.name}
@@ -490,7 +490,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                 </div>
                 <div
                   className={`text-2xl font-mono font-bold ${
-                    isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                    isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                   }`}
                 >
                   {displayedSkill.proficiency}%
@@ -499,7 +499,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
 
               <p
                 className={`text-xs leading-relaxed mb-4 ${
-                  isDark ? 'text-[#F5EAF0]/80' : 'text-slate-600'
+                  isDark ? 'text-[#FAF6EE]/80' : 'text-slate-600'
                 }`}
               >
                 {displayedSkill.summary}
@@ -510,14 +510,14 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                   <div key={m.label}>
                     <div
                       className={`text-[10px] uppercase ${
-                        isDark ? 'text-[#F5EAF0]/40' : 'text-slate-400'
+                        isDark ? 'text-[#FAF6EE]/40' : 'text-slate-400'
                       }`}
                     >
                       {m.label}
                     </div>
                     <div
                       className={`font-semibold ${
-                        isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                        isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                       }`}
                     >
                       {m.value}
@@ -528,7 +528,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
 
               <div className="flex flex-wrap items-center gap-2 mt-4 text-xs font-mono">
                 <span
-                  className={isDark ? 'text-[#F5EAF0]/50' : 'text-slate-400'}
+                  className={isDark ? 'text-[#FAF6EE]/50' : 'text-slate-400'}
                 >
                   Verified Stack:
                 </span>
@@ -536,7 +536,7 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                   <span
                     key={tag}
                     className={`font-medium ${
-                      isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                      isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                     }`}
                   >
                     {tag}
@@ -568,27 +568,27 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
         {/* Studio Technical Rigor Summary Banner */}
         <div
           className={`p-6 sm:p-8 rounded-2xl glass-panel-3d border flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ${
-            isDark ? 'border-[#C50337]/30' : 'border-[#69001F]/20'
+            isDark ? 'border-[#D9A441]/30' : 'border-[#143C5A]/20'
           }`}
         >
           <div className="space-y-1.5 max-w-xl">
             <div
               className={`text-xs font-mono uppercase font-semibold ${
-                isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
               }`}
             >
               Enterprise Engineering Assurance
             </div>
             <h4
               className={`font-display text-lg font-bold ${
-                isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
               }`}
             >
               All competencies adhere to strict typed architectural standards
             </h4>
             <p
               className={`text-xs leading-relaxed ${
-                isDark ? 'text-[#F5EAF0]/75' : 'text-slate-600'
+                isDark ? 'text-[#FAF6EE]/75' : 'text-slate-600'
               }`}
             >
               Every production delivery includes automated unit &amp; e2e regression testing,
@@ -603,8 +603,8 @@ export const TechnicalSkillVisualizer: React.FC<TechnicalSkillVisualizerProps> =
                 onClick={onNavigateContact}
                 className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-xl transition-all shadow-md ${
                   isDark
-                    ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_15px_rgba(197,3,55,0.25)]'
-                    : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                    ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_18px_rgba(217,164,65,0.28)]'
+                    : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                 }`}
               >
                 <span>Inquire Technical Specs</span>

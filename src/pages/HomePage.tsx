@@ -8,6 +8,11 @@ import {
   Terminal,
   Cpu,
   Globe,
+  Compass,
+  Layers,
+  ShieldCheck,
+  Scale,
+  Users,
 } from 'lucide-react';
 import { PROJECTS } from '../data/projects';
 import {
@@ -20,8 +25,9 @@ import {
 import { ProjectCard } from '../components/ProjectCard';
 import { PageSEO } from '../components/PageSEO';
 import { Card3DTilt } from '../components/3d/Card3DTilt';
-import { ArchitectureConsole3D } from '../components/3d/ArchitectureConsole3D';
+import { StudioSolutionHub } from '../components/hero/StudioSolutionHub';
 import { RevealOnScroll } from '../components/RevealOnScroll';
+import { useFadeInUp } from '../hooks/useFadeInUp';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -36,6 +42,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const isDark = theme === 'dark';
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
+  // IntersectionObserver-based Fade-In-Up reveal hooks for HomePage sections
+  const workSectionFade = useFadeInUp<HTMLElement>({ threshold: 0.1, distance: 24, duration: 650 });
+  const servicesSectionFade = useFadeInUp<HTMLElement>({ threshold: 0.1, distance: 24, duration: 650 });
+  const processSectionFade = useFadeInUp<HTMLElement>({ threshold: 0.1, distance: 24, duration: 650 });
+  const aboutSectionFade = useFadeInUp<HTMLElement>({ threshold: 0.1, distance: 24, duration: 650 });
+  const pricingSectionFade = useFadeInUp<HTMLElement>({ threshold: 0.1, distance: 24, duration: 650 });
+  const ctaSectionFade = useFadeInUp<HTMLElement>({ threshold: 0.1, distance: 24, duration: 650 });
+
   const handleLink = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
     onNavigate(path);
@@ -48,23 +62,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <PageSEO
         title={
           language === 'ar'
-            ? 'نوبيكس — استوديو البرمجيات والذكاء الاصطناعي | تحويل الأفكار إلى منتجات رقمية ذكية'
-            : 'Nubix — Software & AI Studio | Ideas into Intelligent Digital Products'
+            ? 'سايين سوليوشنز — استوديو البرمجيات والذكاء الاصطناعي | من مهد أسوان إلى العالمية'
+            : 'Syene Solutions — Software & AI Studio | Turning Ideas into Intelligent Digital Products'
         }
         description={
           language === 'ar'
-            ? 'نصمم ونبني حلول البرمجيات والذكاء الاصطناعي المتقدمة التي تحل مشكلات واقعية وتدفع أعمالك للأمام.'
-            : 'We design and build software and AI solutions that solve real problems and help businesses move forward.'
+            ? 'نصمم ونبني حلول البرمجيات والذكاء الاصطناعي المتقدمة بدقة مستوحاة من مهد أسوان (سايين باللاتينية). منصات ويب، وتطبيقات هواتف، ومسارات ذكاء اصطناعي إنتاجية.'
+            : 'Originating from Aswan (Syene in ancient Latin), Syene Solutions engineers high-performance custom software, web platforms, mobile apps, and applied AI systems.'
         }
         path="/"
       />
 
-      {/* 1. Hero Section with Crimson Ambient Glow */}
+      {/* 1. Hero Section with Syene Ambient Glow */}
       <section
-        className={`relative overflow-hidden border-b transition-colors duration-300 py-16 lg:py-24 crimson-ambient-glow ${
+        className={`relative overflow-hidden border-b transition-colors duration-300 py-16 lg:py-24 syene-ambient-glow ${
           isDark
-            ? 'text-[#F5EAF0] border-[#69001F]/50'
-            : 'text-[#02060E] border-[#69001F]/15'
+            ? 'text-[#FAF6EE] border-[#143C5A]/40'
+            : 'text-[#1D2733] border-[#143C5A]/15'
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 relative z-10">
@@ -75,25 +89,35 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 {/* Editorial Typography Kicker */}
                 <div
                   className={`flex flex-wrap items-center gap-2 text-xs font-mono tracking-wider uppercase font-semibold ${
-                    isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                    isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                   }`}
                 >
-                  <span>{language === 'ar' ? 'نوبيكس' : 'Nubix'}</span>
-                  <span aria-hidden="true" className={isDark ? 'text-[#F5EAF0]/30' : 'text-[#69001F]/30'}>·</span>
+                  <span>{language === 'ar' ? 'سايين سوليوشنز' : 'Syene Solutions'}</span>
+                  <span aria-hidden="true" className={isDark ? 'text-[#FAF6EE]/30' : 'text-[#143C5A]/30'}>·</span>
                   <span>{t.hero.kicker}</span>
                 </div>
 
                 <h1
                   className={`font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12] text-balance ${
-                    isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                    isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                   }`}
                 >
-                  {t.hero.title}
+                  {language === 'ar' ? (
+                    <>
+                      نحوّل الأفكار الطموحة إلى{' '}
+                      <span className="syene-gold-text font-extrabold">منتجات رقمية ذكية</span>.
+                    </>
+                  ) : (
+                    <>
+                      We turn ambitious ideas into{' '}
+                      <span className="syene-gold-text font-extrabold">intelligent digital products</span>.
+                    </>
+                  )}
                 </h1>
 
                 <p
                   className={`text-lg sm:text-xl leading-relaxed text-balance ${
-                    isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'
+                    isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'
                   }`}
                 >
                   {t.hero.subtitle}
@@ -107,8 +131,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={(e) => handleLink(e, '/projects')}
                   className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl shadow-md transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap shrink-0 ${
                     isDark
-                      ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_25px_rgba(197,3,55,0.32)] hover:shadow-[0_0_32px_rgba(197,3,55,0.5)]'
-                      : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                      ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_25px_rgba(217,164,65,0.28)] hover:shadow-[0_0_32px_rgba(217,164,65,0.48)]'
+                      : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                   }`}
                 >
                   <span>{t.hero.ctaPrimary}</span>
@@ -120,8 +144,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={(e) => handleLink(e, '/contact')}
                   className={`inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap shrink-0 border ${
                     isDark
-                      ? 'text-[#F5EAF0] bg-[#1E020C]/90 border-[#69001F]/70 hover:border-[#C50337] hover:text-[#C50337]'
-                      : 'text-[#02060E] bg-white border-[#69001F]/25 hover:border-[#69001F] hover:bg-[#F5EAF0]/40'
+                      ? 'text-[#FAF6EE] bg-[#0E2336]/90 border-[#6E87A0]/35 hover:border-[#D9A441] hover:text-[#D9A441]'
+                      : 'text-[#143C5A] bg-white border-[#143C5A]/25 hover:border-[#D9A441] hover:bg-[#FAF6EE]/60'
                   }`}
                 >
                   {t.hero.ctaSecondary}
@@ -131,39 +155,39 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Micro Metric Anchors with Tabular Rigor */}
               <div
                 className={`pt-6 border-t grid grid-cols-3 gap-6 text-xs font-mono ${
-                  isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'
+                  isDark ? 'border-[#143C5A]/40' : 'border-[#143C5A]/15'
                 }`}
               >
                 <div>
-                  <div className={`font-bold text-lg tabular-nums ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-bold text-lg tabular-nums ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {t.hero.metric1Value}
                   </div>
-                  <div className={`mt-0.5 ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                  <div className={`mt-0.5 ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                     {t.hero.metric1Label}
                   </div>
                 </div>
                 <div>
-                  <div className={`font-bold text-lg tabular-nums ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-bold text-lg tabular-nums ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {t.hero.metric2Value}
                   </div>
-                  <div className={`mt-0.5 ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                  <div className={`mt-0.5 ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                     {t.hero.metric2Label}
                   </div>
                 </div>
                 <div>
-                  <div className={`font-bold text-lg tabular-nums ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-bold text-lg tabular-nums ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {t.hero.metric3Value}
                   </div>
-                  <div className={`mt-0.5 ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                  <div className={`mt-0.5 ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                     {t.hero.metric3Label}
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Interactive Studio Engineering & Architecture Console */}
+            {/* Right Column: Interactive Studio Solution Hub & Live Blueprint Explorer */}
             <div className="lg:col-span-6 w-full flex items-center justify-center">
-              <ArchitectureConsole3D />
+              <StudioSolutionHub onNavigate={onNavigate} />
             </div>
           </div>
 
@@ -171,53 +195,53 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <RevealOnScroll delayMs={100}>
             <div
               className={`mt-16 pt-8 border-t grid grid-cols-2 lg:grid-cols-4 gap-6 text-sm ${
-                isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'
+                isDark ? 'border-[#143C5A]/40' : 'border-[#143C5A]/15'
               }`}
             >
               <div className="flex items-start gap-3">
-                <Cpu className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`} />
+                <Cpu className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`} />
                 <div>
-                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'}`}>
+                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'}`}>
                     {language === 'ar' ? '٠١ · التركيز' : '01 · Focus'}
                   </div>
-                  <div className={`font-semibold text-sm ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
+                  <div className={`font-semibold text-sm ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
                     {language === 'ar' ? 'برمجيات مخصصة وذكاء اصطناعي' : 'Custom Software & AI'}
                   </div>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <Terminal className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`} />
+                <Compass className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`} />
                 <div>
-                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'}`}>
-                    {language === 'ar' ? '٠٢ · النماذج' : '02 · Delivery'}
+                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'}`}>
+                    {language === 'ar' ? '٠٢ · الأصل والإرث' : '02 · Provenance'}
                   </div>
-                  <div className={`font-semibold text-sm ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
-                    {language === 'ar' ? 'جاهز · مخصص · هجين' : 'Ready · Custom · Hybrid'}
+                  <div className={`font-semibold text-sm ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
+                    {language === 'ar' ? 'أسوان (سايين باللاتينية)' : 'Aswan (Syene in Latin)'}
                   </div>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <Sparkles className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`} />
+                <Sparkles className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`} />
                 <div>
-                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'}`}>
+                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'}`}>
                     {language === 'ar' ? '٠٣ · الجودة' : '03 · Quality'}
                   </div>
-                  <div className={`font-semibold text-sm ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
+                  <div className={`font-semibold text-sm ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
                     {language === 'ar' ? 'كود محكم وقابل للتوسع' : 'Typed & Scalable Code'}
                   </div>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <Globe className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`} />
+                <Globe className={`w-4 h-4 shrink-0 mt-1 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`} />
                 <div>
-                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'}`}>
+                  <div className={`text-[11px] font-mono font-medium ${isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'}`}>
                     {language === 'ar' ? '٠٤ · التغطية' : '04 · Scale'}
                   </div>
-                  <div className={`font-semibold text-sm ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
-                    {language === 'ar' ? 'مصر وجميع أنحاء العالم' : 'Egypt & International'}
+                  <div className={`font-semibold text-sm ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
+                    {language === 'ar' ? 'مصر، الخليج، وعالمياً' : 'Egypt, MENA & Global'}
                   </div>
                 </div>
               </div>
@@ -226,28 +250,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 2. Selected Projects Section (3D Interactive Cards) */}
+      {/* 2. Selected Work Section with Fade-In-Up Reveal */}
       <section
         id="selected-projects"
+        ref={workSectionFade.ref}
+        style={workSectionFade.style}
         className={`py-24 lg:py-32 border-b transition-colors duration-300 ${
-          isDark ? 'border-[#69001F]/50 bg-[#02060E]/80' : 'border-[#69001F]/15 bg-transparent'
+          isDark ? 'border-[#143C5A]/40 bg-[#0A1622]/80' : 'border-[#143C5A]/15 bg-transparent'
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 space-y-12">
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="space-y-3 max-w-2xl">
-                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
-                  {language === 'ar' ? '٠١. المشاريع المختارة' : '01. Selected Projects'}
+                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                  {language === 'ar' ? '٠١. أعمالنا ومشاريعنا المختارة' : '01. Selected Work'}
                 </div>
                 <h2
                   className={`font-display text-3xl sm:text-4xl font-bold tracking-tight text-balance ${
-                    isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                    isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                   }`}
                 >
                   {t.projectsSection.title}
                 </h2>
-                <p className={`text-base leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+                <p className={`text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                   {t.projectsSection.subtitle}
                 </p>
               </div>
@@ -257,8 +283,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 onClick={(e) => handleLink(e, '/projects')}
                 className={`inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-xl border transition-colors whitespace-nowrap shrink-0 self-start md:self-auto ${
                   isDark
-                    ? 'text-[#F5EAF0] bg-[#1E020C] border-[#69001F]/70 hover:border-[#C50337] hover:text-[#C50337]'
-                    : 'text-[#02060E] bg-white border-[#69001F]/25 hover:border-[#69001F] hover:bg-[#F5EAF0]/30'
+                    ? 'text-[#FAF6EE] bg-[#0E2336] border-[#6E87A0]/35 hover:border-[#D9A441] hover:text-[#D9A441]'
+                    : 'text-[#143C5A] bg-white border-[#143C5A]/25 hover:border-[#D9A441] hover:bg-[#FAF6EE]/50'
                 }`}
               >
                 <span>{t.projectsSection.viewAll}</span>
@@ -281,66 +307,73 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 3. Services Section (Modern 3D Bento Grid) */}
+      {/* 3. Services Section with Fade-In-Up Reveal */}
       <section
         id="services"
+        ref={servicesSectionFade.ref}
+        style={servicesSectionFade.style}
         className={`py-24 lg:py-32 border-b relative transition-colors duration-300 ${
-          isDark ? 'bg-[#1E020C]/30 border-[#69001F]/50' : 'bg-[#F5EAF0]/40 border-[#69001F]/15'
+          isDark ? 'bg-[#0E2336]/30 border-[#143C5A]/40' : 'bg-[#FAF6EE]/50 border-[#143C5A]/15'
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 space-y-14">
           <RevealOnScroll>
             <div className="max-w-2xl space-y-3">
-              <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
-                {language === 'ar' ? '٠٢. قدرات وخدمات الاستوديو' : '02. Studio Capabilities'}
+              <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                {language === 'ar' ? '٠٢. خدمات وقدرات الاستوديو' : '02. Studio Capabilities'}
               </div>
               <h2
                 className={`font-display text-3xl sm:text-4xl font-bold tracking-tight text-balance ${
-                  isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                  isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                 }`}
               >
                 {t.servicesSection.title}
               </h2>
-              <p className={`text-base leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+              <p className={`text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                 {t.servicesSection.subtitle}
               </p>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delayMs={120}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {STUDIO_SERVICES.map((service) => {
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {STUDIO_SERVICES.map((service, idx) => {
                 const serviceTitle = language === 'ar' && service.titleAr ? service.titleAr : service.title;
                 const serviceSummary = language === 'ar' && service.summaryAr ? service.summaryAr : service.summary;
                 const serviceDeliverables = language === 'ar' && service.deliverablesAr ? service.deliverablesAr : service.deliverables;
                 const serviceUseCases = language === 'ar' && service.typicalUseCasesAr ? service.typicalUseCasesAr : service.typicalUseCases;
 
                 return (
-                  <Card3DTilt key={service.id} className="glass-panel-3d rounded-2xl p-8 flex flex-col justify-between">
+                  <Card3DTilt
+                    key={service.id}
+                    className={`glass-panel-3d rounded-2xl p-8 flex flex-col justify-between ${
+                      idx === 0 || idx === 3 ? 'lg:col-span-1' : ''
+                    }`}
+                  >
                     <div className="space-y-5">
                       <div className="flex items-center justify-between text-xs font-mono">
-                        <span className={`font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
-                          {language === 'ar' ? `${service.index}. قدرة استوديو` : `${service.index}. Capability`}
+                        <span className={`font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                          {language === 'ar' ? `${service.index}. خدمة استوديو` : `${service.index}. Discipline`}
                         </span>
                       </div>
 
                       <h3 className={`font-display text-2xl font-bold tracking-tight ${
-                        isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                        isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                       }`}>
                         {serviceTitle}
                       </h3>
 
-                      <p className={`text-sm leading-relaxed ${isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'}`}>
+                      <p className={`text-sm leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'}`}>
                         {serviceSummary}
                       </p>
 
                       <ul className={`space-y-2.5 pt-4 border-t text-sm ${
-                        isDark ? 'border-[#69001F]/50 text-[#F5EAF0]/85' : 'border-[#69001F]/15 text-[#69001F]'
+                        isDark ? 'border-[#143C5A]/40 text-[#FAF6EE]/85' : 'border-[#143C5A]/15 text-[#1D2733]'
                       }`}>
                         {serviceDeliverables.map((item) => (
                           <li key={item} className="flex items-start gap-2.5">
                             <span
-                              className={`font-mono text-xs mt-1 shrink-0 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}
+                              className={`font-mono text-xs mt-1 shrink-0 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}
                               aria-hidden="true"
                             >
                               ▸
@@ -352,9 +385,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     </div>
 
                     <div className={`pt-6 mt-6 border-t text-xs ${
-                      isDark ? 'border-[#69001F]/50 text-[#F5EAF0]/70' : 'border-[#69001F]/15 text-[#69001F]/75'
+                      isDark ? 'border-[#143C5A]/40 text-[#8FA4BC]' : 'border-[#143C5A]/15 text-[#6E87A0]'
                     }`}>
-                      <strong className={`font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                      <strong className={`font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                         {t.servicesSection.bestFor}:{' '}
                       </strong>
                       {serviceUseCases}
@@ -367,27 +400,29 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 4. How We Work Section (3D Process Steps) */}
+      {/* 4. Process Section with Fade-In-Up Reveal */}
       <section
         id="how-we-work"
+        ref={processSectionFade.ref}
+        style={processSectionFade.style}
         className={`py-24 lg:py-32 border-b transition-colors duration-300 ${
-          isDark ? 'bg-[#02060E]/70 border-[#69001F]/50' : 'bg-transparent border-[#69001F]/15'
+          isDark ? 'bg-[#0A1622]/70 border-[#143C5A]/40' : 'bg-transparent border-[#143C5A]/15'
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 space-y-14">
           <RevealOnScroll>
             <div className="max-w-2xl space-y-3">
-              <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+              <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                 {language === 'ar' ? '٠٣. منهجية التنفيذ' : '03. Delivery Methodology'}
               </div>
               <h2
                 className={`font-display text-3xl sm:text-4xl font-bold tracking-tight text-balance ${
-                  isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                  isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                 }`}
               >
                 {t.processSection.title}
               </h2>
-              <p className={`text-base leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+              <p className={`text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                 {t.processSection.subtitle}
               </p>
             </div>
@@ -405,13 +440,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     className="glass-panel-3d p-7 rounded-2xl flex flex-col justify-between space-y-6"
                   >
                     <div className="space-y-3">
-                      <div className={`font-mono text-xs font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                      <div className={`font-mono text-xs font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                         {language === 'ar' ? `المرحلة ${item.step}` : `Phase ${item.step}`}
                       </div>
-                      <h3 className={`font-display text-lg font-bold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
+                      <h3 className={`font-display text-lg font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
                         {stepTitle}
                       </h3>
-                      <p className={`text-sm leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+                      <p className={`text-sm leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                         {stepDesc}
                       </p>
                     </div>
@@ -423,28 +458,172 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 5. Pricing Overview Section (3D Spatial Tiers) */}
+      {/* 5. DEDICATED ABOUT SECTION with Fade-In-Up Reveal */}
+      <section
+        id="about"
+        ref={aboutSectionFade.ref}
+        style={aboutSectionFade.style}
+        className={`py-24 lg:py-32 border-b relative transition-colors duration-300 ${
+          isDark ? 'bg-[#0E2336]/40 border-[#143C5A]/40' : 'bg-[#FAF6EE] border-[#143C5A]/15'
+        }`}
+      >
+        <div className="max-w-[1240px] mx-auto px-6 space-y-16">
+          <RevealOnScroll>
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+              <div className="max-w-2xl space-y-4">
+                <div className={`text-xs font-mono font-semibold tracking-wider uppercase ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                  {t.aboutSection.kicker}
+                </div>
+                <h2
+                  className={`font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-balance ${
+                    isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
+                  }`}
+                >
+                  {t.aboutSection.title}
+                </h2>
+                <p className={`text-base sm:text-lg leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'}`}>
+                  {t.aboutSection.subtitle}
+                </p>
+              </div>
+
+              {/* Geographic Coordinates & Origin Badge */}
+              <div
+                className={`p-4 rounded-2xl border flex flex-col gap-1 text-xs font-mono ${
+                  isDark
+                    ? 'bg-[#0A1622] border-[#D9A441]/30 text-[#FAF6EE]'
+                    : 'bg-white border-[#143C5A]/20 text-[#143C5A] shadow-xs'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#D9A441] animate-pulse" />
+                  <span className="font-semibold">{t.aboutSection.originBadge}</span>
+                </div>
+                <span className={`text-[11px] ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
+                  {t.aboutSection.provenanceValue}
+                </span>
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          {/* 4 Story Pillars Grid */}
+          <RevealOnScroll delayMs={140}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Pillar 1: The Syene Provenance */}
+              <Card3DTilt className="glass-panel-3d p-8 sm:p-10 rounded-2xl space-y-4 border">
+                <div className="flex items-center gap-3.5">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center p-2 shrink-0 ${
+                    isDark ? 'bg-[#0E2336] border border-[#D9A441]/40 shadow-xs' : 'bg-white border border-[#143C5A]/15 shadow-xs'
+                  }`}>
+                    <img src="/syene-emblem.png" alt="Syene Solutions Emblem" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <span className={`text-xs font-mono uppercase font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                      {t.aboutSection.heritageKicker}
+                    </span>
+                    <h3 className={`font-display text-xl font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
+                      {t.aboutSection.heritageTitle}
+                    </h3>
+                  </div>
+                </div>
+                <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'}`}>
+                  {t.aboutSection.heritageText}
+                </p>
+              </Card3DTilt>
+
+              {/* Pillar 2: The Engineering Mindset */}
+              <Card3DTilt className="glass-panel-3d p-8 sm:p-10 rounded-2xl space-y-4 border">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                    isDark ? 'bg-[#D9A441]/20 text-[#D9A441]' : 'bg-[#143C5A]/10 text-[#143C5A]'
+                  }`}>
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className={`text-xs font-mono uppercase font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                      {language === 'ar' ? 'الانضباط والمعايير' : 'Standards & Discipline'}
+                    </span>
+                    <h3 className={`font-display text-xl font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
+                      {t.aboutSection.mindsetTitle}
+                    </h3>
+                  </div>
+                </div>
+                <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'}`}>
+                  {t.aboutSection.mindsetText}
+                </p>
+              </Card3DTilt>
+
+              {/* Pillar 3: Collaborative Partnership */}
+              <Card3DTilt className="glass-panel-3d p-8 sm:p-10 rounded-2xl space-y-4 border">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                    isDark ? 'bg-[#D9A441]/20 text-[#D9A441]' : 'bg-[#143C5A]/10 text-[#143C5A]'
+                  }`}>
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className={`text-xs font-mono uppercase font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                      {language === 'ar' ? 'فريق نخبوي متكامل' : 'High-Velocity Strike Team'}
+                    </span>
+                    <h3 className={`font-display text-xl font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
+                      {t.aboutSection.collaborationTitle}
+                    </h3>
+                  </div>
+                </div>
+                <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'}`}>
+                  {t.aboutSection.collaborationText}
+                </p>
+              </Card3DTilt>
+
+              {/* Pillar 4: Global Reach from Southern Egypt */}
+              <Card3DTilt className="glass-panel-3d p-8 sm:p-10 rounded-2xl space-y-4 border">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                    isDark ? 'bg-[#D9A441]/20 text-[#D9A441]' : 'bg-[#143C5A]/10 text-[#143C5A]'
+                  }`}>
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className={`text-xs font-mono uppercase font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                      {language === 'ar' ? 'نطاق العمل' : 'Global Operations'}
+                    </span>
+                    <h3 className={`font-display text-xl font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'}`}>
+                      {t.aboutSection.scaleTitle}
+                    </h3>
+                  </div>
+                </div>
+                <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/85'}`}>
+                  {t.aboutSection.scaleText}
+                </p>
+              </Card3DTilt>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* 6. Pricing Overview Section with Fade-In-Up Reveal */}
       <section
         id="pricing"
+        ref={pricingSectionFade.ref}
+        style={pricingSectionFade.style}
         className={`py-24 lg:py-32 border-b transition-colors duration-300 ${
-          isDark ? 'border-[#69001F]/50 bg-[#1E020C]/30' : 'border-[#69001F]/15 bg-[#F5EAF0]/40'
+          isDark ? 'border-[#143C5A]/40 bg-[#0A1622]/60' : 'border-[#143C5A]/15 bg-[#FAF6EE]/40'
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 space-y-14">
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="max-w-2xl space-y-3">
-                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
-                  {language === 'ar' ? '٠٤. نماذج تسعير واضحة' : '04. Transparent Pricing Models'}
+                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                  {language === 'ar' ? '٠٥. نماذج تسعير واضحة' : '05. Transparent Pricing Models'}
                 </div>
                 <h2
                   className={`font-display text-3xl sm:text-4xl font-bold tracking-tight text-balance ${
-                    isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                    isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                   }`}
                 >
                   {t.pricingSection.title}
                 </h2>
-                <p className={`text-base leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+                <p className={`text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                   {t.pricingSection.subtitle}
                 </p>
               </div>
@@ -452,23 +631,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Currency Reference Toggle */}
               <div
                 className={`flex items-center gap-2 self-start md:self-auto p-1.5 rounded-xl border ${
-                  isDark ? 'bg-[#1E020C] border-[#69001F]/70' : 'bg-white border-[#69001F]/20 shadow-sm'
+                  isDark ? 'bg-[#0E2336] border-[#6E87A0]/35' : 'bg-white border-[#143C5A]/20 shadow-sm'
                 }`}
               >
-                <span className={`text-xs font-mono px-2 ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                <span className={`text-xs font-mono px-2 ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                   {t.pricingSection.currency}:
                 </span>
                 <button
                   type="button"
                   onClick={() => setCurrency('USD')}
-                  className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 ${
+                  className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     currency === 'USD'
                       ? isDark
-                        ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-md'
-                        : 'bg-[#69001F] text-[#F5EAF0] font-bold shadow-sm'
+                        ? 'bg-[#D9A441] text-[#0A1622] font-bold shadow-md'
+                        : 'bg-[#143C5A] text-[#FAF6EE] font-bold shadow-sm'
                       : isDark
-                      ? 'text-[#F5EAF0]/70 hover:text-[#F5EAF0]'
-                      : 'text-[#69001F]/80 hover:text-[#02060E]'
+                      ? 'text-[#FAF6EE]/70 hover:text-[#FAF6EE]'
+                      : 'text-[#143C5A]/80 hover:text-[#143C5A]'
                   }`}
                 >
                   {language === 'ar' ? 'دولار ($)' : 'USD ($)'}
@@ -476,14 +655,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => setCurrency('EGP')}
-                  className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 ${
+                  className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     currency === 'EGP'
                       ? isDark
-                        ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-md'
-                        : 'bg-[#69001F] text-[#F5EAF0] font-bold shadow-sm'
+                        ? 'bg-[#D9A441] text-[#0A1622] font-bold shadow-md'
+                        : 'bg-[#143C5A] text-[#FAF6EE] font-bold shadow-sm'
                       : isDark
-                      ? 'text-[#F5EAF0]/70 hover:text-[#F5EAF0]'
-                      : 'text-[#69001F]/80 hover:text-[#02060E]'
+                      ? 'text-[#FAF6EE]/70 hover:text-[#FAF6EE]'
+                      : 'text-[#143C5A]/80 hover:text-[#143C5A]'
                   }`}
                 >
                   {language === 'ar' ? 'جنيه مصري (EGP)' : 'EGP (Egypt)'}
@@ -514,72 +693,72 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   className={`rounded-2xl p-8 flex flex-col justify-between border transition-all duration-300 ${
                     isHighlighted
                       ? isDark
-                        ? 'bg-gradient-to-b from-[#1E020C] to-[#02060E] border-[#C50337]/50 shadow-[0_0_35px_rgba(197,3,55,0.18)]'
-                        : 'bg-white border-[#69001F]/40 shadow-xl'
+                        ? 'bg-gradient-to-b from-[#0E2336] via-[#11293F] to-[#0A1622] border-[#D9A441]/50 shadow-[0_0_40px_rgba(217,164,65,0.16)]'
+                        : 'bg-gradient-to-b from-white to-[#FDF9F0] border-[#D9A441]/50 shadow-xl'
                       : 'glass-panel-3d'
                   }`}
                 >
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                      <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                         {tier.code}
                       </div>
                       <h3 className={`font-display text-2xl font-bold tracking-tight ${
-                        isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                        isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                       }`}>
                         {tierTitle}
                       </h3>
-                      <p className={`text-sm leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+                      <p className={`text-sm leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                         {tierSubtitle}
                       </p>
                     </div>
 
                     {/* Price Block */}
-                    <div className={`py-4 border-y space-y-1 ${isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'}`}>
+                    <div className={`py-4 border-y space-y-1 ${isDark ? 'border-[#143C5A]/40' : 'border-[#143C5A]/15'}`}>
                       {tier.pricingMode === 'starting_from' ? (
                         <div>
-                          <div className={`text-xs font-mono ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                          <div className={`text-xs font-mono ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                             {language === 'ar' ? 'تبدأ من (قاعدة قابلة للتخصيص)' : 'Starting from (Configurable Base)'}
                           </div>
                           <div className={`font-mono text-3xl font-bold tracking-tight tabular-nums mt-1 ${
-                            isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                            isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                           }`}>
                             {displayPrice}
                           </div>
                         </div>
                       ) : (
                         <div>
-                          <div className={`text-xs font-mono ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
-                            {language === 'ar' ? 'تنفيذ بمواصفات متكاملة' : 'Custom Scoped Engagement'}
+                          <div className={`text-xs font-mono ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
+                            {language === 'ar' ? 'تنفيذ بمواصفات معمارية خاصة' : 'Custom Scoped Engagement'}
                           </div>
                           <div className={`font-display text-2xl font-bold tracking-tight mt-1 ${
-                            isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                            isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                           }`}>
                             {t.pricingSection.requestQuote}
                           </div>
                         </div>
                       )}
-                      <div className={`text-xs pt-1 ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                      <div className={`text-xs pt-1 ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                         {tierNote}
                       </div>
                     </div>
 
-                    <p className={`text-sm leading-relaxed ${isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'}`}>
+                    <p className={`text-sm leading-relaxed ${isDark ? 'text-[#FAF6EE]/85' : 'text-[#1D2733]/85'}`}>
                       {tierDesc}
                     </p>
 
                     {/* Included */}
                     <div className="space-y-2.5">
-                      <div className={`text-xs font-mono font-medium ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                      <div className={`text-xs font-mono font-medium ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                         {t.pricingSection.included}:
                       </div>
                       <ul className={`space-y-2 text-xs leading-relaxed ${
-                        isDark ? 'text-[#F5EAF0]/85' : 'text-[#69001F]'
+                        isDark ? 'text-[#FAF6EE]/85' : 'text-[#1D2733]'
                       }`}>
                         {tierIncluded.map((inc) => (
                           <li key={inc} className="flex items-start gap-2">
                             <Check
-                              className={`w-4 h-4 shrink-0 mt-0.5 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}
+                              className={`w-4 h-4 shrink-0 mt-0.5 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}
                               aria-hidden="true"
                             />
                             <span>{inc}</span>
@@ -590,11 +769,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
                     {/* Excluded */}
                     <div className="space-y-2.5 pt-2">
-                      <div className={`text-xs font-mono font-medium ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/50'}`}>
+                      <div className={`text-xs font-mono font-medium ${isDark ? 'text-[#8FA4BC]/60' : 'text-[#6E87A0]'}`}>
                         {t.pricingSection.excluded}:
                       </div>
                       <ul className={`space-y-2 text-xs leading-relaxed ${
-                        isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/65'
+                        isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'
                       }`}>
                         {tierExcluded.map((exc) => (
                           <li key={exc} className="flex items-start gap-2">
@@ -610,14 +789,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     <a
                       href={`/contact?package=${tier.id}`}
                       onClick={(e) => handleLink(e, `/contact?package=${tier.id}`)}
-                      className={`w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 ${
+                      className={`w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                         isHighlighted
                           ? isDark
-                            ? 'crimson-noir-gradient text-[#F5EAF0] hover:opacity-90 shadow-lg font-bold'
-                            : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018] shadow-md font-bold'
+                            ? 'syene-gold-gradient text-[#0A1622] hover:opacity-95 shadow-lg font-bold'
+                            : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336] shadow-md font-bold'
                           : isDark
-                          ? 'bg-[#1E020C] text-[#F5EAF0] hover:bg-[#69001F] border border-[#69001F]/70 hover:border-[#C50337]/40'
-                          : 'bg-[#F5EAF0] text-[#02060E] hover:bg-white border border-[#69001F]/20'
+                          ? 'bg-[#0E2336] text-[#FAF6EE] hover:bg-[#143C5A] border border-[#6E87A0]/35 hover:border-[#D9A441]/50'
+                          : 'bg-[#FAF6EE] text-[#143C5A] hover:bg-white border border-[#143C5A]/20'
                       }`}
                     >
                       <span>{tierCta}</span>
@@ -633,13 +812,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Pricing Disclaimers */}
           <RevealOnScroll delayMs={160}>
             <div className="p-6 rounded-2xl glass-panel-3d space-y-2">
-              <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+              <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                 {t.pricingSection.disclaimerTitle}
               </div>
-              <ul className={`space-y-1.5 text-xs leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+              <ul className={`space-y-1.5 text-xs leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
                 {currentDisclaimers.map((note) => (
                   <li key={note} className="flex items-start gap-2">
-                    <span className={`font-mono ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`} aria-hidden="true">
+                    <span className={`font-mono ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`} aria-hidden="true">
                       ·
                     </span>
                     <span>{note}</span>
@@ -651,33 +830,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 6. Final CTA Section with Deep 3D Aura */}
-      <section className="py-24 lg:py-32 relative">
+      {/* 7. Final CTA Section with Fade-In-Up Reveal */}
+      <section
+        ref={ctaSectionFade.ref}
+        style={ctaSectionFade.style}
+        className="py-24 lg:py-32 relative"
+      >
         <div className="max-w-[1240px] mx-auto px-6">
           <RevealOnScroll>
             <div
               className={`p-8 sm:p-14 rounded-3xl glass-panel-3d border flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative overflow-hidden ${
-                isDark ? 'border-[#C50337]/30 bg-gradient-to-r from-[#1E020C] via-[#69001F]/30 to-[#1E020C]' : 'border-[#69001F]/20 bg-white/95'
+                isDark ? 'border-[#D9A441]/30 bg-gradient-to-br from-[#0E2336] via-[#143C5A]/35 to-[#0A1622]' : 'border-[#143C5A]/20 bg-gradient-to-br from-white via-[#FAF6EE] to-[#F7EFE0]'
               }`}
             >
               <div
                 className={`absolute -right-20 -bottom-20 w-80 h-80 rounded-full blur-[90px] pointer-events-none ${
-                  isDark ? 'bg-[#C50337]/10' : 'bg-[#C50337]/15'
+                  isDark ? 'bg-[#D9A441]/15' : 'bg-[#143C5A]/10'
                 }`}
               />
 
               <div className="space-y-3 max-w-2xl relative z-10">
-                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
-                  {language === 'ar' ? '٠٥. بدء المشروع' : '05. Project Initiation'}
+                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
+                  {language === 'ar' ? '٠٦. بدء المشروع والتعاقد' : '06. Project Initiation'}
                 </div>
                 <h2
                   className={`font-display text-3xl sm:text-4xl font-bold tracking-tight text-balance ${
-                    isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                    isDark ? 'text-[#FAF6EE]' : 'text-[#143C5A]'
                   }`}
                 >
                   {t.finalCta.title}
                 </h2>
-                <p className={`text-base leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+                <p className={`text-base leading-relaxed ${isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'}`}>
                   {t.finalCta.subtitle}
                 </p>
               </div>
@@ -688,8 +871,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={(e) => handleLink(e, '/contact')}
                   className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl shadow-md transition-all whitespace-nowrap shrink-0 ${
                     isDark
-                      ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_24px_rgba(197,3,55,0.35)] hover:shadow-[0_0_32px_rgba(197,3,55,0.5)]'
-                      : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                      ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_24px_rgba(217,164,65,0.28)] hover:shadow-[0_0_32px_rgba(217,164,65,0.48)]'
+                      : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                   }`}
                 >
                   <span>{t.finalCta.ctaPrimary}</span>
@@ -700,8 +883,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={(e) => handleLink(e, '/projects')}
                   className={`inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold rounded-xl border transition-colors whitespace-nowrap shrink-0 ${
                     isDark
-                      ? 'text-[#F5EAF0] bg-[#1E020C] border-[#69001F]/70 hover:border-[#C50337]'
-                      : 'text-[#02060E] bg-white border-[#69001F]/25 hover:border-[#69001F] hover:bg-[#F5EAF0]/40'
+                      ? 'text-[#FAF6EE] bg-[#0E2336] border-[#6E87A0]/35 hover:border-[#D9A441]'
+                      : 'text-[#143C5A] bg-white border-[#143C5A]/25 hover:border-[#143C5A] hover:bg-[#FAF6EE]/50'
                   }`}
                 >
                   {t.finalCta.ctaSecondary}

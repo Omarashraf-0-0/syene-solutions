@@ -45,7 +45,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             href={`/projects/${project.slug}`}
             onClick={handleCardClick}
             className={`block relative aspect-video overflow-hidden border-b ${
-              isDark ? 'bg-[#02060E] border-[#69001F]/40' : 'bg-[#F5EAF0]/50 border-[#69001F]/15'
+              isDark ? 'bg-[#0A1622] border-[#D9A441]/20' : 'bg-[#FAF6EE]/50 border-[#143C5A]/15'
             }`}
           >
             <ResilientImage
@@ -54,12 +54,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               fallbackLabel={title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            {/* Subtle Gradient Scrim in Midnight Noir */}
+            {/* Subtle Gradient Scrim in Nile Night */}
             <div
               className={`absolute inset-0 bg-gradient-to-t pointer-events-none ${
                 isDark
-                  ? 'from-[#02060E]/85 via-transparent to-transparent'
-                  : 'from-[#69001F]/30 via-transparent to-transparent'
+                  ? 'from-[#0A1622]/90 via-transparent to-transparent'
+                  : 'from-[#143C5A]/30 via-transparent to-transparent'
               }`}
             />
 
@@ -67,11 +67,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <div
               className={`absolute bottom-3 ${isRTL ? 'right-4' : 'left-4'} flex items-center gap-2 text-[11px] font-mono backdrop-blur-md px-2.5 py-1 rounded-md border shadow-sm ${
                 isDark
-                  ? 'text-[#F5EAF0]/90 bg-[#1E020C]/90 border-[#69001F]/60'
-                  : 'text-[#02060E] bg-white/95 border-[#69001F]/20'
+                  ? 'text-[#FAF6EE]/90 bg-[#0E2336]/90 border-[#D9A441]/35'
+                  : 'text-[#143C5A] bg-white/95 border-[#143C5A]/20'
               }`}
             >
-              <span className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-[#C50337]' : 'bg-[#69001F]'}`} />
+              <span className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-[#D9A441]' : 'bg-[#143C5A]'}`} />
               <span className="font-medium">{status}</span>
             </div>
           </a>
@@ -81,16 +81,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {/* Clean Metadata Row */}
             <div
               className={`flex flex-wrap items-center gap-2 text-xs font-mono ${
-                isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
               }`}
             >
               <span className="font-semibold">{category}</span>
               {project.isPlaceholder && (
                 <>
-                  <span aria-hidden="true" className={isDark ? 'text-[#F5EAF0]/30' : 'text-[#69001F]/40'}>
+                  <span aria-hidden="true" className={isDark ? 'text-[#FAF6EE]/30' : 'text-[#143C5A]/40'}>
                     ·
                   </span>
-                  <span className={isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'}>
+                  <span className={isDark ? 'text-[#FAF6EE]/50' : 'text-[#6E87A0]'}>
                     {language === 'ar' ? 'دراسة حالة' : 'Case Study'}
                   </span>
                 </>
@@ -103,8 +103,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 onClick={handleCardClick}
                 className={`hover:underline ${
                   isDark
-                    ? 'text-[#F5EAF0] group-hover:text-[#C50337]'
-                    : 'text-[#02060E] group-hover:text-[#69001F]'
+                    ? 'text-[#FAF6EE] group-hover:text-[#D9A441]'
+                    : 'text-[#143C5A] group-hover:text-[#D9A441]'
                 }`}
               >
                 {title}
@@ -112,7 +112,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </h3>
 
             <p className={`text-sm leading-relaxed line-clamp-3 ${
-              isDark ? 'text-[#F5EAF0]/70' : 'text-[#69001F]/80'
+              isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'
             }`}>
               {description}
             </p>
@@ -123,11 +123,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div
           className={`px-6 pb-6 pt-4 border-t space-y-4 ${
             isDark
-              ? 'border-[#69001F]/40 bg-[#1E020C]/40'
-              : 'border-[#69001F]/15 bg-[#F5EAF0]/30'
+              ? 'border-[#D9A441]/15 bg-[#0E2336]/40'
+              : 'border-[#143C5A]/15 bg-[#FAF6EE]/40'
           }`}
         >
-          {/* Highlighted Glassmorphic Technology Stack */}
+          {/* Highlighted Technology Stack */}
           <div className="flex flex-wrap items-center gap-1.5">
             {project.technologies.slice(0, 3).map((tech) => (
               <ProjectBadge key={tech} tech={tech} size="xs" />
@@ -136,8 +136,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               <span
                 className={`text-[10px] font-mono px-2 py-0.5 rounded-md backdrop-blur-md border transition-colors ${
                   isDark
-                    ? 'bg-[#02060E]/60 text-[#F5EAF0]/60 border-[#69001F]/60 hover:border-[#C50337]/40 hover:text-[#C50337]'
-                    : 'bg-white/80 text-[#69001F]/70 border-[#69001F]/20 hover:border-[#69001F]/40 hover:text-[#02060E]'
+                    ? 'bg-[#0A1622]/60 text-[#8FA4BC] border-[#6E87A0]/30 hover:border-[#D9A441]/50 hover:text-[#D9A441]'
+                    : 'bg-white/80 text-[#143C5A]/70 border-[#143C5A]/20 hover:border-[#D9A441] hover:text-[#143C5A]'
                 }`}
                 title={project.technologies.slice(3).join(', ')}
               >
@@ -152,8 +152,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               onClick={handleCardClick}
               className={`inline-flex items-center gap-1.5 text-xs font-semibold group/link whitespace-nowrap shrink-0 transition-colors ${
                 isDark
-                  ? 'text-[#C50337] hover:text-[#F5EAF0]'
-                  : 'text-[#69001F] hover:text-[#02060E]'
+                  ? 'text-[#D9A441] hover:text-[#FAF6EE]'
+                  : 'text-[#143C5A] hover:text-[#D9A441]'
               }`}
             >
               <span>{t.projectsSection.exploreCaseStudy}</span>
@@ -170,14 +170,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               )}
             </a>
 
-            <div className={`flex items-center gap-3 text-xs ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/60'}`}>
+            <div className={`flex items-center gap-3 text-xs ${isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}`}>
               {project.demoUrl && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center gap-1 whitespace-nowrap shrink-0 transition-colors ${
-                    isDark ? 'hover:text-[#C50337]' : 'hover:text-[#69001F]'
+                    isDark ? 'hover:text-[#D9A441]' : 'hover:text-[#143C5A]'
                   }`}
                 >
                   <span>{language === 'ar' ? 'معاينة حية' : 'Live Demo'}</span>
@@ -190,7 +190,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`inline-flex items-center gap-1 whitespace-nowrap shrink-0 transition-colors ${
-                    isDark ? 'hover:text-[#C50337]' : 'hover:text-[#69001F]'
+                    isDark ? 'hover:text-[#D9A441]' : 'hover:text-[#143C5A]'
                   }`}
                 >
                   <span>{language === 'ar' ? 'المصدر' : 'Source'}</span>

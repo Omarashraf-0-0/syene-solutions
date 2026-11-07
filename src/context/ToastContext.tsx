@@ -96,10 +96,10 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onRemove }) => {
     success: {
       badgeText: 'SUBSCRIPTION · LIVE',
       icon: CheckCircle2,
-      accentColor: isDark ? 'text-[#C50337]' : 'text-[#69001F]',
-      glowColor: isDark ? 'rgba(197, 3, 55, 0.25)' : 'rgba(105, 0, 31, 0.15)',
-      progressBar: isDark ? 'bg-[#C50337]' : 'bg-[#69001F]',
-      borderColor: isDark ? 'border-[#C50337]/35' : 'border-[#69001F]/30',
+      accentColor: isDark ? 'text-[#D9A441]' : 'text-[#143C5A]',
+      glowColor: isDark ? 'rgba(217, 164, 65, 0.25)' : 'rgba(20, 60, 90, 0.15)',
+      progressBar: isDark ? 'bg-[#D9A441]' : 'bg-[#143C5A]',
+      borderColor: isDark ? 'border-[#D9A441]/35' : 'border-[#143C5A]/30',
     },
     error: {
       badgeText: 'SYSTEM · ATTENTION',
@@ -181,8 +181,8 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onRemove }) => {
               className={`inline-block w-1.5 h-1.5 rounded-full animate-pulse ${
                 toast.type === 'success'
                   ? isDark
-                    ? 'bg-[#C50337]'
-                    : 'bg-[#69001F]'
+                    ? 'bg-[#D9A441]'
+                    : 'bg-[#143C5A]'
                   : isDark
                   ? 'bg-rose-400'
                   : 'bg-rose-600'
@@ -204,7 +204,7 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onRemove }) => {
           {toast.message && (
             <p
               className={`text-xs mt-1 leading-relaxed ${
-                isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'
+                isDark ? 'text-[#FAF6EE]/75' : 'text-[#1D2733]/80'
               }`}
             >
               {toast.message}
@@ -221,8 +221,8 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onRemove }) => {
                 }}
                 className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
                   isDark
-                    ? 'crimson-noir-gradient text-[#F5EAF0] font-bold border-[#C50337]/50 shadow-xs'
-                    : 'bg-[#69001F] text-white border-[#69001F]'
+                    ? 'syene-gold-gradient text-[#0A1622] font-bold border-[#D9A441]/50 shadow-xs'
+                    : 'bg-[#143C5A] text-white border-[#143C5A]'
                 }`}
               >
                 {toast.action.label}

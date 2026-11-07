@@ -1,12 +1,10 @@
 import React, { ElementType, HTMLAttributes, ReactNode } from 'react';
-import { useScrollReveal, ScrollRevealOptions } from '../hooks/useScrollReveal';
+import { useFadeInUp, UseFadeInUpOptions } from '../hooks/useFadeInUp';
 
-export interface RevealOnScrollProps extends HTMLAttributes<HTMLElement>, ScrollRevealOptions {
+export interface RevealOnScrollProps extends HTMLAttributes<HTMLElement>, UseFadeInUpOptions {
   children: ReactNode;
   className?: string;
   delayMs?: number;
-  duration?: number;
-  distance?: number;
   direction?: 'up' | 'down' | 'none';
   as?: ElementType;
 }
@@ -15,21 +13,24 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   children,
   className = '',
   delayMs = 0,
-  duration = 700,
-  distance = 20,
+  duration = 650,
+  distance = 24,
   direction = 'up',
-  threshold = 0.1,
-  rootMargin = '0px 0px -60px 0px',
+  threshold = 0.12,
+  rootMargin = '0px 0px -50px 0px',
   triggerOnce = true,
   disabled = false,
   as: Component = 'div',
   style,
   ...rest
 }) => {
-  const { ref, isVisible } = useScrollReveal<HTMLDivElement>({
+  const { ref, isVisible, style: hookStyle } = useFadeInUp<HTMLElement>({
     threshold,
     rootMargin,
     triggerOnce,
+    distance,
+    duration,
+    delay: delayMs,
     disabled,
   });
 
@@ -41,16 +42,14 @@ export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   };
 
   const dynamicStyles: React.CSSProperties = {
-    opacity: isVisible ? 1 : 0,
+    ...hookStyle,
     transform: getTransform(),
-    transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms`,
-    willChange: isVisible ? 'auto' : 'opacity, transform',
     ...style,
   };
 
   return (
     <Component
-      ref={ref}
+      ref={ref as any}
       style={dynamicStyles}
       className={`reveal-on-scroll ${className}`}
       {...rest}

@@ -70,7 +70,7 @@ function saveInquiry(inquiry: StoredInquiry) {
   }
 }
 
-function validateInquiryPayload(body: InquiryPayload) {
+function validateInquiryPayload(body: InquiryPayload & { message?: string }) {
   const fieldErrors: Record<string, string> = {};
 
   if (!body.name || typeof body.name !== 'string' || body.name.trim().length < 2) {
@@ -82,44 +82,21 @@ function validateInquiryPayload(body: InquiryPayload) {
     fieldErrors.email = 'A valid email address is required.';
   }
 
-  if (!body.projectType || typeof body.projectType !== 'string' || !body.projectType.trim()) {
-    fieldErrors.projectType = 'Project type is required.';
-  }
-
-  if (!body.platform || typeof body.platform !== 'string' || !body.platform.trim()) {
-    fieldErrors.platform = 'Target platform is required.';
-  }
-
-  if (
-    !body.description ||
-    typeof body.description !== 'string' ||
-    body.description.trim().length < 10
-  ) {
+  const desc = body.description || body.message;
+  if (!desc || typeof desc !== 'string' || desc.trim().length < 10) {
     fieldErrors.description = 'Project description must be at least 10 characters.';
-  }
-
-  if (!body.budget || typeof body.budget !== 'string' || !body.budget.trim()) {
-    fieldErrors.budget = 'Estimated budget is required.';
-  }
-
-  if (!body.timeline || typeof body.timeline !== 'string' || !body.timeline.trim()) {
-    fieldErrors.timeline = 'Desired timeline is required.';
-  }
-
-  if (body.consent !== true) {
-    fieldErrors.consent = 'Consent to the privacy notice is required.';
   }
 
   return fieldErrors;
 }
 
 function cleanSender(val?: string | null): string {
-  if (!val || typeof val !== 'string') return 'Nubix Inquiries <onboarding@resend.dev>';
+  if (!val || typeof val !== 'string') return 'Syene Solutions Inquiries <onboarding@resend.dev>';
   let s = val.replace(/^CONTACT_FROM_EMAIL\s*=\s*/i, '').trim();
   if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) {
     s = s.slice(1, -1).trim();
   }
-  return s || 'Nubix Inquiries <onboarding@resend.dev>';
+  return s || 'Syene Solutions Inquiries <onboarding@resend.dev>';
 }
 
 function isValidHttpUrl(val?: string | null): boolean {
@@ -181,18 +158,18 @@ async function startServer() {
       });
     }
 
-    const deliveryId = `NBX-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const deliveryId = `SYE-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
     const sanitized: StoredInquiry = {
       id: deliveryId,
       name: payload.name!.trim(),
       email: payload.email!.trim(),
       company: payload.company ? String(payload.company).trim() : 'Not specified',
-      projectType: payload.projectType!.trim(),
-      platform: payload.platform!.trim(),
-      description: payload.description!.trim(),
-      budget: payload.budget!.trim(),
-      timeline: payload.timeline!.trim(),
+      projectType: payload.projectType?.trim() || 'Software & AI Engineering',
+      platform: payload.platform?.trim() || 'Cross-Platform Web & Cloud',
+      description: (payload.description || (payload as any).message || '').trim(),
+      budget: payload.budget?.trim() || 'To be discussed',
+      timeline: payload.timeline?.trim() || 'Flexible',
       provider: 'studio-inbox',
       submittedAt: new Date().toISOString(),
     };
@@ -211,7 +188,7 @@ async function startServer() {
     if (resendKey && recipientEmail) {
       try {
         const emailBody = [
-          `New Project Inquiry submitted via Nubix Studio:`,
+          `New Project Inquiry submitted via Syene Solutions:`,
           ``,
           `Reference ID: ${deliveryId}`,
           `Name: ${sanitized.name}`,
@@ -238,7 +215,7 @@ async function startServer() {
               from,
               to: [to],
               reply_to: sanitized.email,
-              subject: `[Nubix Inquiry] ${sanitized.projectType} — ${sanitized.name}`,
+              subject: `[Syene Solutions Inquiry] ${sanitized.projectType} — ${sanitized.name}`,
               text: emailBody,
             }),
           });
@@ -255,8 +232,8 @@ async function startServer() {
         let resendResult = await sendViaResend(fromEmail, recipientEmail);
 
         // Fallback 1: If custom domain failed (e.g. unverified domain), retry with onboarding@resend.dev
-        if (!resendResult.ok && fromEmail !== 'Nubix Inquiries <onboarding@resend.dev>') {
-          resendResult = await sendViaResend('Nubix Inquiries <onboarding@resend.dev>', recipientEmail);
+        if (!resendResult.ok && fromEmail !== 'Syene Solutions Inquiries <onboarding@resend.dev>') {
+          resendResult = await sendViaResend('Syene Solutions Inquiries <onboarding@resend.dev>', recipientEmail);
         }
 
         // Fallback 2: If Resend testing restriction enforces sending to the account owner email, extract and deliver
@@ -269,20 +246,20 @@ async function startServer() {
             /\(([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\)/
           );
           if (ownerMatch && ownerMatch[1]) {
-            resendResult = await sendViaResend('Nubix Inquiries <onboarding@resend.dev>', ownerMatch[1]);
+            resendResult = await sendViaResend('Syene Solutions Inquiries <onboarding@resend.dev>', ownerMatch[1]);
           }
         }
 
         if (resendResult.ok && resendResult.id) {
           provider = 'resend';
           externalSuccess = true;
-          console.log(`[Nubix] Inquiry ${deliveryId} delivered via Resend (${resendResult.id})`);
+          console.log(`[Syene Solutions] Inquiry ${deliveryId} delivered via Resend (${resendResult.id})`);
         } else {
-          console.log(`[Nubix] Resend delivery notice: ${resendResult.message || 'Saved to studio inbox'}`);
+          console.log(`[Syene Solutions] Resend delivery notice: ${resendResult.message || 'Saved to studio inbox'}`);
         }
       } catch (err: unknown) {
         const errorMsg = err instanceof Error ? err.message : String(err);
-        console.log(`[Nubix] Resend delivery notice: ${errorMsg}`);
+        console.log(`[Syene Solutions] Resend delivery notice: ${errorMsg}`);
       }
     }
 
@@ -293,7 +270,7 @@ async function startServer() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            source: 'Nubix Studio Inquiry Form',
+            source: 'Syene Solutions Inquiry Form',
             deliveryId,
             inquiry: sanitized,
           }),
@@ -302,13 +279,13 @@ async function startServer() {
         if (webhookResponse.ok) {
           provider = 'webhook';
           externalSuccess = true;
-          console.log(`[Nubix] Inquiry ${deliveryId} forwarded via Webhook`);
+          console.log(`[Syene Solutions] Inquiry ${deliveryId} forwarded via Webhook`);
         } else {
-          console.log(`[Nubix] Webhook returned status ${webhookResponse.status}`);
+          console.log(`[Syene Solutions] Webhook returned status ${webhookResponse.status}`);
         }
       } catch (err: unknown) {
         const errorMsg = err instanceof Error ? err.message : String(err);
-        console.log(`[Nubix] Webhook forwarding notice: ${errorMsg}`);
+        console.log(`[Syene Solutions] Webhook forwarding notice: ${errorMsg}`);
       }
     }
 
@@ -318,7 +295,7 @@ async function startServer() {
     saveInquiry(sanitized);
 
     console.log(
-      `[Nubix Studio] New inquiry registered: ${deliveryId} from ${sanitized.name} (${sanitized.email})`
+      `[Syene Solutions] New inquiry registered: ${deliveryId} from ${sanitized.name} (${sanitized.email})`
     );
 
     return res.status(200).json({
@@ -328,10 +305,10 @@ async function startServer() {
       inquiry: sanitized,
       message:
         provider === 'resend'
-          ? 'Your inquiry has been confirmed and delivered to the Nubix studio inbox.'
+          ? 'Your inquiry has been confirmed and delivered to the Syene Solutions studio inbox.'
           : provider === 'webhook'
           ? 'Your inquiry was confirmed by the configured webhook service.'
-          : 'Your project inquiry was successfully received and logged into the Nubix Studio inbox. Our engineering team will review it within 24 hours.',
+          : 'Your project inquiry was successfully received and logged into the Syene Solutions inbox. Our engineering team will review it within 24 hours.',
     });
   });
 
@@ -403,7 +380,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Nubix server running on http://0.0.0.0:${PORT}`);
+    console.log(`Syene Solutions server running on http://0.0.0.0:${PORT}`);
   });
 }
 

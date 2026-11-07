@@ -4,66 +4,73 @@
 @custom-variant light (&:where(.light, .light *));
 
 @theme {
-  --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Official Nubix Crimson Noir Brand Token System */
-  --color-midnight-noir: #02060E;
-  --color-crimson-red: #C50337;
-  --color-deep-burgundy: #69001F;
-  --color-soft-ivory: #F5EAF0;
-  --color-burgundy-surface: #1E020C;
-  --color-burgundy-depth: #3B0018;
+  /* Official Syene Solutions Brand Token System (Aswan Heritage) */
+  --color-nile-navy: #143C5A;
+  --color-syene-gold: #D9A441;
+  --color-steel-blue: #6E87A0;
+  --color-warm-white: #FAF6EE;
+  --color-slate-ink: #1D2733;
+
+  /* Editorial & Atmosphere Tones */
+  --color-nile-night: #0A1622;
+  --color-nile-depth: #0E2336;
+  --color-gold-glow: #F2BD5B;
+  --color-steel-light: #8FA4BC;
+  --color-sand-surface: #F5EFE3;
 
   /* Backward-compatible and utility aliases */
-  --color-brunswick: #69001F;
-  --color-emerald: #C50337;
-  --color-polar: #F5EAF0;
-  --color-deep-forest: #02060E;
-  --color-dark-surface: #1E020C;
-  --color-nubix-navy: #02060E;
-  --color-nubix-slate: #1E020C;
-  --color-nubix-lime: #C50337;
-  --color-nubix-emerald: #69001F;
-  --color-nubix-light: #F5EAF0;
-  --color-nubix-light-bg: #F5EAF0;
-  --color-nubix-light-surface: #EEDBE6;
+  --color-midnight-noir: #0A1622;
+  --color-crimson-red: #D9A441;
+  --color-deep-burgundy: #143C5A;
+  --color-soft-ivory: #FAF6EE;
+  --color-burgundy-surface: #0E2336;
+  --color-brunswick: #143C5A;
+  --color-emerald: #D9A441;
+  --color-polar: #FAF6EE;
+  --color-deep-forest: #0A1622;
+  --color-dark-surface: #0E2336;
 }
 
 :root {
-  --color-canvas: #02060E;
-  --color-canvas-alt: #160107;
-  --color-surface: rgba(30, 2, 12, 0.82);
-  --color-surface-hover: rgba(59, 0, 24, 0.90);
-  --color-text-primary: #F5EAF0;
-  --color-text-secondary: rgba(245, 234, 240, 0.82);
-  --color-text-muted: rgba(245, 234, 240, 0.55);
-  --color-border: rgba(197, 3, 55, 0.18);
-  --color-accent: #C50337;
-  --color-accent-hover: #E21B4F;
+  --color-canvas: #0A1622;
+  --color-canvas-alt: #0E2336;
+  --color-surface: rgba(20, 60, 90, 0.45);
+  --color-surface-hover: rgba(20, 60, 90, 0.70);
+  --color-text-primary: #FAF6EE;
+  --color-text-secondary: #8FA4BC;
+  --color-text-muted: #6E87A0;
+  --color-border: rgba(217, 164, 65, 0.22);
+  --color-accent: #D9A441;
+  --color-accent-hover: #F2BD5B;
+  --color-primary: #143C5A;
 }
 
 html.light {
-  --color-canvas: #F5EAF0;
-  --color-canvas-alt: #EEDBE6;
+  --color-canvas: #FAF6EE;
+  --color-canvas-alt: #F1ECE0;
   --color-surface: rgba(255, 255, 255, 0.94);
   --color-surface-hover: rgba(255, 255, 255, 1);
-  --color-text-primary: #02060E;
-  --color-text-secondary: #69001F;
-  --color-text-muted: rgba(105, 0, 31, 0.65);
-  --color-border: rgba(105, 0, 31, 0.16);
-  --color-accent: #C50337;
-  --color-accent-hover: #69001F;
+  --color-text-primary: #1D2733;
+  --color-text-secondary: #143C5A;
+  --color-text-muted: #6E87A0;
+  --color-border: rgba(20, 60, 90, 0.16);
+  --color-accent: #D9A441;
+  --color-accent-hover: #B88528;
+  --color-primary: #143C5A;
 }
 
 @layer base {
   body {
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.65;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -72,9 +79,11 @@ html.light {
     text-wrap: balance;
   }
 
-  /* Arabic Typography Support */
+  /* Precision Arabic Typography: IBM Plex Sans Arabic + Cairo Fallback */
   [dir="rtl"], [dir="rtl"] body {
-    font-family: 'Cairo', var(--font-sans);
+    font-family: "IBM Plex Sans Arabic", "Cairo", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.75;
+    text-rendering: optimizeLegibility;
   }
 
   [dir="rtl"] h1,
@@ -82,21 +91,42 @@ html.light {
   [dir="rtl"] h3,
   [dir="rtl"] h4,
   [dir="rtl"] .font-display {
-    font-family: 'Cairo', var(--font-display);
-    letter-spacing: normal;
+    font-family: "IBM Plex Sans Arabic", "Cairo", -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0 !important;
+    line-height: 1.35;
+  }
+
+  /* Critical Arabic Cursive Integrity: Prevent Latin negative/positive tracking from breaking connected Arabic letters */
+  [dir="rtl"] .tracking-tighter,
+  [dir="rtl"] .tracking-tight,
+  [dir="rtl"] .tracking-normal,
+  [dir="rtl"] .tracking-wide,
+  [dir="rtl"] .tracking-wider,
+  [dir="rtl"] .tracking-widest {
+    letter-spacing: 0 !important;
+  }
+
+  [dir="rtl"] p {
+    line-height: 1.75;
+  }
+
+  /* Bilingual Metrics & Numerals: Prevent percentage and unit inversion */
+  [dir="rtl"] .font-mono,
+  [dir="rtl"] .tabular-nums {
+    unicode-bidi: isolate;
   }
 
   *:focus-visible {
-    outline: 2px solid #C50337;
+    outline: 2px solid #D9A441;
     outline-offset: 2px;
   }
 
   html.light *:focus-visible {
-    outline: 2px solid #69001F;
+    outline: 2px solid #143C5A;
     outline-offset: 2px;
   }
 
-  /* Studio Scrollbar using Midnight Noir & Crimson Red */
+  /* Studio Scrollbar using Nile Navy & Gold */
   ::-webkit-scrollbar {
     width: 7px;
     height: 7px;
@@ -107,81 +137,138 @@ html.light {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(197, 3, 55, 0.35);
+    background: rgba(217, 164, 65, 0.35);
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(197, 3, 55, 0.65);
+    background: rgba(217, 164, 65, 0.65);
   }
 
   html.light ::-webkit-scrollbar-thumb {
-    background: rgba(105, 0, 31, 0.25);
+    background: rgba(20, 60, 90, 0.25);
   }
 
   html.light ::-webkit-scrollbar-thumb:hover {
-    background: rgba(105, 0, 31, 0.45);
+    background: rgba(20, 60, 90, 0.45);
   }
 }
 
-/* 1. Official Crimson Noir Gradient Art Direction */
-/* A. Crimson Noir Gradient */
-.crimson-noir-gradient {
-  background: linear-gradient(160deg, #02060E 0%, #310014 38%, #850021 72%, #C50337 100%);
+/* 1. Official Syene Solutions Gradient Art Direction */
+/* A. Syene Molten Gold Gradient (Lustrous, metallic, high-contrast) */
+.syene-gold-gradient {
+  background: linear-gradient(135deg, #F3D079 0%, #D9A441 45%, #B88226 100%);
+  color: #0A1622 !important;
+  box-shadow: 0 4px 18px rgba(217, 164, 65, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.crimson-noir-text {
-  background: linear-gradient(160deg, #02060E 0%, #310014 38%, #850021 72%, #C50337 100%);
+.syene-gold-gradient:hover {
+  background: linear-gradient(135deg, #F8D88E 0%, #E2AE4B 45%, #C48E2E 100%);
+  box-shadow: 0 6px 24px rgba(217, 164, 65, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.gold-shimmer-gradient {
+  background: linear-gradient(135deg, #FDF3DB 0%, #E8BE5E 30%, #D9A441 65%, #AE7920 100%);
+}
+
+/* B. Syene Gold Text Clip (Dark Mode: Warm White to Liquid Gold; Light Mode: Nile Navy to Rich Bronze) */
+.syene-gold-text {
+  background: linear-gradient(135deg, #FAF6EE 0%, #F5CE7B 35%, #D9A441 70%, #C28B27 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* B. Burgundy Depth Gradient */
-.burgundy-depth-gradient {
-  background: linear-gradient(135deg, #69001F 0%, #3B0018 50%, #02060E 100%);
+html.light .syene-gold-text {
+  background: linear-gradient(135deg, #0E2538 0%, #143C5A 40%, #9E6B18 80%, #B88226 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* C. Crimson Ambient Glow */
-.crimson-ambient-glow {
-  background-color: #02060E;
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FDF3DB 0%, #E8BE5E 35%, #D9A441 70%, #B88226 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .gold-gradient-text {
+  background: linear-gradient(135deg, #0E2538 0%, #143C5A 45%, #9E6B18 85%, #B88226 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* C. Deep Nile Horizons (Sapphire depth, no muddy intermediate hues) */
+.nile-depth-gradient {
+  background: linear-gradient(150deg, #07131D 0%, #0E2538 35%, #143C5A 70%, #0B1C2A 100%);
+}
+
+.syene-navy-gradient {
+  background: linear-gradient(135deg, #1C527D 0%, #143C5A 50%, #0B2437 100%);
+}
+
+/* D. Atmospheric Ambient Glow (Organic wide-radius diffusion) */
+.syene-ambient-glow {
+  background-color: #0A1622;
   background-image: 
-    radial-gradient(ellipse 70% 55% at 12% 15%, rgba(197, 3, 55, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 50% at 88% 85%, rgba(105, 0, 31, 0.14) 0%, transparent 60%);
+    radial-gradient(circle 900px at 10% 10%, rgba(20, 60, 90, 0.28) 0%, rgba(20, 60, 90, 0.08) 45%, transparent 75%),
+    radial-gradient(circle 800px at 90% 12%, rgba(217, 164, 65, 0.09) 0%, rgba(217, 164, 65, 0.02) 45%, transparent 70%),
+    radial-gradient(circle 950px at 50% 90%, rgba(14, 35, 54, 0.45) 0%, transparent 80%),
+    radial-gradient(circle 750px at 85% 75%, rgba(110, 135, 160, 0.10) 0%, transparent 65%);
 }
 
-html.light .crimson-ambient-glow {
-  background-color: #F5EAF0;
+html.light .syene-ambient-glow {
+  background-color: #FAF6EE;
   background-image:
-    radial-gradient(ellipse 70% 55% at 12% 15%, rgba(197, 3, 55, 0.10) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 50% at 88% 85%, rgba(105, 0, 31, 0.08) 0%, transparent 60%);
+    radial-gradient(circle 900px at 10% 10%, rgba(20, 60, 90, 0.05) 0%, transparent 70%),
+    radial-gradient(circle 800px at 90% 12%, rgba(217, 164, 65, 0.06) 0%, transparent 65%),
+    radial-gradient(circle 850px at 50% 90%, rgba(110, 135, 160, 0.05) 0%, transparent 70%);
 }
 
-/* Backward-compatible aliases for emerald classnames mapped to new brand */
+/* Backward-compatible aliases for previously used class names */
+.crimson-noir-gradient,
 .emerald-flow-gradient {
-  background: linear-gradient(160deg, #02060E 0%, #310014 38%, #850021 72%, #C50337 100%);
+  background: linear-gradient(135deg, #F3D079 0%, #D9A441 45%, #B88226 100%);
+  color: #0A1622 !important;
 }
 
+.crimson-noir-text,
 .emerald-flow-text {
-  background: linear-gradient(160deg, #02060E 0%, #310014 38%, #850021 72%, #C50337 100%);
+  background: linear-gradient(135deg, #FAF6EE 0%, #F5CE7B 35%, #D9A441 70%, #C28B27 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+html.light .crimson-noir-text,
+html.light .emerald-flow-text {
+  background: linear-gradient(135deg, #0E2538 0%, #143C5A 40%, #9E6B18 80%, #B88226 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.burgundy-depth-gradient {
+  background: linear-gradient(150deg, #07131D 0%, #0E2538 35%, #143C5A 70%, #0B1C2A 100%);
+}
+
+.crimson-ambient-glow,
 .ambient-emerald-glow {
-  background-color: #02060E;
+  background-color: #0A1622;
   background-image: 
-    radial-gradient(ellipse 70% 55% at 12% 15%, rgba(197, 3, 55, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 50% at 88% 85%, rgba(105, 0, 31, 0.14) 0%, transparent 60%);
+    radial-gradient(circle 900px at 10% 10%, rgba(20, 60, 90, 0.28) 0%, rgba(20, 60, 90, 0.08) 45%, transparent 75%),
+    radial-gradient(circle 800px at 90% 12%, rgba(217, 164, 65, 0.09) 0%, rgba(217, 164, 65, 0.02) 45%, transparent 70%),
+    radial-gradient(circle 950px at 50% 90%, rgba(14, 35, 54, 0.45) 0%, transparent 80%),
+    radial-gradient(circle 750px at 85% 75%, rgba(110, 135, 160, 0.10) 0%, transparent 65%);
 }
 
+html.light .crimson-ambient-glow,
 html.light .ambient-emerald-glow {
-  background-color: #F5EAF0;
+  background-color: #FAF6EE;
   background-image:
-    radial-gradient(ellipse 70% 55% at 12% 15%, rgba(197, 3, 55, 0.10) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 50% at 88% 85%, rgba(105, 0, 31, 0.08) 0%, transparent 60%);
+    radial-gradient(circle 900px at 10% 10%, rgba(20, 60, 90, 0.05) 0%, transparent 70%),
+    radial-gradient(circle 800px at 90% 12%, rgba(217, 164, 65, 0.06) 0%, transparent 65%),
+    radial-gradient(circle 850px at 50% 90%, rgba(110, 135, 160, 0.05) 0%, transparent 70%);
 }
 
-/* Modern 3D Spatial & Depth Utilities */
+/* 3D Spatial & Depth Utilities */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -210,61 +297,61 @@ html.light .ambient-emerald-glow {
   transform: translateZ(30px);
 }
 
-/* Glassmorphism & High-Tech 3D Glow (Dark Mode) - Midnight Noir & Deep Burgundy */
+/* Glassmorphism & High-Tech 3D Glow (Dark Mode) - Nile Navy & Gold */
 .glass-panel-3d {
-  background: rgba(22, 2, 9, 0.78);
+  background: rgba(14, 35, 54, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 3, 55, 0.16);
-  box-shadow: 0 20px 40px -15px rgba(2, 6, 14, 0.85), inset 0 1px 0 rgba(245, 234, 240, 0.06);
+  border: 1px solid rgba(217, 164, 65, 0.18);
+  box-shadow: 0 20px 40px -15px rgba(10, 22, 34, 0.90), inset 0 1px 0 rgba(250, 246, 238, 0.08);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel-3d:hover {
-  border-color: rgba(197, 3, 55, 0.35);
-  box-shadow: 0 25px 50px -12px rgba(2, 6, 14, 0.95), 0 0 24px -6px rgba(197, 3, 55, 0.15), inset 0 1px 0 rgba(245, 234, 240, 0.12);
+  border-color: rgba(217, 164, 65, 0.40);
+  box-shadow: 0 25px 50px -12px rgba(10, 22, 34, 0.98), 0 0 24px -6px rgba(217, 164, 65, 0.22), inset 0 1px 0 rgba(250, 246, 238, 0.15);
 }
 
 /* Light Mode Glass Panels */
 html.light .glass-panel-3d,
 body.light .glass-panel-3d {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(105, 0, 31, 0.12);
-  box-shadow: 0 16px 36px -12px rgba(2, 6, 14, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(20, 60, 90, 0.14);
+  box-shadow: 0 16px 36px -12px rgba(20, 60, 90, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 html.light .glass-panel-3d:hover,
 body.light .glass-panel-3d:hover {
-  border-color: rgba(105, 0, 31, 0.28);
-  box-shadow: 0 24px 44px -10px rgba(2, 6, 14, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-color: rgba(217, 164, 65, 0.45);
+  box-shadow: 0 24px 44px -10px rgba(20, 60, 90, 0.12), 0 0 18px -4px rgba(217, 164, 65, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .glass-dock {
-  background: rgba(22, 2, 9, 0.88);
+  background: rgba(14, 35, 54, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(197, 3, 55, 0.20);
-  box-shadow: 0 20px 40px -10px rgba(2, 6, 14, 0.85), 0 0 20px -5px rgba(197, 3, 55, 0.12);
+  border: 1px solid rgba(217, 164, 65, 0.24);
+  box-shadow: 0 20px 40px -10px rgba(10, 22, 34, 0.90), 0 0 20px -5px rgba(217, 164, 65, 0.16);
 }
 
 html.light .glass-dock {
   background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(105, 0, 31, 0.15);
-  box-shadow: 0 20px 40px -10px rgba(105, 0, 31, 0.10);
+  border: 1px solid rgba(20, 60, 90, 0.18);
+  box-shadow: 0 20px 40px -10px rgba(20, 60, 90, 0.10);
 }
 
 /* Grid wireframe pattern for 3D technical aesthetic */
 .tech-grid-bg {
   background-size: 44px 44px;
   background-image: 
-    linear-gradient(to right, rgba(197, 3, 55, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(197, 3, 55, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(110, 135, 160, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(110, 135, 160, 0.045) 1px, transparent 1px);
 }
 
 html.light .tech-grid-bg {
   background-image: 
-    linear-gradient(to right, rgba(105, 0, 31, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(105, 0, 31, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(20, 60, 90, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 60, 90, 0.045) 1px, transparent 1px);
 }
 
 @media (prefers-reduced-motion: reduce) {

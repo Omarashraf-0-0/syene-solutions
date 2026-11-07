@@ -30,14 +30,14 @@ const LAYERS: ArchitectureLayer[] = [
     titleAr: 'تطوير البرمجيات المخصصة ومنصات الويب للشركات',
     shortLabel: 'Software Solutions',
     shortLabelAr: 'حلول البرمجيات',
-    category: 'Nubix Core Engineering',
-    categoryAr: 'خدمات الشركة الأساسية',
+    category: 'Syene Core Engineering',
+    categoryAr: 'خدمات سايين الأساسية',
     metrics: [
       { label: 'Type Safety', labelAr: 'أمان الأنواع', value: '100% End-to-End' },
       { label: 'Edge Latency', labelAr: 'زمن الاستجابة', value: '< 65ms p99' },
       { label: 'Availability', labelAr: 'نسبة الجاهزية', value: '99.98% SLA' },
     ],
-    stack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'tRPC'],
+    stack: ['TypeScript', 'React 19', 'Next.js 15', 'PostgreSQL', 'Tailwind CSS'],
     snippet: {
       filename: 'src/server/trpc/appRouter.ts',
       code: `export const appRouter = router({
@@ -61,11 +61,11 @@ const LAYERS: ArchitectureLayer[] = [
   {
     id: 'ai-engine',
     index: '02',
-    title: 'Applied AI & Custom Autonomous Agents',
+    title: 'Applied AI & Custom Autonomous Pipelines',
     titleAr: 'حلول الذكاء الاصطناعي التطبيقي والوكلاء المؤتمتة',
     shortLabel: 'AI Systems',
     shortLabelAr: 'أنظمة الذكاء',
-    category: 'Nubix Applied Intelligence',
+    category: 'Syene Applied Intelligence',
     categoryAr: 'حلول الذكاء للشركات',
     metrics: [
       { label: 'Inference Model', labelAr: 'نموذج الاستدلال', value: 'Gemini 2.5 Flash' },
@@ -98,7 +98,7 @@ const response = await ai.models.generateContent({
     titleAr: 'البنية التحتية السحابية والأنظمة الموزعة عالية التوسع',
     shortLabel: 'Cloud & Scale',
     shortLabelAr: 'السحابة والتوسع',
-    category: 'Nubix Cloud & Reliability',
+    category: 'Syene Cloud & Reliability',
     categoryAr: 'كفاءة التشغيل والتوسع',
     metrics: [
       { label: 'Global CDN', labelAr: 'شبكة التوزيع', value: 'Edge Multi-Region' },
@@ -111,12 +111,12 @@ const response = await ai.models.generateContent({
       code: `apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: nubix-production-cluster
+  name: syene-production-cluster
 spec:
   template:
     spec:
       containers:
-        - image: gcr.io/nubix/engine:v1.4
+        - image: gcr.io/syene/engine:v1.4
           resources:
             limits: { cpu: '2000m', memory: '2Gi' }`,
     },
@@ -148,16 +148,16 @@ export const ArchitectureConsole3D: React.FC = () => {
       <div
         className={`p-6 sm:p-7 rounded-2xl border backdrop-blur-xl transition-all duration-300 shadow-2xl relative overflow-hidden ${
           isDark
-            ? 'bg-[#1E020C]/90 border-[#69001F]/70 shadow-[0_20px_50px_rgba(2,6,14,0.7)] text-[#F5EAF0]'
-            : 'bg-white/95 border-[#69001F]/20 shadow-[0_20px_50px_rgba(105,0,31,0.08)] text-[#02060E]'
+            ? 'bg-[#0E2336]/90 border-[#D9A441]/30 shadow-[0_20px_50px_rgba(10,22,34,0.9)] text-[#FAF6EE]'
+            : 'bg-white/95 border-[#143C5A]/20 shadow-[0_20px_50px_rgba(20,60,90,0.08)] text-[#1D2733]'
         }`}
       >
-        {/* Top Edge Gradient Highlight */}
+        {/* Top Edge Gradient Highlight in Syene Gold */}
         <div
           className={`absolute top-0 left-0 right-0 h-[2px] ${
             isDark
-              ? 'bg-gradient-to-r from-transparent via-[#C50337] to-transparent'
-              : 'bg-gradient-to-r from-transparent via-[#69001F] to-transparent'
+              ? 'bg-gradient-to-r from-transparent via-[#D9A441] to-transparent'
+              : 'bg-gradient-to-r from-transparent via-[#143C5A] to-transparent'
           }`}
           aria-hidden="true"
         />
@@ -165,28 +165,28 @@ export const ArchitectureConsole3D: React.FC = () => {
         {/* Console Header Bar */}
         <div className="flex items-center justify-between pb-4 border-b border-current/10">
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#69001F]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#850021]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#C50337]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#143C5A]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#6E87A0]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#D9A441]" />
             <span className="ms-2 font-mono text-[11px] opacity-75 font-medium">
-              {language === 'ar' ? 'شركة نوبيكس · مركز الحلول' : 'nubix.company // core solutions'}
+              {language === 'ar' ? 'سايين سوليوشنز · منصة المعمارية' : 'syene.solutions // architecture'}
             </span>
           </div>
 
           {/* View Mode Toggle */}
           <div
             className={`flex items-center p-0.5 rounded-lg border text-[11px] font-mono ${
-              isDark ? 'bg-[#02060E] border-[#69001F]/70' : 'bg-[#F5EAF0]/60 border-[#69001F]/20'
+              isDark ? 'bg-[#0A1622] border-[#6E87A0]/35' : 'bg-[#FAF6EE] border-[#143C5A]/20'
             }`}
           >
             <button
               type="button"
               onClick={() => setViewMode('overview')}
-              className={`px-2.5 py-1 rounded-md transition-colors ${
+              className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer ${
                 viewMode === 'overview'
                   ? isDark
-                    ? 'bg-[#69001F] text-[#F5EAF0] font-semibold shadow-xs'
-                    : 'bg-[#69001F] text-[#F5EAF0] font-semibold shadow-xs'
+                    ? 'bg-[#143C5A] text-[#FAF6EE] font-semibold shadow-xs'
+                    : 'bg-[#143C5A] text-[#FAF6EE] font-semibold shadow-xs'
                   : 'opacity-60 hover:opacity-100'
               }`}
             >
@@ -195,11 +195,11 @@ export const ArchitectureConsole3D: React.FC = () => {
             <button
               type="button"
               onClick={() => setViewMode('code')}
-              className={`px-2.5 py-1 rounded-md transition-colors ${
+              className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer ${
                 viewMode === 'code'
                   ? isDark
-                    ? 'bg-[#69001F] text-[#F5EAF0] font-semibold shadow-xs'
-                    : 'bg-[#69001F] text-[#F5EAF0] font-semibold shadow-xs'
+                    ? 'bg-[#143C5A] text-[#FAF6EE] font-semibold shadow-xs'
+                    : 'bg-[#143C5A] text-[#FAF6EE] font-semibold shadow-xs'
                   : 'opacity-60 hover:opacity-100'
               }`}
             >
@@ -211,7 +211,7 @@ export const ArchitectureConsole3D: React.FC = () => {
         {/* Interactive Layer Tabs */}
         <div className="pt-4 pb-3">
           <div className="text-[11px] font-mono uppercase tracking-wider opacity-60 mb-2 font-semibold">
-            {language === 'ar' ? 'حلول وخدمات شركة نوبيكس' : 'Nubix Company Solutions & Services'}
+            {language === 'ar' ? 'حلول ومعمارية شركة سايين سوليوشنز' : 'Syene Solutions Architecture & Capabilities'}
           </div>
           <div className="grid grid-cols-3 gap-2">
             {LAYERS.map((layer) => {
@@ -225,19 +225,19 @@ export const ArchitectureConsole3D: React.FC = () => {
                   className={`p-2.5 rounded-xl border text-start transition-all cursor-pointer ${
                     isSelected
                       ? isDark
-                        ? 'bg-[#3B0018] border-[#C50337]/70 text-[#F5EAF0] shadow-sm'
-                        : 'bg-[#F5EAF0] border-[#69001F]/50 text-[#02060E] shadow-sm'
+                        ? 'bg-[#143C5A] border-[#D9A441]/70 text-[#FAF6EE] shadow-sm'
+                        : 'bg-[#FAF6EE] border-[#143C5A]/50 text-[#143C5A] shadow-sm'
                       : isDark
-                      ? 'bg-[#02060E]/50 border-[#69001F]/40 text-[#F5EAF0]/70 hover:border-[#C50337]/30'
-                      : 'bg-white border-[#69001F]/15 text-[#69001F] hover:border-[#69001F]/30'
+                      ? 'bg-[#0A1622]/50 border-[#6E87A0]/30 text-[#FAF6EE]/70 hover:border-[#D9A441]/40'
+                      : 'bg-white border-[#143C5A]/15 text-[#1D2733] hover:border-[#143C5A]/30'
                   }`}
                 >
                   <div
                     className={`font-mono text-[10px] font-bold ${
                       isSelected
                         ? isDark
-                          ? 'text-[#C50337]'
-                          : 'text-[#69001F]'
+                          ? 'text-[#D9A441]'
+                          : 'text-[#143C5A]'
                         : 'opacity-50'
                     }`}
                   >
@@ -259,7 +259,7 @@ export const ArchitectureConsole3D: React.FC = () => {
               <div className="space-y-1">
                 <div
                   className={`text-[11px] font-mono ${
-                    isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                    isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                   }`}
                 >
                   {layerCategory}
@@ -275,13 +275,13 @@ export const ArchitectureConsole3D: React.FC = () => {
                   <li key={i} className="flex items-start gap-2">
                     <span
                       className={`font-mono text-xs mt-0.5 ${
-                        isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                        isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                       }`}
                       aria-hidden="true"
                     >
                       ▸
                     </span>
-                    <span className={isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'}>{h}</span>
+                    <span className={isDark ? 'text-[#FAF6EE]/80' : 'text-[#1D2733]/85'}>{h}</span>
                   </li>
                 ))}
               </ul>
@@ -295,13 +295,13 @@ export const ArchitectureConsole3D: React.FC = () => {
                       key={i}
                       className={`p-2.5 rounded-xl border text-center ${
                         isDark
-                          ? 'bg-[#02060E]/70 border-[#69001F]/50'
-                          : 'bg-[#F5EAF0]/40 border-[#69001F]/15'
+                          ? 'bg-[#0A1622]/70 border-[#6E87A0]/30'
+                          : 'bg-[#FAF6EE]/50 border-[#143C5A]/15'
                       }`}
                     >
                       <div
                         className={`font-mono text-xs font-bold ${
-                          isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                          isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                         }`}
                       >
                         {m.value}
@@ -323,8 +323,8 @@ export const ArchitectureConsole3D: React.FC = () => {
               <pre
                 className={`p-3.5 rounded-xl overflow-x-auto text-[11px] leading-relaxed border ${
                   isDark
-                    ? 'bg-[#02060E] border-[#69001F]/60 text-[#C50337]'
-                    : 'bg-[#1E020C] border-[#69001F]/40 text-[#F5EAF0]'
+                    ? 'bg-[#0A1622] border-[#D9A441]/30 text-[#D9A441]'
+                    : 'bg-[#0E2336] border-[#143C5A]/30 text-[#FAF6EE]'
                 }`}
                 dir="ltr"
               >
@@ -344,8 +344,8 @@ export const ArchitectureConsole3D: React.FC = () => {
               key={tech}
               className={`px-2 py-0.5 rounded border ${
                 isDark
-                  ? 'bg-[#02060E]/60 border-[#69001F]/50 text-[#F5EAF0]/85'
-                  : 'bg-[#F5EAF0]/60 border-[#69001F]/15 text-[#69001F]'
+                  ? 'bg-[#0A1622]/60 border-[#6E87A0]/30 text-[#FAF6EE]/85'
+                  : 'bg-[#FAF6EE]/60 border-[#143C5A]/15 text-[#143C5A]'
               }`}
             >
               {tech}

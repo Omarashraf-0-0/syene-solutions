@@ -14,9 +14,9 @@ export const PageSEO: React.FC<PageSEOProps> = ({
   ogType = 'website',
 }) => {
   useEffect(() => {
-    const fullTitle = title.includes('Nubix')
+    const fullTitle = title.includes('Syene Solutions')
       ? title
-      : `${title} | Nubix — Software & AI Studio`;
+      : `${title} | Syene Solutions — Software & AI Studio`;
     document.title = fullTitle;
 
     const setMeta = (selector: string, attr: string, value: string) => {
@@ -39,8 +39,10 @@ export const PageSEO: React.FC<PageSEOProps> = ({
     setMeta('meta[property="og:title"]', 'content', fullTitle);
     setMeta('meta[property="og:description"]', 'content', description);
     setMeta('meta[property="og:type"]', 'content', ogType);
+    setMeta('meta[property="og:image"]', 'content', '/syene-logo.png');
     setMeta('meta[name="twitter:title"]', 'content', fullTitle);
     setMeta('meta[name="twitter:description"]', 'content', description);
+    setMeta('meta[name="twitter:image"]', 'content', '/syene-logo.png');
 
     if (typeof window !== 'undefined' && window.location.origin) {
       const canonicalHref = `${window.location.origin}${path === '/' ? '' : path}`;

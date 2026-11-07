@@ -1,81 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { Mail, ArrowRight, ArrowLeft, CheckCircle2, Loader2, ShieldCheck, AlertCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, CheckCircle2, ArrowRight, ArrowLeft, Loader2, AlertCircle, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { useToast } from '../context/ToastContext';
-import { useLanguage } from '../context/LanguageContext';
-
-const STORAGE_KEY = 'nubix_newsletter_subscribers';
 
 export const Newsletter: React.FC = () => {
-  const { theme } = useTheme();
-  const { language, isRTL, t } = useLanguage();
-  const toast = useToast();
-  const isDark = theme === 'dark';
-  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
-
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [lastSubscribedEmail, setLastSubscribedEmail] = useState<string | null>(null);
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const list = JSON.parse(stored);
-        if (Array.isArray(list) && list.length > 0) {
-          setLastSubscribedEmail(list[list.length - 1]);
-        }
-      }
-    } catch {
-      // Ignore localStorage issues
-    }
-  }, []);
+  const { language, isRTL, t } = useLanguage();
+  const { theme } = useTheme();
+  const toast = useToast();
+  const isDark = theme === 'dark';
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
-  const validateEmail = (val: string) => {
+  const validateEmail = (val: string): boolean => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanEmail = email.trim().toLowerCase();
+    const cleanEmail = email.trim();
 
     if (!cleanEmail) {
-      const err = language === 'ar'
-        ? 'يرجى إدخال عنوان بريدك الإلكتروني.'
-        : 'Please enter your work or personal email address.';
       setStatus('error');
-      setErrorMessage(err);
-      toast.error(
-        language === 'ar' ? 'فشل الاشتراك' : 'Subscription Failed',
-        err
-      );
+      const msg =
+        language === 'ar'
+          ? 'يرجى إدخال عنوان بريدك الإلكتروني.'
+          : 'Please enter your work email address.';
+      setErrorMessage(msg);
+      toast.error(language === 'ar' ? 'حقل البريد مطلوب' : 'Email Required', msg);
       return;
     }
 
     if (!validateEmail(cleanEmail)) {
-      const err = language === 'ar'
-        ? 'يرجى التأكد من كتابة البريد الإلكتروني بشكل صحيح (مثال: name@company.com).'
-        : 'Please enter a valid email address (e.g., name@company.com).';
       setStatus('error');
-      setErrorMessage(err);
-      toast.error(
-        language === 'ar' ? 'بريد إلكتروني غير صالح' : 'Invalid Email Address',
-        err
-      );
+      const msg =
+        language === 'ar'
+          ? 'يرجى إدخال عنوان بريد إلكتروني صالح (مثال: name@company.com).'
+          : 'Please enter a valid work email (e.g. name@company.com).';
+      setErrorMessage(msg);
+      toast.error(language === 'ar' ? 'صيغة بريد غير صحيحة' : 'Invalid Email Format', msg);
       return;
     }
 
     setStatus('loading');
     setErrorMessage('');
 
+    // Simulate reliable dispatch
     setTimeout(() => {
       try {
-        const existingRaw = localStorage.getItem(STORAGE_KEY);
-        const existing: string[] = existingRaw ? JSON.parse(existingRaw) : [];
-        if (!existing.includes(cleanEmail)) {
-          existing.push(cleanEmail);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+        const stored = localStorage.getItem('syene_newsletter_subscribers');
+        const list: string[] = stored ? JSON.parse(stored) : [];
+        if (!list.includes(cleanEmail)) {
+          list.push(cleanEmail);
+          localStorage.setItem('syene_newsletter_subscribers', JSON.stringify(list));
         }
       } catch {
         // Fallback gracefully
@@ -88,8 +69,8 @@ export const Newsletter: React.FC = () => {
       toast.success(
         language === 'ar' ? 'تم تأكيد الاشتراك بنجاح' : 'Subscription Confirmed',
         language === 'ar'
-          ? `تم اشتراكك في نشرة نوبيكس التقنية (${cleanEmail}). سنوافيك بآخر الإصدارات المعمارية والبرمجية.`
-          : `You've been subscribed to Nubix Studio Dispatches (${cleanEmail}). The next architectural release note is on its way.`,
+          ? `تم اشتراكك في رادار سايين سوليوشنز التقني (${cleanEmail}). سنوافيك بآخر الإصدارات المعمارية والبرمجية.`
+          : `You've been subscribed to Syene Solutions Dispatches (${cleanEmail}). The next architectural release note is on its way.`,
         {
           duration: 6000,
         }
@@ -109,8 +90,8 @@ export const Newsletter: React.FC = () => {
       <div
         className={`absolute -inset-1 rounded-3xl blur-2xl opacity-40 pointer-events-none transition-all duration-500 ${
           isDark
-            ? 'bg-gradient-to-r from-[#C50337]/20 via-[#1E020C]/50 to-[#69001F]/30'
-            : 'bg-gradient-to-r from-[#69001F]/15 via-[#F5EAF0]/60 to-[#69001F]/10'
+            ? 'bg-gradient-to-br from-[#143C5A]/30 via-[#0E2336]/60 to-[#D9A441]/15'
+            : 'bg-gradient-to-br from-[#143C5A]/10 via-[#FAF6EE]/80 to-[#D9A441]/10'
         }`}
         aria-hidden="true"
       />
@@ -119,8 +100,8 @@ export const Newsletter: React.FC = () => {
       <div
         className={`glass-panel-3d relative rounded-2xl md:rounded-3xl p-8 sm:p-10 md:p-12 overflow-hidden border ${
           isDark
-            ? 'border-[#69001F]/70 text-[#F5EAF0]'
-            : 'border-[#69001F]/20 text-[#02060E]'
+            ? 'border-[#D9A441]/25 text-[#FAF6EE]'
+            : 'border-[#143C5A]/20 text-[#1D2733]'
         }`}
       >
         {/* Subtle decorative grid overlay inside glass */}
@@ -129,10 +110,10 @@ export const Newsletter: React.FC = () => {
           aria-hidden="true"
         />
 
-        {/* Decorative corner light accent */}
+        {/* Decorative corner light accent in Gold */}
         <div
           className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none ${
-            isDark ? 'bg-[#C50337]/10' : 'bg-[#69001F]/10'
+            isDark ? 'bg-[#D9A441]/10' : 'bg-[#143C5A]/10'
           }`}
           aria-hidden="true"
         />
@@ -143,15 +124,15 @@ export const Newsletter: React.FC = () => {
             {/* Tech Radar Editorial Kicker */}
             <div
               className={`flex items-center gap-2 text-xs font-mono tracking-wider uppercase ${
-                isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
               }`}
             >
               <span className="font-semibold">
-                {language === 'ar' ? 'رادار نوبيكس الهندسي' : 'Nubix Technical Radar'}
+                {language === 'ar' ? 'رادار سايين المعماري' : 'Syene Technical Radar'}
               </span>
-              <span aria-hidden="true" className={isDark ? 'text-[#F5EAF0]/30' : 'text-[#69001F]/30'}>·</span>
-              <span className={isDark ? 'text-[#F5EAF0]/65' : 'text-[#69001F]/70'}>
-                {language === 'ar' ? 'نشرة هندسية نصف شهرية' : 'Bi-Weekly Dispatch'}
+              <span aria-hidden="true" className={isDark ? 'text-[#8FA4BC]/40' : 'text-[#6E87A0]/40'}>·</span>
+              <span className={isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'}>
+                {language === 'ar' ? 'نشرة برمجية دورية' : 'Bi-Weekly Dispatch'}
               </span>
             </div>
 
@@ -161,7 +142,7 @@ export const Newsletter: React.FC = () => {
 
             <p
               className={`text-sm sm:text-base leading-relaxed max-w-xl ${
-                isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'
+                isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'
               }`}
             >
               {t.newsletter.subtitle}
@@ -172,8 +153,8 @@ export const Newsletter: React.FC = () => {
               <span
                 className={`px-2.5 py-1 rounded-md border ${
                   isDark
-                    ? 'bg-[#1E020C]/80 border-[#69001F]/60 text-[#F5EAF0]/85'
-                    : 'bg-white/90 border-[#69001F]/15 text-[#02060E]'
+                    ? 'bg-[#0E2336]/80 border-[#6E87A0]/30 text-[#FAF6EE]/85'
+                    : 'bg-white/90 border-[#143C5A]/15 text-[#143C5A]'
                 }`}
               >
                 {language === 'ar' ? 'نماذج الذكاء الاصطناعي للإنتاج' : 'Production LLMs'}
@@ -181,8 +162,8 @@ export const Newsletter: React.FC = () => {
               <span
                 className={`px-2.5 py-1 rounded-md border ${
                   isDark
-                    ? 'bg-[#1E020C]/80 border-[#69001F]/60 text-[#F5EAF0]/85'
-                    : 'bg-white/90 border-[#69001F]/15 text-[#02060E]'
+                    ? 'bg-[#0E2336]/80 border-[#6E87A0]/30 text-[#FAF6EE]/85'
+                    : 'bg-white/90 border-[#143C5A]/15 text-[#143C5A]'
                 }`}
               >
                 {language === 'ar' ? 'معماريات الأنظمة الموزعة' : 'Distributed Systems'}
@@ -190,8 +171,8 @@ export const Newsletter: React.FC = () => {
               <span
                 className={`px-2.5 py-1 rounded-md border ${
                   isDark
-                    ? 'bg-[#1E020C]/80 border-[#69001F]/60 text-[#F5EAF0]/85'
-                    : 'bg-white/90 border-[#69001F]/15 text-[#02060E]'
+                    ? 'bg-[#0E2336]/80 border-[#6E87A0]/30 text-[#FAF6EE]/85'
+                    : 'bg-white/90 border-[#143C5A]/15 text-[#143C5A]'
                 }`}
               >
                 {language === 'ar' ? 'إصدارات الاستوديو' : 'Studio Releases'}
@@ -203,10 +184,10 @@ export const Newsletter: React.FC = () => {
           <div className="lg:col-span-5">
             {status === 'success' ? (
               <div
-                className={`p-6 sm:p-7 rounded-xl border backdrop-blur-md transition-all animate-fadeIn ${
+                className={`p-6 sm:p-7 rounded-xl border backdrop-blur-md transition-all ${
                   isDark
-                    ? 'bg-[#1E020C]/95 border-[#C50337]/40 shadow-lg shadow-[#C50337]/10'
-                    : 'bg-white/95 border-[#69001F]/30 shadow-lg shadow-[#69001F]/10'
+                    ? 'bg-[#0E2336]/95 border-[#D9A441]/40 shadow-lg shadow-[#D9A441]/10'
+                    : 'bg-white/95 border-[#143C5A]/30 shadow-lg shadow-[#143C5A]/10'
                 }`}
                 role="status"
                 aria-live="polite"
@@ -215,8 +196,8 @@ export const Newsletter: React.FC = () => {
                   <div
                     className={`p-2 rounded-lg shrink-0 ${
                       isDark
-                        ? 'bg-[#C50337]/15 text-[#C50337]'
-                        : 'bg-[#69001F]/15 text-[#69001F]'
+                        ? 'bg-[#D9A441]/20 text-[#D9A441]'
+                        : 'bg-[#143C5A]/15 text-[#143C5A]'
                     }`}
                   >
                     <CheckCircle2 className="w-6 h-6" aria-hidden="true" />
@@ -227,14 +208,14 @@ export const Newsletter: React.FC = () => {
                     </h3>
                     <p
                       className={`text-xs sm:text-sm leading-relaxed ${
-                        isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'
+                        isDark ? 'text-[#8FA4BC]' : 'text-[#1D2733]/80'
                       }`}
                     >
                       {t.newsletter.success}
                     </p>
                     <p
                       className={`font-mono text-xs font-semibold truncate ${
-                        isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                        isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                       }`}
                     >
                       {lastSubscribedEmail}
@@ -243,16 +224,16 @@ export const Newsletter: React.FC = () => {
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-dashed flex items-center justify-between text-xs border-current/15">
-                  <span className={isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}>
-                    {language === 'ar' ? 'تصدر النشرة يومي ١ و ١٥ من كل شهر' : 'Check your inbox on the 1st & 15th'}
+                  <span className={isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'}>
+                    {language === 'ar' ? 'تصدر النشرة دورياً لبريدك' : 'Dispatches sent directly to your inbox'}
                   </span>
                   <button
                     type="button"
                     onClick={handleReset}
                     className={`font-medium underline transition-colors cursor-pointer ${
                       isDark
-                        ? 'text-[#F5EAF0]/80 hover:text-[#C50337]'
-                        : 'text-[#69001F] hover:text-[#02060E]'
+                        ? 'text-[#FAF6EE]/80 hover:text-[#D9A441]'
+                        : 'text-[#143C5A] hover:text-[#0E2336]'
                     }`}
                   >
                     {language === 'ar' ? 'تسجيل بريد آخر' : 'Subscribe another'}
@@ -268,7 +249,7 @@ export const Newsletter: React.FC = () => {
 
                   <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                     <div className="relative flex-1">
-                      <div className="absolute inset-y-0 start-0 ps-3.5 flex items-center pointer-events-none text-red-400/60">
+                      <div className="absolute inset-y-0 start-0 ps-3.5 flex items-center pointer-events-none text-sky-400/60">
                         <Mail className="w-4 h-4" aria-hidden="true" />
                       </div>
                       <input
@@ -285,8 +266,8 @@ export const Newsletter: React.FC = () => {
                         aria-describedby={status === 'error' ? 'newsletter-error' : undefined}
                         className={`w-full ps-10 pe-4 py-3.5 rounded-xl text-sm transition-all outline-none font-sans ${
                           isDark
-                            ? 'bg-[#1E020C]/90 border border-[#69001F]/70 text-[#F5EAF0] placeholder-[#F5EAF0]/40 focus:border-[#C50337] focus:ring-2 focus:ring-[#C50337]/25'
-                            : 'bg-white/95 border border-[#69001F]/25 text-[#02060E] placeholder-slate-400 focus:border-[#69001F] focus:ring-2 focus:ring-[#69001F]/20'
+                            ? 'bg-[#0E2336]/90 border border-[#6E87A0]/35 text-[#FAF6EE] placeholder-[#8FA4BC]/50 focus:border-[#D9A441] focus:ring-2 focus:ring-[#D9A441]/25'
+                            : 'bg-white/95 border border-[#143C5A]/25 text-[#1D2733] placeholder-slate-400 focus:border-[#143C5A] focus:ring-2 focus:ring-[#143C5A]/20'
                         } ${status === 'error' ? '!border-rose-500 !ring-rose-500/20' : ''}`}
                       />
                     </div>
@@ -296,8 +277,8 @@ export const Newsletter: React.FC = () => {
                       disabled={status === 'loading'}
                       className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer shadow-md shrink-0 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed ${
                         isDark
-                          ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_18px_rgba(197,3,55,0.3)] hover:shadow-[0_0_24px_rgba(197,3,55,0.5)]'
-                          : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                          ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_18px_rgba(217,164,65,0.28)] hover:shadow-[0_0_24px_rgba(217,164,65,0.45)]'
+                          : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                       }`}
                     >
                       {status === 'loading' ? (
@@ -330,11 +311,11 @@ export const Newsletter: React.FC = () => {
                 {/* Privacy & Frequency Reassurance */}
                 <div
                   className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs pt-1 px-1 ${
-                    isDark ? 'text-[#F5EAF0]/55' : 'text-[#69001F]/70'
+                    isDark ? 'text-[#8FA4BC]/70' : 'text-[#6E87A0]'
                   }`}
                 >
                   <div className="flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#C50337] shrink-0" aria-hidden="true" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#D9A441] shrink-0" aria-hidden="true" />
                     <span>
                       {language === 'ar'
                         ? 'بدون رسائل ترويجية مزعجة. يمكنك إلغاء الاشتراك بنقرة واحدة دائماً.'

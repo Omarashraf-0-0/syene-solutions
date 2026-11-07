@@ -3,6 +3,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { ToastProvider } from './context/ToastContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
+import { BreadcrumbNav } from './components/BreadcrumbNav';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { ProjectsPage } from './pages/ProjectsPage';
@@ -74,20 +75,20 @@ function MainApp() {
     return (
       <main className="min-h-[70vh] flex items-center justify-center px-6 py-20 bg-transparent">
         <div className="max-w-md w-full p-8 rounded-2xl glass-panel-3d text-center space-y-4">
-          <div className="text-xs font-mono text-[#C50337]">
+          <div className="text-xs font-mono text-[#D9A441]">
             {language === 'ar' ? '٤٠٤ · المسار غير موجود' : '404 · Route Not Found'}
           </div>
-          <h1 className="font-display text-2xl font-bold text-[#F5EAF0] dark:text-[#F5EAF0] light:text-[#02060E]">
+          <h1 className="font-display text-2xl font-bold text-[#FAF6EE] dark:text-[#FAF6EE] light:text-[#143C5A]">
             {language === 'ar' ? 'الصفحة غير موجودة' : 'Page not found'}
           </h1>
-          <p className="text-sm text-[#F5EAF0]/75 dark:text-[#F5EAF0]/75 light:text-[#69001F] leading-relaxed">
-            {language === 'ar' ? 'المسار المطلوب غير موجود في موقع نوبيكس.' : 'The requested route does not exist.'}
+          <p className="text-sm text-[#8FA4BC] dark:text-[#8FA4BC] light:text-[#1D2733] leading-relaxed">
+            {language === 'ar' ? 'المسار المطلوب غير موجود في موقع سايين سوليوشنز.' : 'The requested route does not exist in Syene Solutions archives.'}
           </p>
           <div className="pt-2">
             <button
               type="button"
               onClick={() => navigate('/')}
-              className="px-5 py-2.5 text-xs font-semibold crimson-noir-gradient text-[#F5EAF0] font-bold rounded-xl hover:opacity-90 transition-opacity shadow-md"
+              className="px-5 py-2.5 text-xs font-semibold syene-gold-gradient text-[#0A1622] font-bold rounded-xl hover:opacity-95 transition-opacity shadow-md"
             >
               {language === 'ar' ? 'العودة للرئيسية' : 'Return Home'}
             </button>
@@ -100,16 +101,17 @@ function MainApp() {
   return (
     <div
       dir={isRTL ? 'rtl' : 'ltr'}
-      className={`min-h-screen flex flex-col relative transition-colors duration-300 selection:bg-[#C50337] selection:text-[#F5EAF0] ${
-        theme === 'dark' ? 'bg-[#02060E] text-[#F5EAF0]' : 'bg-[#F5EAF0] text-[#02060E]'
+      className={`min-h-screen flex flex-col relative transition-colors duration-300 selection:bg-[#D9A441] selection:text-[#0A1622] ${
+        theme === 'dark' ? 'bg-[#0A1622] text-[#FAF6EE]' : 'bg-[#FAF6EE] text-[#1D2733]'
       }`}
     >
-      {/* Persistent, Layered 3D Floating Glass Spheres Background with interactive physics */}
+      {/* Persistent, Layered 3D Floating Glass Background with interactive physics */}
       <Background3D />
 
       {/* Main Content & Navigation Layer */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar currentPath={routeState.pathname} onNavigate={navigate} />
+        <BreadcrumbNav currentPath={routeState.pathname} onNavigate={navigate} />
         <div className="flex-1">{renderRoute()}</div>
         <Footer onNavigate={navigate} />
       </div>

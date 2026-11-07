@@ -83,9 +83,9 @@ export const PROJECTS: Project[] = [
     problemStatementAr:
       'كانت المؤسسة تعتمد على جداول بيانات متفرقة وأدوات يدوية غير متصلة، مما تسبب في بطء توجيه أوامر العمل الميدانية، وتضارب مستمر في المخزون، وغياب الرؤية والرقابة المركزية بين الفروع في مصر والمحافظات.',
     solutionOverview:
-      'Nubix engineered a unified, high-performance web platform and native-feel mobile suite with offline capabilities, automated conflict resolution, and sub-second inventory updates backed by distributed cloud infrastructure.',
+      'Syene Solutions engineered a unified, high-performance web platform and native-feel mobile suite with offline capabilities, automated conflict resolution, and sub-second inventory updates backed by distributed cloud infrastructure.',
     solutionOverviewAr:
-      'صمم وطور استوديو نوبيكس منصة مركزية موحدة وتطبيقات هواتف مرافقة تعمل دون انقطاع حتى في وضع عدم الاتصال، مع حل آلي لتضارب البيانات وتحديثات فورية للمخزون عبر بنية تحتية سحابية عالية الاستقرار.',
+      'صمم وطور فريق سايين سوليوشنز منصة مركزية موحدة وتطبيقات هواتف مرافقة تعمل دون انقطاع حتى في وضع عدم الاتصال، مع حل آلي لتضارب البيانات وتحديثات فورية للمخزون عبر بنية تحتية سحابية عالية الاستقرار.',
     nubixContribution: [
       'Product discovery, technical scoping, and system architecture specification',
       'UI/UX interface design and responsive component library implementation',
@@ -194,9 +194,9 @@ export const PROJECTS: Project[] = [
     problemStatementAr:
       'كانت معالجة آلاف المستندات والعقود المالية واللوجستية ثنائية اللغة (العربية والإنجليزية) تتطلب عشرات الساعات أسبوعياً من الموظفين، مما أدى إلى بطء فادح في دورات الاعتماد وأخطاء إدخال بشرية متكررة.',
     solutionOverview:
-      'Nubix integrated high-speed Gemini multimodal inference pipelines paired with local vector search (pgvector) and a bespoke human-in-the-loop audit console, slashing extraction times from hours to seconds while maintaining zero hallucinations.',
+      'Syene Solutions integrated high-speed Gemini multimodal inference pipelines paired with local vector search (pgvector) and a bespoke human-in-the-loop audit console, slashing extraction times from hours to seconds while maintaining zero hallucinations.',
     solutionOverviewAr:
-      'بنى استوديو نوبيكس خطوط معالجة سريعة تعتمد على نماذج Gemini المتعددة الوسائط مدعومة بفهارس pgvector الدلالية ولوحة تدقيق وتعديل بشرية، مما خفض زمن المعالجة من ساعات إلى ثوانٍ معدودة وبدقة مطلقة.',
+      'بنى فريق سايين سوليوشنز خطوط معالجة سريعة تعتمد على نماذج Gemini المتعددة الوسائط مدعومة بفهارس pgvector الدلالية ولوحة تدقيق وتعديل بشرية، مما خفض زمن المعالجة من ساعات إلى ثوانٍ معدودة وبدقة مطلقة.',
     nubixContribution: [
       'AI feasibility evaluation, prompt/pipeline engineering, and schema design',
       'Integration of model APIs with application backend and validation guardrails',
@@ -305,9 +305,9 @@ export const PROJECTS: Project[] = [
     problemStatementAr:
       'تسببت مشاكل عدم موثوقية الـ Webhooks وبطء المعاملات في تكرار خصم مبالغ من العملاء وفقدان إشعارات الطلبات أثناء ذروات الزيارات، مع تكبد ساعات طويلة يومياً في التسوية اليدوية المرهقة.',
     solutionOverview:
-      'Nubix designed an idempotent message-broker queue architecture with dead-letter fallback handling and zero-downtime database replication, completely eliminating dropped webhooks and establishing automated financial ledger integrity.',
+      'Syene Solutions designed an idempotent message-broker queue architecture with dead-letter fallback handling and zero-downtime database replication, completely eliminating dropped webhooks and establishing automated financial ledger integrity.',
     solutionOverviewAr:
-      'صمم ونفذ استوديو نوبيكس معمارية طوابير برمجية لا تكرارية (Idempotent) مع مسارات طوارئ للرسائل الفاشلة وتزامن لحظي لقواعد البيانات، مما قضى تماماً على فقدان المعاملات وحقق دقة مالية مطلقة.',
+      'صمم ونفذ فريق سايين سوليوشنز معمارية طوابير برمجية لا تكرارية (Idempotent) مع مسارات طوارئ للرسائل الفاشلة وتزامن لحظي لقواعد البيانات، مما قضى تماماً على فقدان المعاملات وحقق دقة مالية مطلقة.',
     nubixContribution: [
       'Data model audit and API contract specification',
       'Core backend service implementation and third-party gateway integration',

@@ -1,5 +1,31 @@
 [
   {
+    "id": "SYE-MW2QMEYB-4113",
+    "name": "Youssef Nabil",
+    "email": "youssef@aswanventures.com",
+    "company": "Not specified",
+    "projectType": "Software & AI Engineering",
+    "platform": "Cross-Platform Web & Cloud",
+    "description": "We would like to consult on enterprise AI deployment and modern cloud migration.",
+    "budget": "To be discussed",
+    "timeline": "Flexible",
+    "provider": "resend",
+    "submittedAt": "2026-11-04T23:18:13.043Z"
+  },
+  {
+    "id": "SYE-MW2QL9H8-1280",
+    "name": "Dr. Tarek El-Kabbani",
+    "email": "tarek@philae-health.com",
+    "company": "Philae Health AI",
+    "projectType": "AI Solutions & Neural Pipelines",
+    "platform": "Cross-Platform Web & Cloud",
+    "description": "We need an AI-driven predictive triage engine and telemedicine gateway designed for high reliability.",
+    "budget": "$50,000 - $100,000",
+    "timeline": "3 to 4 months",
+    "provider": "resend",
+    "submittedAt": "2026-11-04T23:17:19.292Z"
+  },
+  {
     "id": "NBX-MVX5ZJW4-3676",
     "name": "Sarah Connor",
     "email": "sarah@cyberdyne.io",

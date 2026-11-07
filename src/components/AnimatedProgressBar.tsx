@@ -62,11 +62,11 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
       className={`group relative p-5 rounded-2xl border transition-all duration-300 text-left cursor-pointer ${
         isActive
           ? isDark
-            ? 'bg-[#1E020C] border-[#C50337] shadow-[0_10px_30px_rgba(0,0,0,0.7),0_0_20px_rgba(197,3,55,0.25)] ring-1 ring-[#C50337]/40'
-            : 'bg-white border-[#69001F] shadow-[0_10px_30px_rgba(16,24,32,0.08),0_0_15px_rgba(105,0,31,0.1)] ring-1 ring-[#69001F]/30'
+            ? 'bg-[#0E2336] border-[#D9A441] shadow-[0_10px_30px_rgba(0,0,0,0.7),0_0_20px_rgba(217,164,65,0.25)] ring-1 ring-[#D9A441]/40'
+            : 'bg-white border-[#143C5A] shadow-[0_10px_30px_rgba(16,24,32,0.08),0_0_15px_rgba(20,60,90,0.1)] ring-1 ring-[#143C5A]/30'
           : isDark
-          ? 'glass-panel-3d border-[#69001F]/30 hover:border-[#C50337]/50'
-          : 'bg-white/90 border-[#69001F]/15 hover:border-[#69001F]/40 shadow-sm'
+          ? 'glass-panel-3d border-[#143C5A]/30 hover:border-[#D9A441]/50'
+          : 'bg-white/90 border-[#143C5A]/15 hover:border-[#143C5A]/40 shadow-sm'
       }`}
     >
       {/* Top Header: Title, Metric, Architecture Tier */}
@@ -75,13 +75,13 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
           <div
             className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center border transition-transform duration-200 group-hover:scale-105 ${
               isDark
-                ? 'bg-[#02060E] border-[#69001F]/40'
-                : 'bg-slate-100 border-[#69001F]/20'
+                ? 'bg-[#0A1622] border-[#143C5A]/40'
+                : 'bg-slate-100 border-[#143C5A]/20'
             }`}
           >
             <Icon
               className={`w-4 h-4 ${
-                isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
               }`}
             />
           </div>
@@ -90,7 +90,7 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
             <div className="flex items-center gap-2">
               <h4
                 className={`font-display text-sm font-bold tracking-tight truncate ${
-                  isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+                  isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
                 }`}
               >
                 {skill.name}
@@ -100,7 +100,7 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
             {/* Zero-pill metadata inline */}
             <div
               className={`flex items-center gap-2 text-[11px] font-mono mt-0.5 ${
-                isDark ? 'text-[#F5EAF0]/60' : 'text-slate-500'
+                isDark ? 'text-[#FAF6EE]/60' : 'text-slate-500'
               }`}
             >
               <span>{skill.experience} Exp</span>
@@ -109,7 +109,7 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
               <span aria-hidden="true">·</span>
               <span
                 className={`font-semibold ${
-                  isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                  isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
                 }`}
               >
                 {skill.architectureTier}
@@ -122,14 +122,14 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
         <div className="text-right shrink-0">
           <div
             className={`font-mono text-lg font-bold tracking-tight ${
-              isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+              isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
             }`}
           >
             {skill.proficiency}%
           </div>
           <div
             className={`text-[10px] font-mono uppercase tracking-wider ${
-              isDark ? 'text-[#F5EAF0]/40' : 'text-slate-400'
+              isDark ? 'text-[#FAF6EE]/40' : 'text-slate-400'
             }`}
           >
             Proficiency
@@ -146,7 +146,7 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
           aria-valuemax={100}
           aria-label={`${skill.name} proficiency level`}
           className={`h-2.5 w-full rounded-full overflow-hidden relative ${
-            isDark ? 'bg-[#02060E] border border-white/5' : 'bg-slate-200/80'
+            isDark ? 'bg-[#0A1622] border border-white/5' : 'bg-slate-200/80'
           }`}
         >
           {/* Tick markers at 25%, 50%, 75% */}
@@ -167,15 +167,15 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
           <div
             className={`h-full rounded-full transition-all duration-1000 ease-out relative ${
               isDark
-                ? 'bg-gradient-to-r from-[#310014] via-[#850021] to-[#C50337]'
-                : 'bg-gradient-to-r from-[#1E020C] via-[#69001F] to-[#C50337]'
+                ? 'bg-gradient-to-r from-[#143C5A] via-[#1E557E] to-[#D9A441]'
+                : 'bg-gradient-to-r from-[#0E2336] via-[#143C5A] to-[#D9A441]'
             }`}
             style={{ width: `${fillPercent}%` }}
           >
             {/* Glowing leading head */}
             <div
               className={`absolute right-0 top-0 bottom-0 w-2 rounded-full ${
-                isDark ? 'bg-white shadow-[0_0_8px_#C50337]' : 'bg-white shadow-[0_0_8px_#69001F]'
+                isDark ? 'bg-white shadow-[0_0_8px_#D9A441]' : 'bg-white shadow-[0_0_8px_#143C5A]'
               }`}
             />
           </div>
@@ -184,7 +184,7 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
         {/* Channel ticks labels */}
         <div
           className={`flex justify-between text-[9px] font-mono px-0.5 ${
-            isDark ? 'text-[#F5EAF0]/30' : 'text-slate-400'
+            isDark ? 'text-[#FAF6EE]/30' : 'text-slate-400'
           }`}
         >
           <span>0%</span>
@@ -199,22 +199,22 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
       <div
         className={`grid grid-cols-3 gap-2 py-2 px-3 rounded-xl text-xs font-mono border ${
           isDark
-            ? 'bg-[#02060E]/70 border-[#69001F]/20 text-[#F5EAF0]/80'
-            : 'bg-slate-50 border-[#69001F]/10 text-slate-700'
+            ? 'bg-[#0A1622]/70 border-[#143C5A]/20 text-[#FAF6EE]/80'
+            : 'bg-slate-50 border-[#143C5A]/10 text-slate-700'
         }`}
       >
         {skill.metrics.map((metric) => (
           <div key={metric.label} className="truncate">
             <span
               className={`block text-[10px] truncate ${
-                isDark ? 'text-[#F5EAF0]/45' : 'text-slate-400'
+                isDark ? 'text-[#FAF6EE]/45' : 'text-slate-400'
               }`}
             >
               {metric.label}
             </span>
             <span
               className={`font-semibold ${
-                isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+                isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
               }`}
             >
               {metric.value}
@@ -227,7 +227,7 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-3 text-[11px] font-mono">
         <span
           className={`text-[10px] uppercase tracking-wider font-semibold ${
-            isDark ? 'text-[#F5EAF0]/40' : 'text-slate-400'
+            isDark ? 'text-[#FAF6EE]/40' : 'text-slate-400'
           }`}
         >
           Stack:
@@ -237,15 +237,15 @@ export const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({
             <span
               className={`transition-colors ${
                 isDark
-                  ? 'text-[#F5EAF0]/80 group-hover:text-[#F5EAF0]'
-                  : 'text-slate-700 group-hover:text-[#02060E]'
+                  ? 'text-[#FAF6EE]/80 group-hover:text-[#FAF6EE]'
+                  : 'text-slate-700 group-hover:text-[#0A1622]'
               }`}
             >
               {tag}
             </span>
             {idx < skill.tags.length - 1 && (
               <span
-                className={isDark ? 'text-[#F5EAF0]/25' : 'text-slate-300'}
+                className={isDark ? 'text-[#FAF6EE]/25' : 'text-slate-300'}
                 aria-hidden="true"
               >
                 ·

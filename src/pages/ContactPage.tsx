@@ -345,7 +345,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
 
   const handleCopyBrief = () => {
     const sourceData = lastSubmittedInquiry || formData;
-    const briefText = `NUBIX PROJECT INQUIRY\n${'='.repeat(35)}\nClient: ${sourceData.name}\nEmail: ${sourceData.email}\nCompany: ${sourceData.company || 'N/A'}\nProject Type: ${sourceData.projectType}\nPlatform: ${sourceData.platform}\nBudget Range: ${sourceData.budget}\nTimeline: ${sourceData.timeline}\nReference ID: ${submissionOutcome.deliveryId || 'Pending'}\n\nProject Scope Description:\n${sourceData.description}\n`;
+    const briefText = `SYENE SOLUTIONS PROJECT INQUIRY\n${'='.repeat(35)}\nClient: ${sourceData.name}\nEmail: ${sourceData.email}\nCompany: ${sourceData.company || 'N/A'}\nProject Type: ${sourceData.projectType}\nPlatform: ${sourceData.platform}\nBudget Range: ${sourceData.budget}\nTimeline: ${sourceData.timeline}\nReference ID: ${submissionOutcome.deliveryId || 'Pending'}\n\nProject Scope Description:\n${sourceData.description}\n`;
 
     navigator.clipboard.writeText(briefText).then(() => {
       setCopiedBrief(true);
@@ -362,13 +362,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
       <PageSEO
         title={
           language === 'ar'
-            ? 'بدء مشروع جديد — استفسار وتقييم فني | نوبيكس'
-            : 'Start a Project — Project Inquiry | Nubix — Software & AI Studio'
+            ? 'بدء مشروع جديد — استفسار وتقييم فني | سايين سوليوشنز'
+            : 'Start a Project — Project Inquiry | Syene Solutions — Software & AI Studio'
         }
         description={
           language === 'ar'
-            ? 'أرسل تفاصيل مشروعك إلى نوبيكس لتطوير تطبيقات الويب والموبايل، وحلول الذكاء الاصطناعي، وتكييف الأنظمة الجاهزة.'
-            : 'Submit a project inquiry to Nubix for custom web and mobile development, applied AI solutions, or Ready-Made software adaptations.'
+            ? 'أرسل تفاصيل مشروعك إلى سايين سوليوشنز لتطوير تطبيقات الويب والموبايل، وحلول الذكاء الاصطناعي، وتكييف الأنظمة الجاهزة.'
+            : 'Submit a project inquiry to Syene Solutions for custom web and mobile development, applied AI solutions, or Ready-Made software adaptations.'
         }
         path="/contact"
       />
@@ -377,21 +377,21 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
       <section
         className={`py-16 lg:py-24 border-b relative transition-colors duration-300 ${
           isDark
-            ? 'crimson-ambient-glow text-[#F5EAF0] border-[#69001F]/50'
-            : 'bg-gradient-to-b from-[#F5EAF0] to-[#EEDBE6] text-[#02060E] border-[#69001F]/15'
+            ? 'syene-ambient-glow text-[#FAF6EE] border-[#143C5A]/50'
+            : 'bg-gradient-to-b from-[#FAF6EE] to-[#F1ECE0] text-[#0A1622] border-[#143C5A]/15'
         }`}
       >
         <div className="max-w-[1240px] mx-auto px-6 space-y-4">
-          <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+          <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
             {t.contactPage.kicker}
           </div>
           <h1 className={`font-display text-4xl sm:text-5xl font-bold tracking-tight ${
-            isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'
+            isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'
           }`}>
             {t.contactPage.title}
           </h1>
           <p className={`text-base sm:text-lg max-w-2xl leading-relaxed ${
-            isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'
+            isDark ? 'text-[#FAF6EE]/80' : 'text-[#143C5A]/85'
           }`}>
             {t.contactPage.subtitle}
           </p>
@@ -412,8 +412,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                 <div className="flex items-start justify-between gap-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center border shadow-lg ${
                     isDark
-                      ? 'bg-[#1E020C] text-[#C50337] border-[#C50337]/40 shadow-[0_0_20px_rgba(197,3,55,0.25)]'
-                      : 'bg-white text-[#69001F] border-[#69001F]/30 shadow-md'
+                      ? 'bg-[#0E2336] text-[#D9A441] border-[#D9A441]/40 shadow-[0_0_20px_rgba(217,164,65,0.25)]'
+                      : 'bg-white text-[#143C5A] border-[#143C5A]/30 shadow-md'
                   }`}>
                     <CheckCircle2 className="w-6 h-6" aria-hidden="true" />
                   </div>
@@ -421,12 +421,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="flex flex-col items-end gap-1">
                     <span className={`text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md border ${
                       isDark
-                        ? 'bg-[#1E020C] border-[#C50337]/40 text-[#C50337]'
-                        : 'bg-white border-[#69001F]/30 text-[#69001F]'
+                        ? 'bg-[#0E2336] border-[#D9A441]/40 text-[#D9A441]'
+                        : 'bg-white border-[#143C5A]/30 text-[#143C5A]'
                     }`}>
                       {language === 'ar' ? 'مؤكد وقيد المراجعة' : 'Confirmed & Logged'}
                     </span>
-                    <span className={`text-[10px] font-mono opacity-70 ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
+                    <span className={`text-[10px] font-mono opacity-70 ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}>
                       {submissionOutcome.provider === 'resend'
                         ? 'Resend Email Dispatch'
                         : submissionOutcome.provider === 'webhook'
@@ -437,14 +437,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                 </div>
 
                 <div className="space-y-2">
-                  <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {language === 'ar' ? 'تم تأكيد الإرسال · رقم المرجع:' : 'Delivery Confirmed · Reference ID:'}{' '}
                     <span className="font-bold underline">{submissionOutcome.deliveryId}</span>
                   </div>
-                  <h2 className={`font-display text-2xl sm:text-3xl font-bold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
+                  <h2 className={`font-display text-2xl sm:text-3xl font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}>
                     {t.contactPage.successTitle}
                   </h2>
-                  <p className={`text-sm leading-relaxed ${isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'}`}>
+                  <p className={`text-sm leading-relaxed ${isDark ? 'text-[#FAF6EE]/80' : 'text-[#143C5A]/85'}`}>
                     {submissionOutcome.message || t.contactPage.successMessage}
                   </p>
                 </div>
@@ -453,10 +453,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                 {lastSubmittedInquiry && (
                   <div className={`p-5 rounded-xl border text-xs font-mono space-y-3 ${
                     isDark
-                      ? 'bg-[#02060E]/80 border-[#69001F]/50 text-[#F5EAF0]'
-                      : 'bg-white/80 border-[#69001F]/20 text-[#02060E]'
+                      ? 'bg-[#0A1622]/80 border-[#143C5A]/50 text-[#FAF6EE]'
+                      : 'bg-white/80 border-[#143C5A]/20 text-[#0A1622]'
                   }`}>
-                    <div className="text-[11px] font-semibold uppercase tracking-wider text-[#C50337] flex items-center justify-between">
+                    <div className="text-[11px] font-semibold uppercase tracking-wider text-[#D9A441] flex items-center justify-between">
                       <span>{language === 'ar' ? 'ملخص الاستفسار المسجل' : 'Logged Inquiry Summary'}</span>
                       <span className="opacity-60">{new Date().toLocaleTimeString()}</span>
                     </div>
@@ -498,15 +498,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                 )}
 
                 <div className={`pt-4 border-t flex flex-wrap items-center gap-3 ${
-                  isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'
+                  isDark ? 'border-[#143C5A]/50' : 'border-[#143C5A]/15'
                 }`}>
                   <button
                     type="button"
                     onClick={handleCopyBrief}
                     className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold rounded-xl border transition-colors ${
                       isDark
-                        ? 'bg-[#1E020C] text-[#F5EAF0] border-[#69001F]/70 hover:border-[#C50337]'
-                        : 'bg-white text-[#02060E] border-[#69001F]/30 hover:border-[#69001F]'
+                        ? 'bg-[#0E2336] text-[#FAF6EE] border-[#143C5A]/70 hover:border-[#D9A441]'
+                        : 'bg-white text-[#0A1622] border-[#143C5A]/30 hover:border-[#143C5A]'
                     }`}
                   >
                     {copiedBrief ? (
@@ -541,8 +541,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     }}
                     className={`px-5 py-2.5 text-xs font-semibold rounded-xl transition-colors ${
                       isDark
-                        ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-md hover:opacity-95'
-                        : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                        ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-md hover:opacity-95'
+                        : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                     }`}
                   >
                     {language === 'ar' ? 'إرسال استفسار آخر' : 'Submit Another Inquiry'}
@@ -553,8 +553,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     onClick={() => onNavigate('/projects')}
                     className={`px-5 py-2.5 text-xs font-semibold border rounded-xl transition-colors ${
                       isDark
-                        ? 'text-[#F5EAF0] border-[#69001F]/70 hover:border-[#C50337]'
-                        : 'text-[#02060E] border-[#69001F]/30 hover:border-[#69001F]'
+                        ? 'text-[#FAF6EE] border-[#143C5A]/70 hover:border-[#D9A441]'
+                        : 'text-[#0A1622] border-[#143C5A]/30 hover:border-[#143C5A]'
                     }`}
                   >
                     {language === 'ar' ? 'العودة لمعرض المشاريع' : 'Return to Portfolio'}
@@ -569,9 +569,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
               >
                 {/* Form Quick Fill Bar */}
                 <div className={`pb-4 border-b flex items-center justify-between gap-3 text-xs ${
-                  isDark ? 'border-[#69001F]/40' : 'border-[#69001F]/15'
+                  isDark ? 'border-[#143C5A]/40' : 'border-[#143C5A]/15'
                 }`}>
-                  <div className={`font-mono text-[11px] ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                  <div className={`font-mono text-[11px] ${isDark ? 'text-[#FAF6EE]/60' : 'text-[#143C5A]/70'}`}>
                     {language === 'ar' ? 'استمارة استفسار المشاريع الرسمية' : 'Official Project Inquiry Form'}
                   </div>
 
@@ -581,8 +581,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     title={language === 'ar' ? 'ملء بيانات تجريبية للاختبار السريع' : 'Fill sample data for quick testing'}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
                       isDark
-                        ? 'bg-[#1E020C] text-[#C50337] hover:bg-[#310014] border border-[#69001F]/60'
-                        : 'bg-white text-[#69001F] hover:bg-slate-50 border border-[#69001F]/25 shadow-xs'
+                        ? 'bg-[#0E2336] text-[#D9A441] hover:bg-[#143C5A] border border-[#143C5A]/60'
+                        : 'bg-white text-[#143C5A] hover:bg-slate-50 border border-[#143C5A]/25 shadow-xs'
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
@@ -596,20 +596,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     role="alert"
                     className={`p-5 rounded-2xl border space-y-4 ${
                       isDark
-                        ? 'bg-[#1E020C] border-[#C50337]/40 text-[#F5EAF0]'
-                        : 'bg-[#F5EAF0] border-[#69001F]/30 text-[#02060E]'
+                        ? 'bg-[#0E2336] border-[#D9A441]/40 text-[#FAF6EE]'
+                        : 'bg-[#FAF6EE] border-[#143C5A]/30 text-[#0A1622]'
                     }`}
                   >
                     <div className="flex items-start gap-3">
                       <AlertCircle
-                        className={`w-5 h-5 shrink-0 mt-0.5 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}
+                        className={`w-5 h-5 shrink-0 mt-0.5 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}
                         aria-hidden="true"
                       />
                       <div className="space-y-1.5">
-                        <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                        <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                           {language === 'ar' ? 'ملاحظة الإرسال المباشر' : 'Delivery Notice'}
                         </div>
-                        <p className={`text-xs leading-relaxed ${isDark ? 'text-[#F5EAF0]/85' : 'text-[#69001F]/85'}`}>
+                        <p className={`text-xs leading-relaxed ${isDark ? 'text-[#FAF6EE]/85' : 'text-[#143C5A]/85'}`}>
                           {submissionOutcome.message}
                         </p>
                       </div>
@@ -620,8 +620,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                         onClick={handleCopyBrief}
                         className={`inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl transition-colors shadow-md ${
                           isDark
-                            ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_16px_rgba(197,3,55,0.3)]'
-                            : 'bg-[#69001F] text-[#F5EAF0]'
+                            ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_16px_rgba(217,164,65,0.25)]'
+                            : 'bg-[#143C5A] text-[#FAF6EE]'
                         }`}
                       >
                         {copiedBrief ? (
@@ -660,7 +660,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="space-y-1.5">
                     <label
                       htmlFor="inquiry-name"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.nameLabel} <span className="text-red-400">*</span>
                     </label>
@@ -677,8 +677,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       placeholder={t.contactPage.namePlaceholder}
                       className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                         isDark
-                          ? 'bg-[#1E020C]/90 text-[#F5EAF0] placeholder:text-[#F5EAF0]/30 border-[#69001F]/70 focus:border-[#C50337] focus:ring-2 focus:ring-[#C50337]/20'
-                          : 'bg-white text-[#02060E] placeholder:text-slate-400 border-[#69001F]/25 focus:border-[#69001F] focus:ring-2 focus:ring-[#69001F]/20'
+                          ? 'bg-[#0E2336]/90 text-[#FAF6EE] placeholder:text-[#FAF6EE]/30 border-[#143C5A]/70 focus:border-[#D9A441] focus:ring-2 focus:ring-[#D9A441]/20'
+                          : 'bg-white text-[#0A1622] placeholder:text-slate-400 border-[#143C5A]/25 focus:border-[#143C5A] focus:ring-2 focus:ring-[#143C5A]/20'
                       } ${errors.name ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                     />
                     {errors.name && (
@@ -691,7 +691,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="space-y-1.5">
                     <label
                       htmlFor="inquiry-email"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.emailLabel} <span className="text-red-400">*</span>
                     </label>
@@ -708,8 +708,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       placeholder={t.contactPage.emailPlaceholder}
                       className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                         isDark
-                          ? 'bg-[#1E020C]/90 text-[#F5EAF0] placeholder:text-[#F5EAF0]/30 border-[#69001F]/70 focus:border-[#C50337] focus:ring-2 focus:ring-[#C50337]/20'
-                          : 'bg-white text-[#02060E] placeholder:text-slate-400 border-[#69001F]/25 focus:border-[#69001F] focus:ring-2 focus:ring-[#69001F]/20'
+                          ? 'bg-[#0E2336]/90 text-[#FAF6EE] placeholder:text-[#FAF6EE]/30 border-[#143C5A]/70 focus:border-[#D9A441] focus:ring-2 focus:ring-[#D9A441]/20'
+                          : 'bg-white text-[#0A1622] placeholder:text-slate-400 border-[#143C5A]/25 focus:border-[#143C5A] focus:ring-2 focus:ring-[#143C5A]/20'
                       } ${errors.email ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                     />
                     {errors.email && (
@@ -724,10 +724,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                 <div className="space-y-1.5">
                   <label
                     htmlFor="inquiry-company"
-                    className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                    className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                   >
                     {t.contactPage.companyLabel}{' '}
-                    <span className={`font-normal ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'}`}>
+                    <span className={`font-normal ${isDark ? 'text-[#FAF6EE]/50' : 'text-[#143C5A]/60'}`}>
                       ({language === 'ar' ? 'اختياري' : 'Optional'})
                     </span>
                   </label>
@@ -741,8 +741,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     placeholder={t.contactPage.companyPlaceholder}
                     className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                       isDark
-                        ? 'border-[#69001F]/70 bg-[#1E020C]/90 text-[#F5EAF0] placeholder:text-[#F5EAF0]/30 focus:border-[#C50337]'
-                        : 'border-[#69001F]/25 bg-white text-[#02060E] placeholder:text-slate-400 focus:border-[#69001F]'
+                        ? 'border-[#143C5A]/70 bg-[#0E2336]/90 text-[#FAF6EE] placeholder:text-[#FAF6EE]/30 focus:border-[#D9A441]'
+                        : 'border-[#143C5A]/25 bg-white text-[#0A1622] placeholder:text-slate-400 focus:border-[#143C5A]'
                     }`}
                   />
                 </div>
@@ -752,7 +752,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="space-y-1.5">
                     <label
                       htmlFor="inquiry-project-type"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.projectTypeLabel} <span className="text-red-400">*</span>
                     </label>
@@ -766,15 +766,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       aria-describedby={errors.projectType ? 'error-project-type' : undefined}
                       className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                         isDark
-                          ? 'bg-[#1E020C]/90 text-[#F5EAF0] border-[#69001F]/70 focus:border-[#C50337]'
-                          : 'bg-white text-[#02060E] border-[#69001F]/25 focus:border-[#69001F]'
+                          ? 'bg-[#0E2336]/90 text-[#FAF6EE] border-[#143C5A]/70 focus:border-[#D9A441]'
+                          : 'bg-white text-[#0A1622] border-[#143C5A]/25 focus:border-[#143C5A]'
                       } ${errors.projectType ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                     >
-                      <option value="" className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                      <option value="" className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                         {language === 'ar' ? 'اختر نوع المشروع...' : 'Select project type...'}
                       </option>
                       {PROJECT_TYPES_DATA.map((pt) => (
-                        <option key={pt.en} value={pt.en} className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                        <option key={pt.en} value={pt.en} className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                           {language === 'ar' ? pt.ar : pt.en}
                         </option>
                       ))}
@@ -789,7 +789,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="space-y-1.5">
                     <label
                       htmlFor="inquiry-platform"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.platformLabel} <span className="text-red-400">*</span>
                     </label>
@@ -803,15 +803,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       aria-describedby={errors.platform ? 'error-platform' : undefined}
                       className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                         isDark
-                          ? 'bg-[#1E020C]/90 text-[#F5EAF0] border-[#69001F]/70 focus:border-[#C50337]'
-                          : 'bg-white text-[#02060E] border-[#69001F]/25 focus:border-[#69001F]'
+                          ? 'bg-[#0E2336]/90 text-[#FAF6EE] border-[#143C5A]/70 focus:border-[#D9A441]'
+                          : 'bg-white text-[#0A1622] border-[#143C5A]/25 focus:border-[#143C5A]'
                       } ${errors.platform ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                     >
-                      <option value="" className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                      <option value="" className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                         {language === 'ar' ? 'اختر المنصة المستهدفة...' : 'Select target platform...'}
                       </option>
                       {PLATFORMS_DATA.map((plat) => (
-                        <option key={plat.en} value={plat.en} className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                        <option key={plat.en} value={plat.en} className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                           {language === 'ar' ? plat.ar : plat.en}
                         </option>
                       ))}
@@ -829,7 +829,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="space-y-1.5">
                     <label
                       htmlFor="inquiry-budget"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.budgetLabel} <span className="text-red-400">*</span>
                     </label>
@@ -843,15 +843,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       aria-describedby={errors.budget ? 'error-budget' : undefined}
                       className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                         isDark
-                          ? 'bg-[#1E020C]/90 text-[#F5EAF0] border-[#69001F]/70 focus:border-[#C50337]'
-                          : 'bg-white text-[#02060E] border-[#69001F]/25 focus:border-[#69001F]'
+                          ? 'bg-[#0E2336]/90 text-[#FAF6EE] border-[#143C5A]/70 focus:border-[#D9A441]'
+                          : 'bg-white text-[#0A1622] border-[#143C5A]/25 focus:border-[#143C5A]'
                       } ${errors.budget ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                     >
-                      <option value="" className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                      <option value="" className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                         {language === 'ar' ? 'اختر نطاق الميزانية...' : 'Select budget range...'}
                       </option>
                       {BUDGET_RANGES_DATA.map((b) => (
-                        <option key={b.en} value={b.en} className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                        <option key={b.en} value={b.en} className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                           {language === 'ar' ? b.ar : b.en}
                         </option>
                       ))}
@@ -866,7 +866,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="space-y-1.5">
                     <label
                       htmlFor="inquiry-timeline"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.timelineLabel} <span className="text-red-400">*</span>
                     </label>
@@ -880,15 +880,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       aria-describedby={errors.timeline ? 'error-timeline' : undefined}
                       className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                         isDark
-                          ? 'bg-[#1E020C]/90 text-[#F5EAF0] border-[#69001F]/70 focus:border-[#C50337]'
-                          : 'bg-white text-[#02060E] border-[#69001F]/25 focus:border-[#69001F]'
+                          ? 'bg-[#0E2336]/90 text-[#FAF6EE] border-[#143C5A]/70 focus:border-[#D9A441]'
+                          : 'bg-white text-[#0A1622] border-[#143C5A]/25 focus:border-[#143C5A]'
                       } ${errors.timeline ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                     >
-                      <option value="" className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                      <option value="" className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                         {language === 'ar' ? 'اختر الجدول الزمني المستهدف...' : 'Select target timeline...'}
                       </option>
                       {TIMELINES_DATA.map((tm) => (
-                        <option key={tm.en} value={tm.en} className={isDark ? 'bg-[#1E020C] text-[#F5EAF0]' : 'bg-white text-[#02060E]'}>
+                        <option key={tm.en} value={tm.en} className={isDark ? 'bg-[#0E2336] text-[#FAF6EE]' : 'bg-white text-[#0A1622]'}>
                           {language === 'ar' ? tm.ar : tm.en}
                         </option>
                       ))}
@@ -906,11 +906,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="inquiry-description"
-                      className={`block text-xs font-semibold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}
+                      className={`block text-xs font-semibold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}
                     >
                       {t.contactPage.descriptionLabel} <span className="text-red-400">*</span>
                     </label>
-                    <span className={`text-xs font-mono tabular-nums ${isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/65'}`}>
+                    <span className={`text-xs font-mono tabular-nums ${isDark ? 'text-[#FAF6EE]/50' : 'text-[#143C5A]/65'}`}>
                       {formData.description.trim().length} {language === 'ar' ? 'حرفاً (الحد الأدنى ١٠)' : 'chars (min 10)'}
                     </span>
                   </div>
@@ -926,8 +926,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     placeholder={t.contactPage.descriptionPlaceholder}
                     className={`w-full px-4 py-3 text-sm rounded-xl border transition-colors ${
                       isDark
-                        ? 'bg-[#1E020C]/90 text-[#F5EAF0] placeholder:text-[#F5EAF0]/30 border-[#69001F]/70 focus:border-[#C50337] focus:ring-2 focus:ring-[#C50337]/20'
-                        : 'bg-white text-[#02060E] placeholder:text-slate-400 border-[#69001F]/25 focus:border-[#69001F] focus:ring-2 focus:ring-[#69001F]/20'
+                        ? 'bg-[#0E2336]/90 text-[#FAF6EE] placeholder:text-[#FAF6EE]/30 border-[#143C5A]/70 focus:border-[#D9A441] focus:ring-2 focus:ring-[#D9A441]/20'
+                        : 'bg-white text-[#0A1622] placeholder:text-slate-400 border-[#143C5A]/25 focus:border-[#143C5A] focus:ring-2 focus:ring-[#143C5A]/20'
                     } ${errors.description ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : ''}`}
                   />
                   {errors.description && (
@@ -948,9 +948,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                       onChange={(e) => handleChange('consent', e.target.checked)}
                       aria-invalid={Boolean(errors.consent)}
                       aria-describedby={errors.consent ? 'error-consent' : undefined}
-                      className="mt-1 w-4 h-4 rounded border-[#69001F]/40 text-[#C50337] focus:ring-[#C50337]"
+                      className="mt-1 w-4 h-4 rounded border-[#143C5A]/40 text-[#D9A441] focus:ring-[#D9A441]"
                     />
-                    <span className={`text-xs leading-relaxed ${isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]/85'}`}>
+                    <span className={`text-xs leading-relaxed ${isDark ? 'text-[#FAF6EE]/80' : 'text-[#143C5A]/85'}`}>
                       {t.contactPage.consent} <span className="text-red-400">*</span>
                     </span>
                   </label>
@@ -963,10 +963,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
 
                 {/* Submit Button */}
                 <div className={`pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t ${
-                  isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'
+                  isDark ? 'border-[#143C5A]/50' : 'border-[#143C5A]/15'
                 }`}>
-                  <div className={`text-xs flex items-center gap-2 ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
-                    <ShieldCheck className={`w-4 h-4 shrink-0 ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`} aria-hidden="true" />
+                  <div className={`text-xs flex items-center gap-2 ${isDark ? 'text-[#FAF6EE]/60' : 'text-[#143C5A]/70'}`}>
+                    <ShieldCheck className={`w-4 h-4 shrink-0 ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`} aria-hidden="true" />
                     <span>
                       {language === 'ar'
                         ? 'طلب خاضع للتحقق البرمجي · حماية وأمان كامل للبيانات'
@@ -979,8 +979,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
                     disabled={isSubmitting}
                     className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl shadow-md disabled:opacity-60 transition-all whitespace-nowrap shrink-0 ${
                       isDark
-                        ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_24px_rgba(197,3,55,0.32)] hover:shadow-[0_0_32px_rgba(197,3,55,0.5)]'
-                        : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                        ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_24px_rgba(217,164,65,0.32)] hover:shadow-[0_0_32px_rgba(217,164,65,0.5)]'
+                        : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                     }`}
                   >
                     {isSubmitting ? (
@@ -1003,46 +1003,46 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
           {/* Right Sidebar */}
           <aside className="lg:col-span-4 space-y-6">
             <Card3DTilt className="p-7 rounded-2xl glass-panel-3d space-y-6">
-              <div className={`space-y-2 pb-5 border-b ${isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'}`}>
-                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+              <div className={`space-y-2 pb-5 border-b ${isDark ? 'border-[#143C5A]/50' : 'border-[#143C5A]/15'}`}>
+                <div className={`text-xs font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                   {language === 'ar' ? 'ماذا يحدث بعد الإرسال؟' : 'What Happens Next'}
                 </div>
-                <h2 className={`font-display text-xl font-bold ${isDark ? 'text-[#F5EAF0]' : 'text-[#02060E]'}`}>
+                <h2 className={`font-display text-xl font-bold ${isDark ? 'text-[#FAF6EE]' : 'text-[#0A1622]'}`}>
                   {language === 'ar' ? 'مراجعة هندسية دقيقة' : 'Structured inquiry review'}
                 </h2>
-                <p className={`text-xs leading-relaxed ${isDark ? 'text-[#F5EAF0]/75' : 'text-[#69001F]/80'}`}>
+                <p className={`text-xs leading-relaxed ${isDark ? 'text-[#FAF6EE]/75' : 'text-[#143C5A]/80'}`}>
                   {language === 'ar'
                     ? 'تتم مراجعة كل استفسار مباشرة من مهندسي الاستوديو دون الاعتماد على رسائل آلية أو قوالب عامة.'
                     : 'Every inquiry is reviewed directly by our engineering studio. We do not use automated sales bots or generic templates.'}
                 </p>
               </div>
 
-              <ol className={`space-y-4 text-xs ${isDark ? 'text-[#F5EAF0]/80' : 'text-[#69001F]'}`}>
+              <ol className={`space-y-4 text-xs ${isDark ? 'text-[#FAF6EE]/80' : 'text-[#143C5A]'}`}>
                 <li className="space-y-1">
-                  <div className={`font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {language === 'ar' ? '٠١ · فحص الجدوى والمتطلبات التقنية' : '01 · Technical Feasibility Check'}
                   </div>
-                  <p className={`leading-relaxed ${isDark ? 'text-[#F5EAF0]/70' : 'text-[#69001F]/80'}`}>
+                  <p className={`leading-relaxed ${isDark ? 'text-[#FAF6EE]/70' : 'text-[#143C5A]/80'}`}>
                     {language === 'ar'
                       ? 'ندرس أهدافك الوظيفية، والمنصة المختارة، واحتياجات التكامل مع الأنظمة الخارجية.'
                       : 'We review your functional goals, platform choice, and integration needs.'}
                   </p>
                 </li>
                 <li className="space-y-1">
-                  <div className={`font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {language === 'ar' ? '٠٢ · التوصية بنموذج التنفيذ الأنسب' : '02 · Model Recommendation'}
                   </div>
-                  <p className={`leading-relaxed ${isDark ? 'text-[#F5EAF0]/70' : 'text-[#69001F]/80'}`}>
+                  <p className={`leading-relaxed ${isDark ? 'text-[#FAF6EE]/70' : 'text-[#143C5A]/80'}`}>
                     {language === 'ar'
                       ? 'إذا كانت هناك وحدة جاهزة أو نظام قابل للتخصيص يفي بالغرض، نوصي به أولاً لتوفير الوقت والتكلفة.'
                       : 'If an existing Ready-Made or Customized module fits your brief, we recommend it first to save you time and budget.'}
                   </p>
                 </li>
                 <li className="space-y-1">
-                  <div className={`font-mono font-semibold ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-mono font-semibold ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {language === 'ar' ? '٠٣ · وثيقة نطاق العمل وعرض السعر' : '03 · Written Scope & Quote'}
                   </div>
-                  <p className={`leading-relaxed ${isDark ? 'text-[#F5EAF0]/70' : 'text-[#69001F]/80'}`}>
+                  <p className={`leading-relaxed ${isDark ? 'text-[#FAF6EE]/70' : 'text-[#143C5A]/80'}`}>
                     {language === 'ar'
                       ? 'نعد تفصيلاً واضحاً للمراحل الزمنية، وقائمة المخرجات بدقة، وعرض سعر محدد وشفاف.'
                       : 'We prepare a clear milestone breakdown, deliverables list, and fixed or starting package quote.'}
@@ -1052,11 +1052,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ searchQuery, onNavigat
 
               {/* Delivery Integration Status Indicator */}
               {deliveryStatus && (
-                <div className={`pt-5 border-t space-y-1.5 text-xs ${isDark ? 'border-[#69001F]/50' : 'border-[#69001F]/15'}`}>
-                  <div className={`font-mono ${isDark ? 'text-[#F5EAF0]/60' : 'text-[#69001F]/70'}`}>
+                <div className={`pt-5 border-t space-y-1.5 text-xs ${isDark ? 'border-[#143C5A]/50' : 'border-[#143C5A]/15'}`}>
+                  <div className={`font-mono ${isDark ? 'text-[#FAF6EE]/60' : 'text-[#143C5A]/70'}`}>
                     {language === 'ar' ? 'نقطة استقبال الاستفسارات' : 'Inquiry Delivery Endpoint'}
                   </div>
-                  <div className={`font-medium ${isDark ? 'text-[#C50337]' : 'text-[#69001F]'}`}>
+                  <div className={`font-medium ${isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}`}>
                     {deliveryStatus.configured
                       ? (language === 'ar' ? `نشط (${deliveryStatus.provider.toUpperCase()} معتمد)` : `Active (${deliveryStatus.provider.toUpperCase()} verified)`)
                       : (language === 'ar' ? 'في انتظار مفاتيح البيئة (RESEND_API_KEY / CONTACT_WEBHOOK_URL)' : 'Awaiting Production Env Vars (RESEND_API_KEY / CONTACT_WEBHOOK_URL)')}

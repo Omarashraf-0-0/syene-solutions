@@ -71,12 +71,12 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
     >
       {/* Background Track */}
       <div className="w-full h-[3px] bg-black/10 dark:bg-white/10 backdrop-blur-xs relative overflow-hidden">
-        {/* Dynamic Progress Fill with Crimson Noir Gradient */}
+        {/* Dynamic Progress Fill with Syene Nile to Gold Gradient */}
         <div
           className={`h-full relative transition-[width] duration-75 ease-out ${
             isDark
-              ? 'bg-gradient-to-r from-[#02060E] via-[#850021] to-[#C50337] shadow-[0_0_10px_rgba(197,3,55,0.7)]'
-              : 'bg-gradient-to-r from-[#69001F] via-[#850021] to-[#C50337] shadow-[0_0_8px_rgba(105,0,31,0.4)]'
+              ? 'bg-gradient-to-r from-[#143C5A] via-[#1E557E] to-[#D9A441] shadow-[0_0_10px_rgba(217,164,65,0.4)]'
+              : 'bg-gradient-to-r from-[#143C5A] via-[#6E87A0] to-[#D9A441] shadow-[0_0_8px_rgba(217,164,65,0.3)]'
           }`}
           style={{
             width: `${progress}%`,
@@ -92,8 +92,8 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
                 isRTL ? 'left-0 -translate-x-1/2' : 'right-0 translate-x-1/2'
               } ${
                 isDark
-                  ? 'bg-[#C50337] shadow-[0_0_8px_#C50337]'
-                  : 'bg-[#69001F] shadow-[0_0_6px_#69001F]'
+                  ? 'bg-[#D9A441] shadow-[0_0_8px_#D9A441]'
+                  : 'bg-[#143C5A] shadow-[0_0_6px_#143C5A]'
               }`}
               aria-hidden="true"
             />
@@ -111,8 +111,8 @@ export const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
           <div
             className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-medium backdrop-blur-md border shadow-xs transition-colors ${
               isDark
-                ? 'bg-[#1E020C]/80 text-[#C50337] border-[#69001F]/60'
-                : 'bg-white/85 text-[#69001F] border-[#69001F]/30'
+                ? 'bg-[#0E2336]/80 text-[#D9A441] border-[#143C5A]/60'
+                : 'bg-white/85 text-[#143C5A] border-[#143C5A]/30'
             }`}
           >
             {roundedProgress}%

@@ -105,7 +105,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
       {/* Dynamic 3D ambient aura behind chart */}
       <div
         className={`absolute inset-10 rounded-full blur-3xl pointer-events-none opacity-30 transition-colors duration-500 ${
-          isDark ? 'bg-[#C50337]/15' : 'bg-[#69001F]/10'
+          isDark ? 'bg-[#D9A441]/15' : 'bg-[#143C5A]/10'
         }`}
         aria-hidden="true"
       />
@@ -116,24 +116,24 @@ export const RadarChart: React.FC<RadarChartProps> = ({
           <span
             className={`w-2 h-2 rounded-full ${
               isRotatingSweep ? 'animate-ping' : ''
-            } ${isDark ? 'bg-[#C50337]' : 'bg-[#69001F]'}`}
+            } ${isDark ? 'bg-[#D9A441]' : 'bg-[#143C5A]'}`}
           />
-          <span className={isDark ? 'text-[#C50337]' : 'text-[#69001F]'}>
+          <span className={isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}>
             RADAR // {total} VECTORS
           </span>
         </div>
 
         <div className="flex items-center gap-4">
-          <span className={isDark ? 'text-[#F5EAF0]/70' : 'text-slate-600'}>
-            MEAN: <strong className={isDark ? 'text-[#C50337]' : 'text-[#69001F]'}>{avgProficiency}%</strong>
+          <span className={isDark ? 'text-[#FAF6EE]/70' : 'text-slate-600'}>
+            MEAN: <strong className={isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'}>{avgProficiency}%</strong>
           </span>
           <button
             type="button"
             onClick={() => setIsRotatingSweep(!isRotatingSweep)}
             className={`text-[11px] underline underline-offset-4 transition-colors ${
               isDark
-                ? 'text-[#F5EAF0]/60 hover:text-[#C50337]'
-                : 'text-slate-500 hover:text-[#69001F]'
+                ? 'text-[#FAF6EE]/60 hover:text-[#D9A441]'
+                : 'text-slate-500 hover:text-[#143C5A]'
             }`}
           >
             {isRotatingSweep ? 'Pause Sweep' : 'Resume Sweep'}
@@ -150,34 +150,34 @@ export const RadarChart: React.FC<RadarChartProps> = ({
           <defs>
             {/* Dark & Light Radar Gradients */}
             <linearGradient id="radarDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#C50337" stopOpacity="0.45" />
-              <stop offset="50%" stopColor="#310014" stopOpacity="0.30" />
-              <stop offset="100%" stopColor="#69001F" stopOpacity="0.15" />
+              <stop offset="0%" stopColor="#D9A441" stopOpacity="0.45" />
+              <stop offset="50%" stopColor="#143C5A" stopOpacity="0.30" />
+              <stop offset="100%" stopColor="#143C5A" stopOpacity="0.15" />
             </linearGradient>
 
             <linearGradient id="radarLightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#69001F" stopOpacity="0.30" />
-              <stop offset="50%" stopColor="#F5EAF0" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#3B0018" stopOpacity="0.10" />
+              <stop offset="0%" stopColor="#143C5A" stopOpacity="0.30" />
+              <stop offset="50%" stopColor="#FAF6EE" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#0E2336" stopOpacity="0.10" />
             </linearGradient>
 
             <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
               <stop
                 offset="0%"
-                stopColor={isDark ? '#C50337' : '#69001F'}
+                stopColor={isDark ? '#D9A441' : '#143C5A'}
                 stopOpacity="0.35"
               />
               <stop
                 offset="100%"
-                stopColor={isDark ? '#C50337' : '#69001F'}
+                stopColor={isDark ? '#D9A441' : '#143C5A'}
                 stopOpacity="0.0"
               />
             </radialGradient>
 
             {/* Sweep Needle Mask */}
             <radialGradient id="sweepGradient" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#C50337" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#C50337" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#D9A441" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#D9A441" stopOpacity="0.0" />
             </radialGradient>
           </defs>
 
@@ -197,7 +197,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                 d={`M ${center} ${center} L ${center + maxRadius} ${center} A ${maxRadius} ${maxRadius} 0 0 1 ${
                   center + maxRadius * Math.cos(Math.PI / 4)
                 } ${center + maxRadius * Math.sin(Math.PI / 4)} Z`}
-                fill={isDark ? '#C50337' : '#69001F'}
+                fill={isDark ? '#D9A441' : '#143C5A'}
                 opacity="0.15"
               />
               <line
@@ -205,7 +205,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                 y1={center}
                 x2={center + maxRadius}
                 y2={center}
-                stroke={isDark ? '#C50337' : '#69001F'}
+                stroke={isDark ? '#D9A441' : '#143C5A'}
                 strokeWidth="1.5"
                 opacity="0.6"
               />
@@ -263,8 +263,8 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                 stroke={
                   isActive
                     ? isDark
-                      ? '#C50337'
-                      : '#69001F'
+                      ? '#D9A441'
+                      : '#143C5A'
                     : isDark
                     ? 'rgba(245, 234, 240, 0.12)'
                     : 'rgba(16, 24, 32, 0.12)'
@@ -279,7 +279,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
           <polygon
             points={polygonPoints}
             fill={isDark ? 'url(#radarDarkGradient)' : 'url(#radarLightGradient)'}
-            stroke={isDark ? '#C50337' : '#69001F'}
+            stroke={isDark ? '#D9A441' : '#143C5A'}
             strokeWidth="2"
             strokeLinejoin="round"
             className="transition-all duration-300"
@@ -311,7 +311,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                     cy={y}
                     r="10"
                     fill="none"
-                    stroke={isDark ? '#C50337' : '#69001F'}
+                    stroke={isDark ? '#D9A441' : '#143C5A'}
                     strokeWidth="1.5"
                     className="animate-ping opacity-75"
                   />
@@ -322,12 +322,12 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                   cx={x}
                   cy={y}
                   r={isActive ? '6' : '4.5'}
-                  fill={isDark ? '#02060E' : '#FFFFFF'}
+                  fill={isDark ? '#0A1622' : '#FFFFFF'}
                   stroke={
                     isActive
                       ? isDark
-                        ? '#C50337'
-                        : '#69001F'
+                        ? '#D9A441'
+                        : '#143C5A'
                       : isDark
                       ? 'rgba(197, 3, 55, 0.8)'
                       : 'rgba(105, 0, 31, 0.8)'
@@ -341,7 +341,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                   cx={x}
                   cy={y}
                   r="2"
-                  fill={isDark ? '#C50337' : '#69001F'}
+                  fill={isDark ? '#D9A441' : '#143C5A'}
                 />
               </g>
             );
@@ -369,11 +369,11 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                   fill={
                     isActive
                       ? isDark
-                        ? '#C50337'
-                        : '#69001F'
+                        ? '#D9A441'
+                        : '#143C5A'
                       : isDark
-                      ? '#F5EAF0'
-                      : '#02060E'
+                      ? '#FAF6EE'
+                      : '#0A1622'
                   }
                   className="transition-all duration-200"
                 >
@@ -389,8 +389,8 @@ export const RadarChart: React.FC<RadarChartProps> = ({
                   fill={
                     isActive
                       ? isDark
-                        ? '#C50337'
-                        : '#69001F'
+                        ? '#D9A441'
+                        : '#143C5A'
                       : isDark
                       ? 'rgba(245, 234, 240, 0.45)'
                       : 'rgba(105, 0, 31, 0.45)'
@@ -407,7 +407,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
             cx={center}
             cy={center}
             r="4"
-            fill={isDark ? '#C50337' : '#69001F'}
+            fill={isDark ? '#D9A441' : '#143C5A'}
           />
           <circle
             cx={center}
@@ -423,7 +423,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({
       {/* Quick helper caption */}
       <p
         className={`text-[11px] font-mono text-center mt-3 ${
-          isDark ? 'text-[#F5EAF0]/50' : 'text-[#69001F]/60'
+          isDark ? 'text-[#FAF6EE]/50' : 'text-[#143C5A]/60'
         }`}
       >
         Hover nodes to inspect architecture specs · Click any coordinate to freeze telemetry

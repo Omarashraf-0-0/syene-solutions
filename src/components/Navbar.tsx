@@ -8,6 +8,7 @@ import {
   FolderGit2,
   Layers,
   Workflow,
+  Compass,
   CreditCard,
   Send,
   Sparkles,
@@ -102,6 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     { label: t.nav.projects, path: '/projects', isActive: isProjectsActive, icon: FolderGit2 },
     { label: t.nav.services, path: '/#services', isActive: false, icon: Layers },
     { label: t.nav.howWeWork, path: '/#how-we-work', isActive: false, icon: Workflow },
+    { label: t.nav.about, path: '/#about', isActive: false, icon: Compass },
     { label: t.nav.pricing, path: '/#pricing', isActive: false, icon: CreditCard },
     { label: t.nav.contact, path: '/contact', isActive: isContactActive, icon: Send },
   ];
@@ -121,75 +123,65 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
         className={`absolute inset-0 -z-10 transition-all duration-300 pointer-events-none ${
           isScrolled
             ? isDark
-              ? 'bg-[#02060E]/92 backdrop-blur-xl border-b border-[#69001F]/50 shadow-[0_12px_36px_-10px_rgba(2,6,14,0.8)]'
-              : 'bg-[#F5EAF0]/94 backdrop-blur-xl border-b border-[#69001F]/20 shadow-[0_12px_36px_-10px_rgba(105,0,31,0.08)]'
+              ? 'bg-[#0A1622]/94 backdrop-blur-xl border-b border-[#D9A441]/25 shadow-[0_12px_36px_-10px_rgba(10,22,34,0.95)]'
+              : 'bg-[#FAF6EE]/95 backdrop-blur-xl border-b border-[#143C5A]/15 shadow-[0_12px_36px_-10px_rgba(20,60,90,0.08)]'
             : isDark
-            ? 'bg-[#02060E]/80 backdrop-blur-md border-b border-[#69001F]/30'
-            : 'bg-[#F5EAF0]/80 backdrop-blur-md border-b border-[#69001F]/10'
+            ? 'bg-[#0A1622]/80 backdrop-blur-md border-b border-[#143C5A]/40'
+            : 'bg-[#FAF6EE]/80 backdrop-blur-md border-b border-[#143C5A]/10'
         }`}
         aria-hidden="true"
       />
 
-      {/* Subtle top edge glow highlight in Crimson Red */}
+      {/* Radiant Top Edge Glow in Syene Gold */}
       <div
         className={`absolute top-0 left-0 right-0 h-[1.5px] pointer-events-none transition-opacity duration-300 ${
           isDark
-            ? 'bg-gradient-to-r from-transparent via-[#C50337]/50 to-transparent opacity-85'
-            : 'bg-gradient-to-r from-transparent via-[#69001F]/25 to-transparent opacity-65'
+            ? 'bg-gradient-to-r from-transparent via-[#D9A441]/60 to-transparent opacity-90'
+            : 'bg-gradient-to-r from-transparent via-[#D9A441]/40 to-transparent opacity-75'
         }`}
         aria-hidden="true"
       />
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
-        {/* Left: Confident Brand Logo */}
+        {/* Left: Confident Brand Logo with Syene Monolith & Well Mark */}
         <a
           href="/"
           onClick={(e) => handleLinkClick(e, '/')}
-          className="group flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] rounded-lg shrink-0"
-          aria-label="Nubix Studio Home"
+          className="group flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] rounded-lg shrink-0"
+          aria-label="Syene Solutions Home"
         >
-          {/* Luminous Geometric Prism Mark */}
-          <div className="relative w-8 h-8 flex items-center justify-center">
+          {/* Official Syene Solutions Emblem: Golden Felucca Sail over Nile Wave */}
+          <div className="relative w-9 h-9 flex items-center justify-center shrink-0">
             <div
-              className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+              className={`absolute inset-0 rounded-xl transition-all duration-300 ${
                 isDark
-                  ? 'bg-[#1E020C] border border-[#C50337]/35 group-hover:border-[#C50337] group-hover:shadow-[0_0_16px_rgba(197,3,55,0.4)]'
-                  : 'bg-white border border-[#69001F]/20 group-hover:border-[#69001F]/50 shadow-xs'
+                  ? 'bg-[#0E2336]/80 border border-[#D9A441]/35 group-hover:border-[#D9A441] group-hover:shadow-[0_0_16px_rgba(217,164,65,0.35)]'
+                  : 'bg-white border border-[#143C5A]/15 group-hover:border-[#D9A441] shadow-xs'
               }`}
             />
-            <svg
-              className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-12"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z"
-                className={isDark ? 'stroke-[#C50337]' : 'stroke-[#69001F]'}
-                strokeWidth="1.8"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M12 3V12M12 12L20 7.5M12 12L4 7.5M12 12V21"
-                className={isDark ? 'stroke-[#C50337]/55' : 'stroke-[#69001F]/50'}
-                strokeWidth="1.4"
-              />
-              <circle
-                cx="12"
-                cy="12"
-                r="2"
-                className={isDark ? 'fill-[#C50337]' : 'fill-[#69001F]'}
-              />
-            </svg>
+            <img
+              src="/syene-emblem.png"
+              alt="Syene Solutions"
+              className="w-7 h-7 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110 drop-shadow-sm"
+            />
           </div>
 
-          <span
-            className={`font-display text-xl font-extrabold tracking-tight transition-colors duration-150 ${
-              isDark ? 'text-[#F5EAF0] group-hover:text-[#C50337]' : 'text-[#02060E] group-hover:text-[#69001F]'
-            }`}
-          >
-            {t.nav.brandName}
-          </span>
+          <div className="flex flex-col">
+            <span
+              className={`font-display text-lg sm:text-xl font-extrabold tracking-tight transition-colors duration-150 leading-none ${
+                isDark ? 'text-[#FAF6EE] group-hover:text-[#D9A441]' : 'text-[#143C5A] group-hover:text-[#D9A441]'
+              }`}
+            >
+              {t.nav.brandName}
+            </span>
+            <span
+              className={`text-[9px] font-mono tracking-wider uppercase mt-0.5 opacity-60 ${
+                isDark ? 'text-[#8FA4BC]' : 'text-[#6E87A0]'
+              }`}
+            >
+              {language === 'ar' ? 'أسوان · مهد سايين' : 'Aswan · Ancient Syene'}
+            </span>
+          </div>
         </a>
 
         {/* Center: Floating Frosted Dock for Desktop (>= 1024px) */}
@@ -197,23 +189,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           aria-label="Primary navigation"
           className={`hidden lg:flex items-center p-1 rounded-full border transition-all duration-200 ${
             isDark
-              ? 'bg-[#1E020C]/85 border-[#69001F]/60 shadow-[inset_0_1px_0_rgba(245,234,240,0.05)]'
-              : 'bg-white/92 border-[#69001F]/15 shadow-xs'
+              ? 'bg-[#0E2336]/85 border-[#6E87A0]/30 shadow-[inset_0_1px_0_rgba(250,246,238,0.06)]'
+              : 'bg-white/94 border-[#143C5A]/15 shadow-xs'
           }`}
         >
-          {navLinks.slice(0, 4).map((link) => (
+          {navLinks.slice(0, 5).map((link) => (
             <a
               key={link.path}
               href={link.path}
               onClick={(e) => handleLinkClick(e, link.path)}
-              className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] ${
+              className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
                 link.isActive
                   ? isDark
-                    ? 'bg-[#69001F] text-[#F5EAF0] font-semibold border border-[#C50337]/40 shadow-[0_0_12px_rgba(197,3,55,0.22)]'
-                    : 'bg-[#69001F] text-[#F5EAF0] font-semibold shadow-xs'
+                    ? 'bg-[#143C5A] text-[#FAF6EE] font-semibold border border-[#D9A441]/50 shadow-[0_0_12px_rgba(217,164,65,0.25)]'
+                    : 'bg-[#143C5A] text-[#FAF6EE] font-semibold shadow-xs'
                   : isDark
-                  ? 'text-[#F5EAF0]/70 hover:text-[#F5EAF0] hover:bg-[#69001F]/35'
-                  : 'text-[#69001F]/80 hover:text-[#02060E] hover:bg-[#69001F]/10'
+                  ? 'text-[#FAF6EE]/75 hover:text-[#FAF6EE] hover:bg-[#143C5A]/40'
+                  : 'text-[#1D2733]/80 hover:text-[#143C5A] hover:bg-[#143C5A]/10'
               }`}
             >
               {link.label}
@@ -227,8 +219,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           <div
             className={`hidden md:flex items-center p-0.5 rounded-lg border text-xs font-mono font-medium ${
               isDark
-                ? 'bg-[#1E020C] border-[#69001F]/70'
-                : 'bg-white border-[#69001F]/20 shadow-2xs'
+                ? 'bg-[#0E2336] border-[#6E87A0]/30'
+                : 'bg-white border-[#143C5A]/20 shadow-2xs'
             }`}
           >
             <button
@@ -237,11 +229,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               className={`px-2 py-1 rounded-md transition-all ${
                 language === 'en'
                   ? isDark
-                    ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-xs'
-                    : 'bg-[#69001F] text-[#F5EAF0] font-bold shadow-xs'
+                    ? 'bg-[#D9A441] text-[#0A1622] font-bold shadow-xs'
+                    : 'bg-[#143C5A] text-[#FAF6EE] font-bold shadow-xs'
                   : isDark
-                  ? 'text-[#F5EAF0]/65 hover:text-[#F5EAF0]'
-                  : 'text-[#69001F]/80 hover:text-[#02060E]'
+                  ? 'text-[#FAF6EE]/65 hover:text-[#FAF6EE]'
+                  : 'text-[#143C5A]/80 hover:text-[#143C5A]'
               }`}
             >
               EN
@@ -252,11 +244,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               className={`px-2 py-1 rounded-md transition-all ${
                 language === 'ar'
                   ? isDark
-                    ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-xs'
-                    : 'bg-[#69001F] text-[#F5EAF0] font-bold shadow-xs'
+                    ? 'bg-[#D9A441] text-[#0A1622] font-bold shadow-xs'
+                    : 'bg-[#143C5A] text-[#FAF6EE] font-bold shadow-xs'
                   : isDark
-                  ? 'text-[#F5EAF0]/65 hover:text-[#F5EAF0]'
-                  : 'text-[#69001F]/80 hover:text-[#02060E]'
+                  ? 'text-[#FAF6EE]/65 hover:text-[#FAF6EE]'
+                  : 'text-[#143C5A]/80 hover:text-[#143C5A]'
               }`}
             >
               عربي
@@ -269,16 +261,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             onClick={toggleTheme}
             aria-label={isDark ? t.nav.switchToLight : t.nav.switchToDark}
             title={isDark ? t.nav.switchToLight : t.nav.switchToDark}
-            className={`inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] ${
+            className={`inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
               isDark
-                ? 'bg-[#1E020C] border-[#69001F]/70 text-[#C50337] hover:border-[#C50337]/60'
-                : 'bg-white border-[#69001F]/20 text-[#69001F] hover:border-[#69001F]/40 shadow-2xs'
+                ? 'bg-[#0E2336] border-[#6E87A0]/35 text-[#D9A441] hover:border-[#D9A441]/60'
+                : 'bg-white border-[#143C5A]/20 text-[#143C5A] hover:border-[#143C5A]/40 shadow-2xs'
             }`}
           >
             {isDark ? (
-              <Sun className="w-4 h-4 text-[#C50337] transition-transform duration-300 rotate-0 hover:rotate-90" />
+              <Sun className="w-4 h-4 text-[#D9A441] transition-transform duration-300 rotate-0 hover:rotate-90" />
             ) : (
-              <Moon className="w-4 h-4 text-[#69001F] transition-transform duration-300 rotate-0 hover:-rotate-45" />
+              <Moon className="w-4 h-4 text-[#143C5A] transition-transform duration-300 rotate-0 hover:-rotate-45" />
             )}
           </button>
 
@@ -286,10 +278,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           <a
             href="/contact"
             onClick={(e) => handleLinkClick(e, '/contact')}
-            className={`group hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 whitespace-nowrap shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] ${
+            className={`group hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 whitespace-nowrap shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
               isDark
-                ? 'crimson-noir-gradient text-[#F5EAF0] font-bold shadow-[0_0_18px_rgba(197,3,55,0.32)] hover:shadow-[0_0_26px_rgba(197,3,55,0.50)] hover:scale-[1.02] active:scale-[0.98]'
-                : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]'
+                ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_18px_rgba(217,164,65,0.28)] hover:shadow-[0_0_26px_rgba(217,164,65,0.45)] hover:scale-[1.02] active:scale-[0.98]'
+                : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]'
             }`}
           >
             <span>{t.nav.startProject}</span>
@@ -308,16 +300,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav-panel"
             aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
-            className={`lg:hidden inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] ${
+            className={`lg:hidden inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
               mobileMenuOpen
-                ? 'bg-[#C50337] border-[#C50337] text-[#F5EAF0] shadow-[0_0_14px_rgba(197,3,55,0.5)]'
+                ? 'bg-[#D9A441] border-[#D9A441] text-[#0A1622] shadow-[0_0_14px_rgba(217,164,65,0.5)]'
                 : isDark
-                ? 'bg-[#1E020C] border-[#69001F]/70 text-[#F5EAF0] hover:border-[#C50337]/60'
-                : 'bg-white border-[#69001F]/20 text-[#02060E] hover:bg-slate-50 shadow-2xs'
+                ? 'bg-[#0E2336] border-[#6E87A0]/35 text-[#FAF6EE] hover:border-[#D9A441]/60'
+                : 'bg-white border-[#143C5A]/20 text-[#143C5A] hover:bg-[#FAF6EE] shadow-2xs'
             }`}
           >
             {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-white transition-transform duration-200 rotate-90 scale-105" />
+              <X className="w-5 h-5 transition-transform duration-200 rotate-90 scale-105" />
             ) : (
               <Menu className="w-5 h-5 transition-transform duration-200" />
             )}
@@ -356,43 +348,43 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               style={{ transformOrigin: 'top' }}
-              className={`absolute top-full left-0 right-0 w-full z-50 lg:hidden border-b shadow-[0_24px_50px_-10px_rgba(2,6,14,0.92)] max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain transition-colors ${
+              className={`absolute top-full left-0 right-0 w-full z-50 lg:hidden border-b shadow-[0_24px_50px_-10px_rgba(10,22,34,0.95)] max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain transition-colors ${
                 isDark
-                  ? 'bg-[#02060E] border-[#69001F]/70 text-[#F5EAF0]'
-                  : 'bg-[#F5EAF0] border-[#69001F]/20 text-[#02060E]'
+                  ? 'bg-[#0A1622] border-[#D9A441]/30 text-[#FAF6EE]'
+                  : 'bg-[#FAF6EE] border-[#143C5A]/20 text-[#1D2733]'
               }`}
             >
-              {/* Subtle accent border line on top */}
+              {/* Radiant accent border line on top */}
               <div
                 className={`h-[1px] w-full ${
                   isDark
-                    ? 'bg-gradient-to-r from-transparent via-[#C50337]/60 to-transparent'
-                    : 'bg-gradient-to-r from-transparent via-[#69001F]/25 to-transparent'
+                    ? 'bg-gradient-to-r from-transparent via-[#D9A441]/60 to-transparent'
+                    : 'bg-gradient-to-r from-transparent via-[#143C5A]/30 to-transparent'
                 }`}
                 aria-hidden="true"
               />
 
               <div className="max-w-[1240px] mx-auto px-4 sm:px-6 py-5 space-y-4">
-                {/* Studio Live Availability Status */}
+                {/* Syene Studio Live Status */}
                 <div
                   className={`p-3 rounded-xl border flex items-center justify-between text-xs transition-colors ${
                     isDark
-                      ? 'bg-[#1E020C] border-[#C50337]/35 text-[#F5EAF0]'
-                      : 'bg-white border-[#69001F]/20 text-[#02060E] shadow-xs'
+                      ? 'bg-[#0E2336] border-[#D9A441]/35 text-[#FAF6EE]'
+                      : 'bg-white border-[#143C5A]/20 text-[#143C5A] shadow-xs'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C50337] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C50337]"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D9A441] opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D9A441]"></span>
                     </span>
                     <span className="font-semibold tracking-wide">
                       {language === 'ar'
-                        ? 'متاح للتعاقد والمشاريع الجديدة'
-                        : 'Available for new client engagements'}
+                        ? 'متاح للمشاريع الجديدة · أسوان، مصر'
+                        : 'Available for new client engagements · Aswan, Egypt'}
                     </span>
                   </div>
-                  <Sparkles className="w-3.5 h-3.5 text-[#C50337] shrink-0" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#D9A441] shrink-0" />
                 </div>
 
                 {/* Primary Navigation Links */}
@@ -404,14 +396,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                         key={link.path}
                         href={link.path}
                         onClick={(e) => handleLinkClick(e, link.path)}
-                        className={`flex items-center justify-between min-h-[48px] px-3.5 py-3 rounded-xl font-medium text-sm transition-all duration-150 outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] ${
+                        className={`flex items-center justify-between min-h-[48px] px-3.5 py-3 rounded-xl font-medium text-sm transition-all duration-150 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
                           link.isActive
                             ? isDark
-                              ? 'bg-[#69001F] text-[#F5EAF0] border border-[#C50337]/50 font-semibold shadow-[0_0_16px_rgba(197,3,55,0.2)]'
-                              : 'bg-white text-[#02060E] font-semibold border border-[#69001F]/25 shadow-xs'
+                              ? 'bg-[#143C5A] text-[#FAF6EE] border border-[#D9A441]/50 font-semibold shadow-[0_0_16px_rgba(217,164,65,0.2)]'
+                              : 'bg-white text-[#143C5A] font-semibold border border-[#143C5A]/25 shadow-xs'
                             : isDark
-                            ? 'text-[#F5EAF0]/85 hover:bg-[#1E020C] hover:text-[#F5EAF0]'
-                            : 'text-[#69001F]/85 hover:bg-white hover:text-[#02060E]'
+                            ? 'text-[#FAF6EE]/85 hover:bg-[#0E2336] hover:text-[#FAF6EE]'
+                            : 'text-[#1D2733]/85 hover:bg-white hover:text-[#143C5A]'
                         }`}
                       >
                         <div className="flex items-center gap-3">
@@ -419,11 +411,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                             className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                               link.isActive
                                 ? isDark
-                                  ? 'bg-[#C50337]/30 text-[#F5EAF0]'
-                                  : 'bg-[#69001F] text-[#F5EAF0]'
+                                  ? 'bg-[#D9A441]/25 text-[#D9A441]'
+                                  : 'bg-[#143C5A] text-[#FAF6EE]'
                                 : isDark
-                                ? 'bg-[#1E020C] border border-[#69001F]/40 text-[#F5EAF0]/70'
-                                : 'bg-[#EEDBE6] border border-[#69001F]/15 text-[#69001F]'
+                                ? 'bg-[#0E2336] border border-[#6E87A0]/30 text-[#8FA4BC]'
+                                : 'bg-[#FAF6EE] border border-[#143C5A]/15 text-[#143C5A]'
                             }`}
                           >
                             <IconComponent className="w-4 h-4" />
@@ -445,8 +437,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                 <div
                   className={`p-3.5 rounded-xl border space-y-3 ${
                     isDark
-                      ? 'bg-[#1E020C] border-[#69001F]/50'
-                      : 'bg-white border-[#69001F]/20 shadow-xs'
+                      ? 'bg-[#0E2336] border-[#6E87A0]/30'
+                      : 'bg-white border-[#143C5A]/20 shadow-xs'
                   }`}
                 >
                   {/* Language Selector */}
@@ -456,7 +448,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                     </span>
                     <div
                       className={`flex items-center p-0.5 rounded-lg border text-xs font-mono font-medium ${
-                        isDark ? 'bg-[#02060E] border-[#69001F]/60' : 'bg-slate-100 border-[#69001F]/15'
+                        isDark ? 'bg-[#0A1622] border-[#6E87A0]/40' : 'bg-slate-100 border-[#143C5A]/15'
                       }`}
                     >
                       <button
@@ -465,11 +457,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                         className={`min-h-[32px] px-3.5 py-1 rounded-md transition-all ${
                           language === 'en'
                             ? isDark
-                              ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-xs'
-                              : 'bg-[#69001F] text-white font-bold shadow-xs'
+                              ? 'bg-[#D9A441] text-[#0A1622] font-bold shadow-xs'
+                              : 'bg-[#143C5A] text-white font-bold shadow-xs'
                             : isDark
-                            ? 'text-[#F5EAF0]/60 hover:text-[#F5EAF0]'
-                            : 'text-[#69001F]/75 hover:text-[#02060E]'
+                            ? 'text-[#FAF6EE]/60 hover:text-[#FAF6EE]'
+                            : 'text-[#143C5A]/75 hover:text-[#143C5A]'
                         }`}
                       >
                         English
@@ -480,11 +472,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                         className={`min-h-[32px] px-3.5 py-1 rounded-md transition-all ${
                           language === 'ar'
                             ? isDark
-                              ? 'bg-[#C50337] text-[#F5EAF0] font-bold shadow-xs'
-                              : 'bg-[#69001F] text-white font-bold shadow-xs'
+                              ? 'bg-[#D9A441] text-[#0A1622] font-bold shadow-xs'
+                              : 'bg-[#143C5A] text-white font-bold shadow-xs'
                             : isDark
-                            ? 'text-[#F5EAF0]/60 hover:text-[#F5EAF0]'
-                            : 'text-[#69001F]/75 hover:text-[#02060E]'
+                            ? 'text-[#FAF6EE]/60 hover:text-[#FAF6EE]'
+                            : 'text-[#143C5A]/75 hover:text-[#143C5A]'
                         }`}
                       >
                         العربية
@@ -502,11 +494,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                       onClick={toggleTheme}
                       className={`inline-flex items-center gap-2 min-h-[32px] px-3.5 py-1.5 rounded-lg border text-xs font-mono transition-colors ${
                         isDark
-                          ? 'bg-[#02060E] border-[#69001F]/60 text-[#C50337] hover:border-[#C50337]/60'
-                          : 'bg-slate-100 border-[#69001F]/15 text-[#69001F] hover:bg-slate-200'
+                          ? 'bg-[#0A1622] border-[#6E87A0]/40 text-[#D9A441] hover:border-[#D9A441]/60'
+                          : 'bg-slate-100 border-[#143C5A]/15 text-[#143C5A] hover:bg-slate-200'
                       }`}
                     >
-                      {isDark ? <Sun className="w-3.5 h-3.5 text-[#C50337]" /> : <Moon className="w-3.5 h-3.5 text-[#69001F]" />}
+                      {isDark ? <Sun className="w-3.5 h-3.5 text-[#D9A441]" /> : <Moon className="w-3.5 h-3.5 text-[#143C5A]" />}
                       <span className="font-medium">
                         {isDark
                           ? language === 'ar'
@@ -525,10 +517,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                   <a
                     href="/contact"
                     onClick={(e) => handleLinkClick(e, '/contact')}
-                    className={`w-full flex items-center justify-center gap-2 min-h-[46px] py-3 px-5 text-sm font-bold rounded-xl shadow-lg transition-transform active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#C50337] ${
+                    className={`w-full flex items-center justify-center gap-2 min-h-[46px] py-3 px-5 text-sm font-bold rounded-xl shadow-lg transition-transform active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
                       isDark
-                        ? 'crimson-noir-gradient text-[#F5EAF0] shadow-[0_0_22px_rgba(197,3,55,0.35)] hover:shadow-[0_0_30px_rgba(197,3,55,0.50)]'
-                        : 'bg-[#69001F] text-[#F5EAF0] hover:bg-[#3B0018]'
+                        ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_22px_rgba(217,164,65,0.30)] hover:shadow-[0_0_30px_rgba(217,164,65,0.45)]'
+                        : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
                     }`}
                   >
                     <span>{t.nav.startProject}</span>

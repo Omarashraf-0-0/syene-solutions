@@ -46,8 +46,8 @@ function classifyTech(techName: string): TechMeta {
     return {
       type: 'ai',
       icon: Sparkles,
-      dotColorDark: 'bg-[#C50337] shadow-[0_0_8px_#C50337]',
-      dotColorLight: 'bg-[#69001F]',
+      dotColorDark: 'bg-[#D9A441] shadow-[0_0_8px_#D9A441]',
+      dotColorLight: 'bg-[#143C5A]',
     };
   }
 
@@ -61,8 +61,8 @@ function classifyTech(techName: string): TechMeta {
     return {
       type: 'mobile',
       icon: Smartphone,
-      dotColorDark: 'bg-[#C50337]',
-      dotColorLight: 'bg-[#69001F]',
+      dotColorDark: 'bg-[#D9A441]',
+      dotColorLight: 'bg-[#143C5A]',
     };
   }
 
@@ -77,8 +77,8 @@ function classifyTech(techName: string): TechMeta {
     return {
       type: 'database',
       icon: Database,
-      dotColorDark: 'bg-[#850021]',
-      dotColorLight: 'bg-[#69001F]',
+      dotColorDark: 'bg-[#6E87A0]',
+      dotColorLight: 'bg-[#143C5A]',
     };
   }
 
@@ -94,8 +94,8 @@ function classifyTech(techName: string): TechMeta {
     return {
       type: 'backend',
       icon: Server,
-      dotColorDark: 'bg-[#C50337]',
-      dotColorLight: 'bg-[#69001F]',
+      dotColorDark: 'bg-[#D9A441]',
+      dotColorLight: 'bg-[#143C5A]',
     };
   }
 
@@ -111,8 +111,8 @@ function classifyTech(techName: string): TechMeta {
     return {
       type: 'frontend',
       icon: Code2,
-      dotColorDark: 'bg-[#F5EAF0]',
-      dotColorLight: 'bg-[#69001F]',
+      dotColorDark: 'bg-[#FAF6EE]',
+      dotColorLight: 'bg-[#143C5A]',
     };
   }
 
@@ -127,8 +127,8 @@ function classifyTech(techName: string): TechMeta {
     return {
       type: 'infra',
       icon: Layers,
-      dotColorDark: 'bg-[#69001F]',
-      dotColorLight: 'bg-[#3B0018]',
+      dotColorDark: 'bg-[#143C5A]',
+      dotColorLight: 'bg-[#0E2336]',
     };
   }
 
@@ -136,8 +136,8 @@ function classifyTech(techName: string): TechMeta {
   return {
     type: 'default',
     icon: Globe,
-    dotColorDark: 'bg-[#F5EAF0]/60',
-    dotColorLight: 'bg-[#69001F]/70',
+    dotColorDark: 'bg-[#FAF6EE]/60',
+    dotColorLight: 'bg-[#143C5A]/70',
   };
 }
 
@@ -175,14 +175,14 @@ export const ProjectBadge: React.FC<ProjectBadgeProps> = ({
     <span
       className={`inline-flex items-center backdrop-blur-md border tracking-tight select-none transition-all duration-200 ${sizeClasses} ${
         isDark
-          ? `bg-[#1E020C]/75 text-[#F5EAF0]/90 border-[#69001F]/60 shadow-[0_2px_8px_rgba(2,6,14,0.4)] ${
+          ? `bg-[#0E2336]/75 text-[#FAF6EE]/90 border-[#143C5A]/60 shadow-[0_2px_8px_rgba(2,6,14,0.4)] ${
               interactive
-                ? 'hover:border-[#C50337]/50 hover:bg-[#3B0018]/40 hover:text-[#C50337] hover:-translate-y-0.5'
+                ? 'hover:border-[#D9A441]/50 hover:bg-[#0E2336]/40 hover:text-[#D9A441] hover:-translate-y-0.5'
                 : ''
             }`
-          : `bg-white/85 text-[#02060E] border-[#69001F]/20 shadow-[0_1px_3px_rgba(2,6,14,0.05)] ${
+          : `bg-white/85 text-[#0A1622] border-[#143C5A]/20 shadow-[0_1px_3px_rgba(2,6,14,0.05)] ${
               interactive
-                ? 'hover:border-[#69001F]/40 hover:bg-[#F5EAF0]/80 hover:text-[#69001F] hover:-translate-y-0.5'
+                ? 'hover:border-[#143C5A]/40 hover:bg-[#FAF6EE]/80 hover:text-[#143C5A] hover:-translate-y-0.5'
                 : ''
             }`
       } ${className}`}
@@ -191,7 +191,7 @@ export const ProjectBadge: React.FC<ProjectBadgeProps> = ({
       {showIcon ? (
         <IconComponent
           className={`shrink-0 opacity-80 ${iconSizes} ${
-            isDark ? 'text-[#C50337]' : 'text-[#69001F]'
+            isDark ? 'text-[#D9A441]' : 'text-[#143C5A]'
           }`}
           aria-hidden="true"
         />

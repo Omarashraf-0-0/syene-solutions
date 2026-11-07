@@ -46,138 +46,162 @@ export interface ProcessStep {
 export const STUDIO_SERVICES: ServiceCapability[] = [
   {
     index: '01',
-    id: 'web-mobile',
-    title: 'Web & Mobile Development',
-    titleAr: 'تطوير تطبيقات الويب والهواتف الذكية',
+    id: 'software-engineering',
+    title: 'Software Engineering & Cloud Architecture',
+    titleAr: 'هندسة البرمجيات والمعمارية السحابية',
     summary:
-      'Production-grade web applications, responsive client portals, and cross-platform mobile products engineered for clarity, speed, and long-term maintainability.',
+      'High-throughput distributed backends, resilient microservices, and idempotent API gateways engineered for rock-solid stability and massive transactional scale.',
     summaryAr:
-      'تطبيقات ويب احترافية للإنتاج، وبوابات عملاء سريعة الاستجابة، وتطبيقات هواتف ذكية متعددة المنصات مصممة للسرعة والاستقرار وسهولة الصيانة طويلة الأمد.',
+      'أنظمة خلفية موزعة فائقة السرعة، ومعمارية خدمات صغرى (Microservices) مرنة، وبوابات APIs محكمة مبنية للاستقرار المطلق والتعامل مع ملايين العمليات المتزامنة.',
     deliverables: [
-      'Custom web applications and internal operational dashboards',
-      'Cross-platform mobile applications (iOS & Android)',
-      'Responsive frontend architecture and accessible design systems',
-      'Progressive web apps and customer-facing booking or commerce portals',
+      'Distributed systems architecture and transactional data modeling',
+      'High-performance RESTful, gRPC, and GraphQL API gateways',
+      'Event-driven message queues, Redis caching, and automated dead-letter triage',
+      'Cloud infrastructure automation (Docker, Kubernetes, zero-downtime CI/CD)',
     ],
     deliverablesAr: [
-      'تطبيقات ويب مخصصة ولوحات تحكم تشغيلية داخلية للشركات',
-      'تطبيقات هواتف ذكية متعددة المنصات لنظامي iOS و Android',
-      'معمارية واجهات مستخدم متقدمة ونظم تصميم قياسية متجاوبة',
-      'تطبيقات ويب تقدمية (PWA) وبوابات حجز وتجارة إلكترونية متطورة',
+      'معمارية النظم الموزعة ونمذجة تدفقات البيانات وقواعد المعاملات المالية الحساسة',
+      'بوابات واجهات برمجية عالية الأداء بتقنيات RESTful و gRPC و GraphQL',
+      'طوابير معالجة الأحداث (Event-Driven)، والتخزين المؤقت، ومعالجة الأخطاء الآلية',
+      'أتمتة البنية التحتية السحابية وحاويات Docker وخطوط النشر الآلي دون أي انقطاع',
     ],
-    typicalUseCases: 'New product launches, customer portals, and replacing spreadsheet-driven operations.',
-    typicalUseCasesAr: 'إطلاق المنتجات الرقمية الجديدة، وبوابات العملاء، وأتمتة العمليات اليدوية المعقدة.',
+    typicalUseCases: 'Mission-critical core platforms, financial ledgers, and enterprise infrastructure consolidation.',
+    typicalUseCasesAr: 'المنصات التشغيلية الحيوية، والأنظمة المالية، وتوحيد البنى التحتية المتفرقة للشركات الكبرى.',
   },
   {
     index: '02',
-    id: 'ai-solutions',
-    title: 'AI Solutions',
-    titleAr: 'حلول ونماذج الذكاء الاصطناعي التطبيقي',
+    id: 'web-development',
+    title: 'Web Platforms & Client Portals',
+    titleAr: 'تطوير منصات وتطبيقات الويب المتقدمة',
     summary:
-      'Practical AI integrations embedded into real business workflows—focused on document processing, semantic search, structured extraction, and assistive automation.',
+      'Ultra-responsive web applications, multi-role client portals, and bespoke SaaS dashboards engineered with modern TypeScript frameworks and fluid tactile interactions.',
     summaryAr:
-      'دمج عملي لنماذج الذكاء الاصطناعي داخل مسارات العمل الحقيقية — مع التركيز على استرجاع المعرفة بالبحث الدلالي (RAG)، واستخراج البيانات، وأتمتة المهام المعقدة.',
+      'تطبيقات ويب فائقة السرعة، وبوابات عملاء متعددة الأدوار والصلاحيات، ولوحات تحكم سحابية مخصصة مبنية بأحدث معايير TypeScript وتجربة استخدام تفاعلية فخمة.',
     deliverables: [
-      'LLM API integration with strict schema validation and guardrails',
-      'Retrieval-augmented generation (RAG) over internal knowledge bases',
-      'Automated document classification, extraction, and summarization pipelines',
-      'Human-in-the-loop review interfaces for quality assurance',
+      'Interactive SaaS dashboards and enterprise workflow portals',
+      'Real-time collaborative interfaces and state synchronization',
+      'Accessibility-compliant (WCAG AA), localized, and RTL-first design systems',
+      'Sub-second first-contentful paint and edge-rendered architectures',
     ],
     deliverablesAr: [
-      'دمج واجهات النماذج اللغوية الكبيرة مع معايير حماية وتحقق صارمة',
-      'أنظمة التوليد المدعوم بالاسترجاع (RAG) على قواعد المعرفة والوثائق الداخلية',
-      'خطوط أتمتة تصنيف واستخراج وتلخيص الوثائق والمستندات الرسمية',
-      'واجهات تدقيق ومراجعة بشرية لضمان دقة المخرجات بنسبة ١٠٠٪',
+      'لوحات تحكم SaaS تفاعلية وبوابات رقمية لإدارة العمليات المعقدة',
+      'واجهات تفاعلية تدعم العمل التعاوني وتزامن البيانات اللحظي',
+      'نظم تصميم قياسية متوافقة مع معايير الوصول (WCAG AA) ومصممة بالكامل لدعم اللغة العربية (RTL)',
+      'سرعة تحميل فائقة وتصيير عبر شبكات الحافة (Edge Rendering) بأقل من ثانية',
     ],
-    typicalUseCases: 'Automating repetitive document triage, internal knowledge retrieval, and workflow routing.',
-    typicalUseCasesAr: 'أتمتة فرز ومراجعة المستندات، واسترجاع المعرفة المؤسسية، وتوجيه مسارات العمل آلياً.',
+    typicalUseCases: 'Operational portals, business-to-business SaaS platforms, and enterprise data visualization.',
+    typicalUseCasesAr: 'بوابات الأعمال B2B، ومنصات الخدمات السحابية، وعرض وإدارة البيانات الضخمة.',
   },
   {
     index: '03',
-    id: 'backend-integrations',
-    title: 'Backend & Integrations',
-    titleAr: 'الأنظمة الخلفية وتكامل البنى التحتية',
+    id: 'mobile-applications',
+    title: 'Mobile Applications (iOS & Android)',
+    titleAr: 'تطبيقات الهواتف الذكية (iOS & Android)',
     summary:
-      'Resilient APIs, database architectures, and third-party software integrations that connect payment gateways, ERPs, CRMs, and external services.',
+      'Cross-platform mobile applications that feel indistinguishable from native apps—featuring robust offline synchronization, biometrics, and push notification pipelines.',
     summaryAr:
-      'واجهات برمجية (APIs) عالية الاعتمادية، ومعمارية قواعد بيانات موزعة، وتكامل سلس مع بوابات الدفع، وأنظمة ERP وCRM، ومختلف الخدمات الخارجية.',
+      'تطبيقات هواتف ذكية متعددة المنصات تضاهي التطبيقات الأصلية في الأداء والانسيابية — مع دعم كامل للعمل دون اتصال، والمصادقة البيومترية، والإشعارات اللحظية.',
     deliverables: [
-      'RESTful and event-driven API design and implementation',
-      'Database schema modeling, indexing, and migration workflows',
-      'Payment gateway, messaging, and regional logistics integrations (Egypt & global)',
-      'Webhook orchestration, background job queues, and data synchronization',
+      'Unified cross-platform codebases (React Native / modern native bridges)',
+      'Local-first offline state persistence and conflict-free data resolution',
+      'Secure biometric authentication, background geo-tracking, and camera feeds',
+      'App Store and Google Play compliance, submission, and release management',
     ],
     deliverablesAr: [
-      'تصميم وبناء واجهات برمجية RESTful وموجهة بالأحداث (Event-Driven)',
-      'تصميم مخططات قواعد البيانات والفهرسة المتقدمة وهجرة البيانات الآمنة',
-      'تكامل بوابات الدفع الإلكتروني، والرسائل، وخدمات الشحن (مصر وعالمياً)',
-      'إدارة خطوط Webhooks، وطوابير المهام الخلفية، وتزامن البيانات اللحظي',
+      'كود برمجي موحد عبر المنصات يقلل تكاليف ووقت التطوير للنصف',
+      'تخزين محلي وتزامن آلي للبيانات عند عودة الاتصال دون أي فقد أو تضارب',
+      'مصادقة بيومترية آمنة (بصمة الوجه والإصبع)، وتتبع جغرافي، وإشعارات موجهة',
+      'إدارة متكاملة لنشر واعتماد التطبيقات على متجري App Store و Google Play',
     ],
-    typicalUseCases: 'Connecting disconnected business tools, building scalable APIs, and stabilizing data pipelines.',
-    typicalUseCasesAr: 'ربط الأنظمة المنفصلة، وبناء واجهات برمجية قابلة للتوسع، وتأمين تدفقات البيانات الحساسة.',
+    typicalUseCases: 'Field workforce mobility, consumer client applications, and logistics fleet tracking.',
+    typicalUseCasesAr: 'تطبيقات الفرق الميدانية، وتطبيقات العملاء والمستهلكين، وتتبع أساطيل الشحن والخدمات اللوجستية.',
   },
   {
     index: '04',
-    id: 'maintenance-improvement',
-    title: 'Maintenance & Product Improvement',
-    titleAr: 'الصيانة والتطوير المستمر للمنتجات',
+    id: 'ai-solutions',
+    title: 'Applied AI & Intelligent Pipelines',
+    titleAr: 'حلول ومسارات الذكاء الاصطناعي التطبيقي',
     summary:
-      'Structured technical care for existing applications—focusing on performance bottlenecks, dependency maintenance, security, and steady feature evolution.',
+      'Practical, deterministic AI integrations embedded into operational workflows—semantic search, retrieval-augmented generation (RAG), and zero-hallucination document extraction.',
     summaryAr:
-      'رعاية فنية وهندسية ممنهجة للتطبيقات والأنظمة القائمة — معالجة بطء الأداء، وتحديث الاعتماديات، وسد الثغرات الأمنية، وتطوير الميزات بصورة مستمرة.',
+      'دمج عملي محكم لنماذج الذكاء الاصطناعي في مسارات العمل التشغيلية — يشمل البحث الدلالي المتجهي، وأنظمة RAG لقواعد المعرفة، واستخراج البيانات المجدولة دون أي هلوسات.',
     deliverables: [
-      'Codebase refactoring, TypeScript migration, and dependency upgrades',
-      'Frontend rendering and backend query performance optimization',
-      'Security patching, error tracking setup, and reliability hardening',
-      'Scheduled retainer support and iterative feature enhancements',
+      'Retrieval-Augmented Generation (RAG) engines over internal enterprise archives',
+      'Deterministic structured JSON extraction from invoices, contracts, and scans',
+      'Local vector database indexing (pgvector, LanceDB) and semantic search',
+      'Human-in-the-loop audit console with comprehensive confidence scoring',
     ],
     deliverablesAr: [
-      'إعادة هيكلة الأكواد البرمجية، والترقية إلى TypeScript، وتحديث الحزم',
-      'تحسين سرعة رندرة الواجهات وتحسين استعلامات قواعد البيانات المعقدة',
-      'سد الثغرات الأمنية، وتركيب أدوات رصد الأخطاء، ورفع استقرار النظام',
-      'عقود دعم شهري منتظمة وجلسات تطوير دورية للميزات الجديدة',
+      'محركات توليد مدعوم بالاسترجاع (RAG) تبحث وتستنبط من وثائق المؤسسة الداخلية بدقة',
+      'استخراج آلي مهيكل للمعلومات من الفواتير والعقود والتقارير الطبية والمالية',
+      'فهرسة متجهات محلية (Vector Search) للبحث الدلالي اللحظي باللغة العربية والإنجليزية',
+      'واجهة تدقيق ومراجعة بشرية تضمن سلامة النتائج وتدريب النماذج المستمر',
     ],
-    typicalUseCases: 'Stabilizing inherited software, resolving technical debt, and extending live products.',
-    typicalUseCasesAr: 'استقرار البرمجيات الموروثة، وحل الديون التقنية، وتوسيع المنتجات الحية بنجاح.',
+    typicalUseCases: 'Automating high-volume contract review, internal knowledge discovery, and intelligent customer support.',
+    typicalUseCasesAr: 'أتمتة مراجعة العقود والمستندات الكثيفة، واسترجاع المعرفة المؤسسية، ودعم العملاء فائق الذكاء.',
+  },
+  {
+    index: '05',
+    id: 'technical-consulting',
+    title: 'Technical Consulting & System Modernization',
+    titleAr: 'الاستشارات التقنية وتحديث الأنظمة القديمة',
+    summary:
+      'Elite advisory and hands-on re-engineering for organizations dealing with sluggish legacy monoliths, mounting technical debt, or scaling bottlenecks.',
+    summaryAr:
+      'استشارات هندسية رفيعة المستوى وتطوير مباشر للشركات التي تعاني من بطء الأنظمة الموروثة، وتراكم الديون التقنية، أو عوائق التوسع أمام آلاف المستخدمين.',
+    deliverables: [
+      'Comprehensive codebase security, performance, and scalability audits',
+      'Incremental microservice migration strategies without operational downtime',
+      'Database optimization, query indexing, and caching topology redesign',
+      'Architecture blueprints, vendor evaluations, and senior technical advisory',
+    ],
+    deliverablesAr: [
+      'تدقيق معماري شامل للأكواد، ومعايير الأمان، وجاهزية التوسع للأحمال المليونية',
+      'استراتيجيات ترقية تدريجية للأنظمة القديمة دون إيقاف الخدمات دقيقة واحدة',
+      'إعادة هيكلة استعلامات قواعد البيانات ورفع سرعة الاستجابة بأكثر من ٨٠٪',
+      'تخطيط معماري متكامل واختيار أدوات البنية التحتية الأنسب لتوفير النفقات السحابية',
+    ],
+    typicalUseCases: 'Legacy system rewrites, technical debt liquidation, and preparing infrastructure for high-traffic surges.',
+    typicalUseCasesAr: 'تحديث الأنظمة القديمة، وتخفيض فواتير السحابة، وتهيئة المنصات لقفزات النمو السريعة.',
   },
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     step: '01',
-    title: 'Discovery & Technical Scope',
-    titleAr: 'الاكتشاف والمعمارية الفنية',
+    title: 'Discover',
+    titleAr: 'الاستكشاف والتحليل الفني',
     description:
-      'We review your operational problem, define concrete functional requirements, identify integration constraints, and agree on a written specification and milestone schedule.',
+      'We deeply analyze your operational challenge, audit existing workflows, define concrete success metrics, and formulate an airtight technical scope.',
     descriptionAr:
-      'ندرس التحدي التشغيلي بدقة، ونحدد المتطلبات الوظيفية والمعمارية، ونضع مواصفات فنية وجدولاً زمنياً معتمداً ومحكماً قبل بدء كتابة أي سطر كود.',
+      'ندرس التحدي التشغيلي بدقة، ونحلل مسارات العمل والبيانات، ونحدد معايير النجاح القابلة للقياس، ونضع وثيقة مواصفات فنية واضحة ومحكمة قبل البدء.',
   },
   {
     step: '02',
-    title: 'Architecture & Interface Design',
-    titleAr: 'تصميم الواجهات والمعمارية',
+    title: 'Define',
+    titleAr: 'التحديد والتصميم المعماري',
     description:
-      'We structure the data models, API contracts, and user interface flows—choosing the most straightforward, maintainable stack for your project.',
+      'We blueprint the system architecture, model data schemas, draft API contracts, and design polished, accessible interfaces with precision engineering math.',
     descriptionAr:
-      'نبني نماذج البيانات وعقود الـ API ومسارات تجربة المستخدم — ونختار أكثر حزم التقنيات كفاءة وسهولة في الصيانة لضمان استقرار مشروعك المستقبلي.',
+      'نصمم المخطط المعماري الكامل، ونبني نماذج البيانات وعقود الـ APIs، ونرسم واجهات المستخدم التفاعلية بأعلى معايير الانضباط والذوق الرفيع.',
   },
   {
     step: '03',
-    title: 'Iterative Engineering',
-    titleAr: 'التطوير الهندسي والاختبار المستمر',
+    title: 'Build',
+    titleAr: 'البناء البرمجي والذكاء الاصطناعي',
     description:
-      'We build in transparent milestones with staging previews, automated validation, and clean version-controlled code so you can verify progress directly.',
+      'Our senior engineers write type-safe, tested code and train AI pipelines with live staging previews and continuous validation so you verify every milestone.',
     descriptionAr:
-      'نطور البرمجيات عبر مراحل واضحة مع بيئات معاينة تجريبية، واختبارات تحقق آلية، وأكواد نظيفة وموثقة تمكّنك من متابعة الإنجاز لحظة بلحظة.',
+      'يكتب مهندسونا أكواداً برمجية محكمة ومختبرة، ويدمجون مسارات الذكاء الاصطناعي مع توفير بيئات معاينة تجريبية حية تمكنك من متابعة التقدم خطوة بخطوة.',
   },
   {
     step: '04',
-    title: 'Verification, Deployment & Handover',
-    titleAr: 'النشر والتشغيل والتسليم للإنتاج',
+    title: 'Deliver',
+    titleAr: 'التسليم والتشغيل والتمكين',
     description:
-      'We test core user flows, configure production deployment, and deliver full technical documentation with optional ongoing maintenance.',
+      'We conduct stress tests, execute zero-downtime production deployment, transfer full repository ownership, and empower your team with comprehensive documentation.',
     descriptionAr:
-      'نختبر كافة مسارات المستخدمين، ونهيئ خوادم الإنتاج المباشر، ونسلّم الوثائق الفنية الكاملة والأكواد مع توفير الدعم الهندسي والصيانة المستمرة.',
+      'نجري اختبارات الحمل والضغط، ونطلق النسخة الإنتاجية دون أي انقطاع، مع تسليم كامل للأكواد المصدرية وتوثيق فني شامل يضمن استقلالك التام.',
   },
 ];
 
@@ -188,7 +212,7 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     codeAr: 'النموذج أ',
     title: 'Ready-Made Solutions',
     titleAr: 'الأنظمة والحلول الجاهزة',
-    subtitle: 'Existing products or reusable systems with a defined base price.',
+    subtitle: 'Existing foundational platforms with a predictable, transparent base cost.',
     subtitleAr: 'منتجات برمجية جاهزة وأنظمة معتمدة لبدء العمل في أسرع وقت بتكلفة محددة.',
     pricingMode: 'starting_from',
     configurablePriceUSD: '$1,200',
@@ -196,13 +220,13 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     pricingNote: 'Configurable base package · One-time license & deployment setup',
     pricingNoteAr: 'باقة أساسية محددة · ترخيص لمرة واحدة وتهيئة سحابية متكاملة',
     description:
-      'Pre-engineered Nubix software modules and foundational templates deployed directly to your environment for rapid launch.',
+      'Pre-engineered Syene Solutions software modules and foundational templates deployed directly to your environment for rapid operational launch.',
     descriptionAr:
-      'وحدات برمجية وقوالب تأسيسية مبنية مسبقاً لدى نوبيكس، يتم نشرها مباشرة على خوادمك للإطلاق السريع دون انتظار دورات تطوير طويلة.',
+      'وحدات برمجية وقوالب تأسيسية مبنية مسبقاً لدى سايين سوليوشنز، يتم نشرها مباشرة على خوادمك للإطلاق السريع دون انتظار دورات تطوير طويلة.',
     included: [
-      'Standard production deployment on your hosting account',
+      'Standard production deployment on your cloud hosting account',
       'Core pre-built features and responsive user interface',
-      'Initial environment configuration and basic brand color alignment',
+      'Initial environment configuration and brand color alignment',
       '14-day post-deployment bug fix warranty',
     ],
     includedAr: [
@@ -212,7 +236,7 @@ export const PRICING_MODELS: PricingTierConfig[] = [
       'ضمان دعم فني وإصلاح فوري للأخطاء لمدة ١٤ يوماً بعد الإطلاق',
     ],
     excluded: [
-      'Custom workflow logic or database schema structural changes',
+      'Custom workflow logic or database schema structural modifications',
       'Bespoke third-party ERP/CRM integrations',
       'Third-party cloud hosting, domain, or API usage fees',
       'Ongoing monthly feature development or SLA retainers',
@@ -233,7 +257,7 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     codeAr: 'النموذج ب',
     title: 'Customized Solutions',
     titleAr: 'التخصيص وتوسيع الأنظمة',
-    subtitle: 'Existing products adapted to client requirements, priced as a base package plus agreed customization costs.',
+    subtitle: 'Existing foundations tailored to client workflows—our most popular engagement.',
     subtitleAr: 'تطويع وتعديل حلولنا القائمة لتلائم متطلباتك التشغيلية بدقة — الباقة الأكثر طلباً.',
     pricingMode: 'starting_from',
     configurablePriceUSD: '$2,500',
@@ -241,12 +265,12 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     pricingNote: 'Base package + scoped customization milestones',
     pricingNoteAr: 'الباقة الأساسية + مراحل التخصيص والميزات الإضافية المحددة',
     description:
-      'Accelerate delivery by starting with a proven Nubix foundation and tailoring workflows, UI components, and integrations to your operations.',
+      'Accelerate delivery by starting with a proven Syene foundation and tailoring workflows, UI components, and integrations to your business operations.',
     descriptionAr:
-      'اختصر وقت وجهد البناء من الصفر بالبدء من قاعدة نوبيكس المثبتة وتخصيص تدفقات العمل، وواجهات الاستخدام، والتكاملات بما يتناسب مع مؤسستك.',
+      'اختصر وقت وجهد البناء من الصفر بالبدء من قاعدة سايين المثبتة وتخصيص تدفقات العمل، وواجهات الاستخدام، والتكاملات بما يتناسب مع مؤسستك.',
     included: [
       'Full Ready-Made base system plus scoped custom feature modules',
-      'UI/UX adaptation to match your brand identity and language requirements',
+      'UI/UX adaptation to match your brand identity and Arabic/English language requirements',
       'Integration with agreed payment, messaging, or external APIs',
       'Staging environment review and 30-day post-launch warranty',
     ],
@@ -278,7 +302,7 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     codeAr: 'النموذج ج',
     title: 'Custom-Built Solutions',
     titleAr: 'الهندسة البرمجية المخصصة بالكامل',
-    subtitle: 'New applications and AI solutions scoped and quoted individually.',
+    subtitle: 'Ground-up digital products, bespoke web/mobile platforms, and custom AI systems.',
     subtitleAr: 'تطبيقات وأنظمة ذكاء اصطناعي جديدة كلياً يتم تخطيطها وتسعيرها وفق متطلباتك الخاصة.',
     pricingMode: 'custom_quote',
     configurablePriceUSD: 'Request a Quote',
@@ -286,7 +310,7 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     pricingNote: 'Individually scoped milestone proposal based on technical specification',
     pricingNoteAr: 'عرض سعر فني مفصل ومحدد بالمراحل وفق المواصفات المعمارية',
     description:
-      'Ground-up software engineering and custom AI workflow development architected specifically around your business logic and scale requirements.',
+      'Ground-up software engineering and custom AI workflow development architected specifically around your unique business logic and scalability targets.',
     descriptionAr:
       'بناء برمجي من الصفر وتطوير مسارات ذكاء اصطناعي مصممة خصيصاً حول منطق عملك التجاري ومتطلبات الأمان والتوسع الخاصة بمؤسستك.',
     included: [
@@ -304,7 +328,7 @@ export const PRICING_MODELS: PricingTierConfig[] = [
     excluded: [
       'Third-party infrastructure, cloud hosting, and external AI/API provider billing',
       'Post-handover operational management unless covered by a Maintenance agreement',
-      'Third-party licensing fees (e.g., paid fonts, proprietary SDKs)',
+      'Third-party licensing fees (e.g., proprietary commercial fonts or SDKs)',
     ],
     excludedAr: [
       'تكاليف الخوادم السحابية والخدمات الخارجية واستهلاك نماذج الذكاء الاصطناعي',

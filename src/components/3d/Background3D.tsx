@@ -57,7 +57,7 @@ export const Background3D: React.FC = () => {
     const scene = new THREE.Scene();
     const isLightInitial = themeRef.current === 'light';
     scene.fog = new THREE.FogExp2(
-      isLightInitial ? 0xf5eaf0 : 0x02060e,
+      isLightInitial ? 0xfaf6ee : 0x0a1622,
       isLightInitial ? 0.026 : 0.018
     );
 
@@ -86,10 +86,10 @@ export const Background3D: React.FC = () => {
       if (!ctx) return null;
 
       const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gradient.addColorStop(0, 'rgba(245, 234, 240, 1)'); // Soft Ivory #F5EAF0
-      gradient.addColorStop(0.25, 'rgba(197, 3, 55, 0.88)'); // Crimson Red #C50337
-      gradient.addColorStop(0.55, 'rgba(105, 0, 31, 0.35)'); // Deep Burgundy #69001F
-      gradient.addColorStop(1, 'rgba(2, 6, 14, 0)'); // Midnight Noir #02060E
+      gradient.addColorStop(0, 'rgba(250, 246, 238, 1)'); // Warm White #FAF6EE
+      gradient.addColorStop(0.25, 'rgba(217, 164, 65, 0.90)'); // Syene Gold #D9A441
+      gradient.addColorStop(0.55, 'rgba(20, 60, 90, 0.40)'); // Nile Navy #143C5A
+      gradient.addColorStop(1, 'rgba(10, 22, 34, 0)'); // Nile Night #0A1622
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 64, 64);
@@ -102,18 +102,16 @@ export const Background3D: React.FC = () => {
     const particleTexture = createParticleTexture();
 
     // 4. Starfield Depth Particulate:
-    // Light mode: subtle, faint dust
-    // Dark mode: solid, crisp celestial starfield
     const starCount = isSoftwareGl ? 350 : 850;
     const starGeometry = new THREE.BufferGeometry();
     const starPositions = new Float32Array(starCount * 3);
     const starColors = new Float32Array(starCount * 3);
 
     const colorPalette = [
-      new THREE.Color(0xffffff), // Clean white
-      new THREE.Color(0xc50337), // Crimson Red #C50337
-      new THREE.Color(0x69001f), // Deep Burgundy #69001F
-      new THREE.Color(0xf5eaf0), // Soft Ivory #F5EAF0
+      new THREE.Color(0xfaf6ee), // Warm White
+      new THREE.Color(0xd9a441), // Syene Gold
+      new THREE.Color(0x6e87a0), // Steel Blue
+      new THREE.Color(0x143c5a), // Nile Navy
     ];
 
     for (let i = 0; i < starCount; i++) {
@@ -155,8 +153,8 @@ export const Background3D: React.FC = () => {
     const crystalGeometry = new THREE.OctahedronGeometry(0.2, 0);
 
     const crystalMaterial = new THREE.MeshStandardMaterial({
-      color: isLightInitial ? 0x69001f : 0xc50337,
-      emissive: isLightInitial ? 0x3b0018 : 0x69001f,
+      color: isLightInitial ? 0x143c5a : 0xd9a441,
+      emissive: isLightInitial ? 0x6e87a0 : 0x143c5a,
       emissiveIntensity: isLightInitial ? 0.08 : 0.32,
       roughness: isLightInitial ? 0.45 : 0.12,
       metalness: isLightInitial ? 0.35 : 0.88,
@@ -169,13 +167,13 @@ export const Background3D: React.FC = () => {
     crystalInstanced.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
     scene.add(crystalInstanced);
 
-    // Second Shape: Micro-Tetrahedrons in Deep Burgundy / Midnight Noir
+    // Second Shape: Micro-Tetrahedrons in Nile Navy / Steel Blue
     const tetraCount = isSoftwareGl ? 30 : 50;
     const tetraGeometry = new THREE.TetrahedronGeometry(0.22, 0);
 
     const tetraMaterial = new THREE.MeshStandardMaterial({
-      color: isLightInitial ? 0x3b0018 : 0x69001f,
-      emissive: isLightInitial ? 0x69001f : 0x310014,
+      color: isLightInitial ? 0x6e87a0 : 0x143c5a,
+      emissive: isLightInitial ? 0x143c5a : 0x0e2336,
       emissiveIntensity: isLightInitial ? 0.06 : 0.28,
       roughness: isLightInitial ? 0.50 : 0.18,
       metalness: isLightInitial ? 0.30 : 0.82,
@@ -331,14 +329,14 @@ export const Background3D: React.FC = () => {
       renderer.toneMappingExposure = THREE.MathUtils.damp(renderer.toneMappingExposure, targetExposure, 4.0, delta);
 
       // Live Theme Smooth Transitions
-      const targetFogColor = isLight ? 0xf5eaf0 : 0x02060e;
+      const targetFogColor = isLight ? 0xfaf6ee : 0x0a1622;
       if (scene.fog) {
         scene.fog.color.lerp(new THREE.Color(targetFogColor), delta * 4);
       }
 
-      const targetCrystalColor = isLight ? 0x69001f : 0xc50337;
+      const targetCrystalColor = isLight ? 0x143c5a : 0xd9a441;
       crystalMaterial.color.lerp(new THREE.Color(targetCrystalColor), delta * 4);
-      crystalMaterial.emissive.lerp(new THREE.Color(isLight ? 0x3b0018 : 0x69001f), delta * 4);
+      crystalMaterial.emissive.lerp(new THREE.Color(isLight ? 0x6e87a0 : 0x143c5a), delta * 4);
       crystalMaterial.emissiveIntensity = THREE.MathUtils.damp(
         crystalMaterial.emissiveIntensity,
         isLight ? 0.08 : 0.32,
@@ -346,9 +344,9 @@ export const Background3D: React.FC = () => {
         delta
       );
 
-      const targetTetraColor = isLight ? 0x3b0018 : 0x69001f;
+      const targetTetraColor = isLight ? 0x6e87a0 : 0x143c5a;
       tetraMaterial.color.lerp(new THREE.Color(targetTetraColor), delta * 4);
-      tetraMaterial.emissive.lerp(new THREE.Color(isLight ? 0x69001f : 0x310014), delta * 4);
+      tetraMaterial.emissive.lerp(new THREE.Color(isLight ? 0x143c5a : 0x0e2336), delta * 4);
       tetraMaterial.emissiveIntensity = THREE.MathUtils.damp(
         tetraMaterial.emissiveIntensity,
         isLight ? 0.06 : 0.28,
@@ -481,7 +479,7 @@ export const Background3D: React.FC = () => {
             positions[idx6 + 5] = p2.currentZ;
 
             const alpha = Math.max(0, 1 - Math.sqrt(distSq) / 3.6);
-            const lineCol = isLight ? new THREE.Color(0x69001f) : new THREE.Color(0xc50337);
+            const lineCol = isLight ? new THREE.Color(0x143c5a) : new THREE.Color(0xd9a441);
 
             colors[idx6] = lineCol.r * alpha;
             colors[idx6 + 1] = lineCol.g * alpha;
@@ -500,17 +498,19 @@ export const Background3D: React.FC = () => {
       lineGeometry.attributes.position.needsUpdate = true;
       lineGeometry.attributes.color.needsUpdate = true;
 
-      // Crimson Ambient Glow overlay on DOM (Upper-left subtle crimson glow + lower-right soft ivory/burgundy over midnight noir)
+      // Syene Ambient Glow overlay on DOM
       if (glowOverlayRef.current) {
         if (isLight) {
           glowOverlayRef.current.style.background = `
-            radial-gradient(circle 750px at 15% 15%, rgba(197, 3, 55, 0.06) 0%, transparent 65%),
-            radial-gradient(circle 650px at 85% 85%, rgba(105, 0, 31, 0.05) 0%, transparent 60%)
+            radial-gradient(circle 950px at 10% 10%, rgba(20, 60, 90, 0.04) 0%, transparent 70%),
+            radial-gradient(circle 850px at 90% 15%, rgba(217, 164, 65, 0.05) 0%, transparent 65%),
+            radial-gradient(circle 900px at 85% 85%, rgba(110, 135, 160, 0.04) 0%, transparent 70%)
           `;
         } else {
           glowOverlayRef.current.style.background = `
-            radial-gradient(circle 800px at 12% 15%, rgba(197, 3, 55, 0.12) 0%, transparent 65%),
-            radial-gradient(circle 700px at 88% 85%, rgba(105, 0, 31, 0.08) 0%, transparent 60%)
+            radial-gradient(circle 1000px at 10% 10%, rgba(20, 60, 90, 0.24) 0%, rgba(20, 60, 90, 0.06) 45%, transparent 75%),
+            radial-gradient(circle 900px at 90% 15%, rgba(217, 164, 65, 0.07) 0%, rgba(217, 164, 65, 0.01) 40%, transparent 70%),
+            radial-gradient(circle 850px at 85% 85%, rgba(110, 135, 160, 0.08) 0%, transparent 65%)
           `;
         }
       }
