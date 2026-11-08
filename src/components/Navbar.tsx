@@ -100,12 +100,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
   );
 
   const navLinks = [
-    { label: t.nav.projects, path: '/projects', isActive: isProjectsActive, icon: FolderGit2 },
     { label: t.nav.services, path: '/#services', isActive: false, icon: Layers },
     { label: t.nav.howWeWork, path: '/#how-we-work', isActive: false, icon: Workflow },
-    { label: t.nav.about, path: '/#about', isActive: false, icon: Compass },
-    { label: t.nav.pricing, path: '/#pricing', isActive: false, icon: CreditCard },
-    { label: t.nav.contact, path: '/contact', isActive: isContactActive, icon: Send },
+    { label: t.nav.projects, path: '/#work', isActive: isProjectsActive, icon: FolderGit2 },
+    { label: t.nav.about, path: '/#why-us', isActive: false, icon: Compass },
+    { label: t.nav.contact, path: '/#contact', isActive: isContactActive, icon: Send },
   ];
 
   return (
@@ -193,7 +192,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               : 'bg-white/94 border-[#143C5A]/15 shadow-xs'
           }`}
         >
-          {navLinks.slice(0, 5).map((link) => (
+          {navLinks.slice(0, 4).map((link) => (
             <a
               key={link.path}
               href={link.path}
@@ -274,14 +273,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             )}
           </button>
 
-          {/* Header CTA Button - visible on sm+ screens */}
+          {/* Header CTA Button - Always visible for highest conversion intent */}
           <a
-            href="/contact"
-            onClick={(e) => handleLinkClick(e, '/contact')}
-            className={`group hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 whitespace-nowrap shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
+            href="/#contact"
+            onClick={(e) => handleLinkClick(e, '/#contact')}
+            className={`group inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-200 whitespace-nowrap shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
               isDark
                 ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_18px_rgba(217,164,65,0.28)] hover:shadow-[0_0_26px_rgba(217,164,65,0.45)] hover:scale-[1.02] active:scale-[0.98]'
-                : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]'
+                : 'bg-[#D9A441] text-[#0A1622] font-bold hover:bg-[#F2BD5B] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]'
             }`}
           >
             <span>{t.nav.startProject}</span>
@@ -515,13 +514,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                 {/* Primary CTA Button */}
                 <div className="pt-1">
                   <a
-                    href="/contact"
-                    onClick={(e) => handleLinkClick(e, '/contact')}
-                    className={`w-full flex items-center justify-center gap-2 min-h-[46px] py-3 px-5 text-sm font-bold rounded-xl shadow-lg transition-transform active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] ${
-                      isDark
-                        ? 'syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_22px_rgba(217,164,65,0.30)] hover:shadow-[0_0_30px_rgba(217,164,65,0.45)]'
-                        : 'bg-[#143C5A] text-[#FAF6EE] hover:bg-[#0E2336]'
-                    }`}
+                    href="/#contact"
+                    onClick={(e) => handleLinkClick(e, '/#contact')}
+                    className="w-full flex items-center justify-center gap-2 min-h-[46px] py-3 px-5 text-sm font-bold rounded-xl syene-gold-gradient text-[#0A1622] font-bold shadow-[0_0_22px_rgba(217,164,65,0.30)] hover:shadow-[0_0_30px_rgba(217,164,65,0.45)] transition-transform active:scale-[0.98] outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]"
                   >
                     <span>{t.nav.startProject}</span>
                     <ArrowUpRight

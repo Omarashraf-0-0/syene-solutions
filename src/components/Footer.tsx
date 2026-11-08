@@ -119,29 +119,29 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="/#about"
-                  onClick={(e) => handleNav(e, '/#about')}
+                  href="/#work"
+                  onClick={(e) => handleNav(e, '/#work')}
                   className={`transition-colors ${isDark ? 'hover:text-[#D9A441]' : 'hover:text-[#143C5A]'}`}
                 >
-                  {t.nav.about}
+                  {t.nav.projects}
                 </a>
               </li>
               <li>
                 <a
-                  href="/#pricing"
-                  onClick={(e) => handleNav(e, '/#pricing')}
+                  href="/#why-us"
+                  onClick={(e) => handleNav(e, '/#why-us')}
                   className={`transition-colors ${isDark ? 'hover:text-[#D9A441]' : 'hover:text-[#143C5A]'}`}
                 >
-                  {t.nav.pricing}
+                  {language === 'ar' ? 'لماذا سايين' : 'Why Us'}
                 </a>
               </li>
               <li>
                 <a
-                  href="/contact"
-                  onClick={(e) => handleNav(e, '/contact')}
+                  href="/#contact"
+                  onClick={(e) => handleNav(e, '/#contact')}
                   className={`transition-colors ${isDark ? 'hover:text-[#D9A441]' : 'hover:text-[#143C5A]'}`}
                 >
-                  {t.nav.contact}
+                  {t.nav.startProject}
                 </a>
               </li>
             </ul>

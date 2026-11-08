@@ -20,7 +20,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       const saved = localStorage.getItem('nubix-theme');
       if (saved === 'light' || saved === 'dark') return saved;
     }
-    return 'dark'; // default to elegant dark
+    return 'light'; // Modern, premium agency light mode by default
   });
 
   useEffect(() => {
@@ -28,13 +28,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
-      document.body.style.backgroundColor = '#02060E';
-      document.body.style.color = '#F5EAF0';
+      document.body.style.backgroundColor = '#0A1622';
+      document.body.style.color = '#FAF6EE';
     } else {
       root.classList.add('light');
       root.classList.remove('dark');
-      document.body.style.backgroundColor = '#F5EAF0';
-      document.body.style.color = '#02060E';
+      document.body.style.backgroundColor = '#FAF6EE';
+      document.body.style.color = '#143C5A';
     }
     localStorage.setItem('nubix-theme', theme);
   }, [theme]);
